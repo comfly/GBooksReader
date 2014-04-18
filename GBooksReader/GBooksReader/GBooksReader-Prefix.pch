@@ -16,5 +16,8 @@
 @import UIKit;
 
 #import <AFNetworking/AFNetworking.h>
+#import <CocoaLumberjack/DDLog.h>
+
+#include "GBRLogging.h"
 
 #endif

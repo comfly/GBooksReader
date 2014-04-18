@@ -11,7 +11,16 @@
 @implementation GBRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self setupApplication];
+
     return YES;
+}
+
+- (void)setupApplication {
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        GBRSetupLogger();
+    });
 }
 
 @end

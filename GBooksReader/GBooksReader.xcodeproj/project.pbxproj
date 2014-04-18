@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AF3F024CED7B45B5FFF756F3 /* Main~iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3F0C2EB2BE05E8324EA610 /* Main~iphone.storyboard */; };
+		AF3F028BCD982CC352D0BFE3 /* GBRAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */; };
+		AF3F05CCB0F3F360FF1B04BD /* GBRGoogleAuthorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F082E10270DC9B080370A /* GBRGoogleAuthorizationProvider.m */; };
 		D6E21ACA48E84A259D36A1CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6A8E3F9D024744B1DD9B4E /* libPods.a */; };
 		F1B4D4371901D9F1006BDF11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4361901D9F1006BDF11 /* Foundation.framework */; };
 		F1B4D4391901D9F1006BDF11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4381901D9F1006BDF11 /* CoreGraphics.framework */; };
@@ -22,6 +24,11 @@
 /* Begin PBXFileReference section */
 		4C6A8E3F9D024744B1DD9B4E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		758C9900D2A64E1F882F8250 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRLogging.h; sourceTree = "<group>"; };
+		AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRAuthorizationViewController.m; sourceTree = "<group>"; };
+		AF3F06979ACDD6D01A9E0FB5 /* GBRGoogleAuthorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRGoogleAuthorizationProvider.h; sourceTree = "<group>"; };
+		AF3F082E10270DC9B080370A /* GBRGoogleAuthorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRGoogleAuthorizationProvider.m; sourceTree = "<group>"; };
+		AF3F0BF48364969809AAC89D /* GBRAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAuthorizationViewController.h; sourceTree = "<group>"; };
 		AF3F0C2EB2BE05E8324EA610 /* Main~iphone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main~iphone.storyboard"; sourceTree = "<group>"; };
 		F1B4D4331901D9F1006BDF11 /* GBooksReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBooksReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B4D4361901D9F1006BDF11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,6 +71,9 @@
 		AF3F01C99C8D68D84FFCBA3B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AF3F0B2252A4C8B7246D071B /* Authorization */,
+				AF3F0E6A5B9219C73B8C355C /* UI */,
+				AF3F0FA8B68F9124F05878C7 /* Utilities */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -75,6 +85,40 @@
 				F1B4D4651901E18D006BDF11 /* Main~ipad.storyboard */,
 			);
 			path = "Storyboards and Xibs";
+			sourceTree = "<group>";
+		};
+		AF3F0B2252A4C8B7246D071B /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F082E10270DC9B080370A /* GBRGoogleAuthorizationProvider.m */,
+				AF3F06979ACDD6D01A9E0FB5 /* GBRGoogleAuthorizationProvider.h */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		AF3F0C01B1001F49D9A39013 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */,
+				AF3F0BF48364969809AAC89D /* GBRAuthorizationViewController.h */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AF3F0E6A5B9219C73B8C355C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F0C01B1001F49D9A39013 /* Controllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AF3F0FA8B68F9124F05878C7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		F1B4D42A1901D9F1006BDF11 = {
@@ -234,6 +278,8 @@
 			files = (
 				F1B4D4471901D9F1006BDF11 /* GBRAppDelegate.m in Sources */,
 				F1B4D4431901D9F1006BDF11 /* main.m in Sources */,
+				AF3F028BCD982CC352D0BFE3 /* GBRAuthorizationViewController.m in Sources */,
+				AF3F05CCB0F3F360FF1B04BD /* GBRGoogleAuthorizationProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
