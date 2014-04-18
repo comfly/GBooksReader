@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF3F024CED7B45B5FFF756F3 /* Main~iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3F0C2EB2BE05E8324EA610 /* Main~iphone.storyboard */; };
 		D6E21ACA48E84A259D36A1CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6A8E3F9D024744B1DD9B4E /* libPods.a */; };
 		F1B4D4371901D9F1006BDF11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4361901D9F1006BDF11 /* Foundation.framework */; };
 		F1B4D4391901D9F1006BDF11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4381901D9F1006BDF11 /* CoreGraphics.framework */; };
@@ -15,11 +16,13 @@
 		F1B4D4431901D9F1006BDF11 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B4D4421901D9F1006BDF11 /* main.m */; };
 		F1B4D4471901D9F1006BDF11 /* GBRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B4D4461901D9F1006BDF11 /* GBRAppDelegate.m */; };
 		F1B4D4491901D9F1006BDF11 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B4D4481901D9F1006BDF11 /* Images.xcassets */; };
+		F1B4D4661901E18D006BDF11 /* Main~ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B4D4651901E18D006BDF11 /* Main~ipad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4C6A8E3F9D024744B1DD9B4E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		758C9900D2A64E1F882F8250 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AF3F0C2EB2BE05E8324EA610 /* Main~iphone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main~iphone.storyboard"; sourceTree = "<group>"; };
 		F1B4D4331901D9F1006BDF11 /* GBooksReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBooksReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B4D4361901D9F1006BDF11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1B4D4381901D9F1006BDF11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -32,6 +35,7 @@
 		F1B4D4461901D9F1006BDF11 /* GBRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBRAppDelegate.m; sourceTree = "<group>"; };
 		F1B4D4481901D9F1006BDF11 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1B4D44F1901D9F1006BDF11 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F1B4D4651901E18D006BDF11 /* Main~ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main~ipad.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF3F009E5E4D1008B9DFD77D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F05A9E61B7F7E45738D6D /* Storyboards and Xibs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF3F01C99C8D68D84FFCBA3B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		AF3F05A9E61B7F7E45738D6D /* Storyboards and Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F0C2EB2BE05E8324EA610 /* Main~iphone.storyboard */,
+				F1B4D4651901E18D006BDF11 /* Main~ipad.storyboard */,
+			);
+			path = "Storyboards and Xibs";
+			sourceTree = "<group>";
+		};
 		F1B4D42A1901D9F1006BDF11 = {
 			isa = PBXGroup;
 			children = (
@@ -82,9 +110,11 @@
 		F1B4D43C1901D9F1006BDF11 /* GBooksReader */ = {
 			isa = PBXGroup;
 			children = (
+				AF3F01C99C8D68D84FFCBA3B /* Classes */,
 				F1B4D4451901D9F1006BDF11 /* GBRAppDelegate.h */,
 				F1B4D4461901D9F1006BDF11 /* GBRAppDelegate.m */,
 				F1B4D4481901D9F1006BDF11 /* Images.xcassets */,
+				AF3F009E5E4D1008B9DFD77D /* Resources */,
 				F1B4D43D1901D9F1006BDF11 /* Supporting Files */,
 			);
 			path = GBooksReader;
@@ -143,8 +173,6 @@
 			mainGroup = F1B4D42A1901D9F1006BDF11;
 			productRefGroup = F1B4D4341901D9F1006BDF11 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				F1B4D4321901D9F1006BDF11 /* GBooksReader */,
@@ -157,8 +185,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B4D4661901E18D006BDF11 /* Main~ipad.storyboard in Resources */,
 				F1B4D4411901D9F1006BDF11 /* InfoPlist.strings in Resources */,
 				F1B4D4491901D9F1006BDF11 /* Images.xcassets in Resources */,
+				AF3F024CED7B45B5FFF756F3 /* Main~iphone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +399,7 @@
 				F1B4D4611901D9F1006BDF11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
