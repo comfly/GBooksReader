@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF3F024CED7B45B5FFF756F3 /* Main~iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3F0C2EB2BE05E8324EA610 /* Main~iphone.storyboard */; };
 		AF3F028BCD982CC352D0BFE3 /* GBRAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */; };
 		AF3F02B43C1491E3CF0C188A /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3F0F94E31BEE47503135AA /* configuration.plist */; };
-		AF3F05CCB0F3F360FF1B04BD /* GBRGoogleAuthorizationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F082E10270DC9B080370A /* GBRGoogleAuthorizationProvider.m */; };
 		AF3F075B8A5E8AB82A9D433D /* GBRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */; };
-		AF3F0D04EE2BBEB493DEAA74 /* GBRGoogleOAuthRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F056957D303189F28C75E /* GBRGoogleOAuthRequestBuilder.m */; };
+		AF3F0D04EE2BBEB493DEAA74 /* GBRGoogleAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */; };
 		D6E21ACA48E84A259D36A1CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6A8E3F9D024744B1DD9B4E /* libPods.a */; };
 		F1B4D4371901D9F1006BDF11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4361901D9F1006BDF11 /* Foundation.framework */; };
 		F1B4D4391901D9F1006BDF11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4381901D9F1006BDF11 /* CoreGraphics.framework */; };
@@ -21,23 +19,19 @@
 		F1B4D4431901D9F1006BDF11 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B4D4421901D9F1006BDF11 /* main.m */; };
 		F1B4D4471901D9F1006BDF11 /* GBRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B4D4461901D9F1006BDF11 /* GBRAppDelegate.m */; };
 		F1B4D4491901D9F1006BDF11 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B4D4481901D9F1006BDF11 /* Images.xcassets */; };
-		F1B4D4661901E18D006BDF11 /* Main~ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B4D4651901E18D006BDF11 /* Main~ipad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4C6A8E3F9D024744B1DD9B4E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		758C9900D2A64E1F882F8250 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRLogging.h; sourceTree = "<group>"; };
-		AF3F056957D303189F28C75E /* GBRGoogleOAuthRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRGoogleOAuthRequestBuilder.m; sourceTree = "<group>"; };
+		AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRGoogleAuthorization.m; sourceTree = "<group>"; };
 		AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRAuthorizationViewController.m; sourceTree = "<group>"; };
-		AF3F06979ACDD6D01A9E0FB5 /* GBRGoogleAuthorizationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRGoogleAuthorizationProvider.h; sourceTree = "<group>"; };
-		AF3F082E10270DC9B080370A /* GBRGoogleAuthorizationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRGoogleAuthorizationProvider.m; sourceTree = "<group>"; };
 		AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRConfiguration.m; sourceTree = "<group>"; };
 		AF3F0BF48364969809AAC89D /* GBRAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAuthorizationViewController.h; sourceTree = "<group>"; };
-		AF3F0C2EB2BE05E8324EA610 /* Main~iphone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Main~iphone.storyboard"; sourceTree = "<group>"; };
 		AF3F0E196B8D466E7B6E886E /* GBRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRUtilities.h; sourceTree = "<group>"; };
 		AF3F0EAF49D872F1E11A5493 /* GBRConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRConfiguration.h; sourceTree = "<group>"; };
-		AF3F0F6EFA822A266AB64367 /* GBRGoogleOAuthRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRGoogleOAuthRequestBuilder.h; sourceTree = "<group>"; };
+		AF3F0F6EFA822A266AB64367 /* GBRGoogleAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRGoogleAuthorization.h; sourceTree = "<group>"; };
 		AF3F0F94E31BEE47503135AA /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = configuration.plist; sourceTree = "<group>"; };
 		F1B4D4331901D9F1006BDF11 /* GBooksReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBooksReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B4D4361901D9F1006BDF11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,7 +45,6 @@
 		F1B4D4461901D9F1006BDF11 /* GBRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBRAppDelegate.m; sourceTree = "<group>"; };
 		F1B4D4481901D9F1006BDF11 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1B4D44F1901D9F1006BDF11 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F1B4D4651901E18D006BDF11 /* Main~ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main~ipad.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				AF3F0F94E31BEE47503135AA /* configuration.plist */,
-				AF3F05A9E61B7F7E45738D6D /* Storyboards and Xibs */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -84,26 +76,16 @@
 				AF3F0B2252A4C8B7246D071B /* Authorization */,
 				AF3F0E6A5B9219C73B8C355C /* UI */,
 				AF3F0FA8B68F9124F05878C7 /* Utilities */,
+				AF3F0EB07E8CB7C7A4E8592D /* Extensions */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		AF3F05A9E61B7F7E45738D6D /* Storyboards and Xibs */ = {
-			isa = PBXGroup;
-			children = (
-				AF3F0C2EB2BE05E8324EA610 /* Main~iphone.storyboard */,
-				F1B4D4651901E18D006BDF11 /* Main~ipad.storyboard */,
-			);
-			path = "Storyboards and Xibs";
 			sourceTree = "<group>";
 		};
 		AF3F0B2252A4C8B7246D071B /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				AF3F06979ACDD6D01A9E0FB5 /* GBRGoogleAuthorizationProvider.h */,
-				AF3F082E10270DC9B080370A /* GBRGoogleAuthorizationProvider.m */,
-				AF3F056957D303189F28C75E /* GBRGoogleOAuthRequestBuilder.m */,
-				AF3F0F6EFA822A266AB64367 /* GBRGoogleOAuthRequestBuilder.h */,
+				AF3F0F6EFA822A266AB64367 /* GBRGoogleAuthorization.h */,
+				AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -123,6 +105,13 @@
 				AF3F0C01B1001F49D9A39013 /* Controllers */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		AF3F0EB07E8CB7C7A4E8592D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AF3F0FA8B68F9124F05878C7 /* Utilities */ = {
@@ -244,10 +233,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1B4D4661901E18D006BDF11 /* Main~ipad.storyboard in Resources */,
 				F1B4D4411901D9F1006BDF11 /* InfoPlist.strings in Resources */,
 				F1B4D4491901D9F1006BDF11 /* Images.xcassets in Resources */,
-				AF3F024CED7B45B5FFF756F3 /* Main~iphone.storyboard in Resources */,
 				AF3F02B43C1491E3CF0C188A /* configuration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,9 +282,8 @@
 				F1B4D4471901D9F1006BDF11 /* GBRAppDelegate.m in Sources */,
 				F1B4D4431901D9F1006BDF11 /* main.m in Sources */,
 				AF3F028BCD982CC352D0BFE3 /* GBRAuthorizationViewController.m in Sources */,
-				AF3F05CCB0F3F360FF1B04BD /* GBRGoogleAuthorizationProvider.m in Sources */,
 				AF3F075B8A5E8AB82A9D433D /* GBRConfiguration.m in Sources */,
-				AF3F0D04EE2BBEB493DEAA74 /* GBRGoogleOAuthRequestBuilder.m in Sources */,
+				AF3F0D04EE2BBEB493DEAA74 /* GBRGoogleAuthorization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +412,7 @@
 				GCC_PREFIX_HEADER = "GBooksReader/GBooksReader-Prefix.pch";
 				INFOPLIST_FILE = "GBooksReader/GBooksReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -440,6 +427,7 @@
 				GCC_PREFIX_HEADER = "GBooksReader/GBooksReader-Prefix.pch";
 				INFOPLIST_FILE = "GBooksReader/GBooksReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -8,13 +8,19 @@
 
 
 #import "GBRAuthorizationViewController.h"
+#import "GBRGoogleAuthorization.h"
+#import <GooglePlus/GPPSignInButton.h>
 
 @interface GBRAuthorizationViewController ()
-
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
 @implementation GBRAuthorizationViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    GPPSignInButton *button = [[[GBRGoogleAuthorization alloc] init] authenticationButtonAtCenterPoint:CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))];
+    [self.view addSubview:button];
+}
 
 @end

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>clientID</key>
-	<string>620187246597.apps.googleusercontent.com</string>
+	<string>620187246597-r0a4ul0pd609gatm7mo8agnnfpmlk54n.apps.googleusercontent.com</string>
 	<key>clientSecret</key>
-	<string>aDcHjvk2lCZr8oGJfH_4aE0i</string>
+	<string>hELG5unmfBMFxhUOJxrfBaGQ</string>
 	<key>redirectURI</key>
 	<string>urn:ietf:wg:oauth:2.0:oob</string>
 </dict>
