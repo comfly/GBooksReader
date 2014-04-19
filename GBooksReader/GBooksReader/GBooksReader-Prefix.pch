@@ -18,6 +18,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <CocoaLumberjack/DDLog.h>
 
+#include "GBRUtilities.h"
 #include "GBRLogging.h"
 
 #endif

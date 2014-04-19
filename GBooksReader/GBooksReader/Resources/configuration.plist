@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>clientID</key>
+	<string>620187246597.apps.googleusercontent.com</string>
+	<key>clientSecret</key>
+	<string>aDcHjvk2lCZr8oGJfH_4aE0i</string>
+	<key>redirectURI</key>
+	<string>urn:ietf:wg:oauth:2.0:oob</string>
+</dict>
+</plist>

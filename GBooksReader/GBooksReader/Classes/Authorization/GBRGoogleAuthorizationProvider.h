@@ -12,4 +12,8 @@
 
 @interface GBRGoogleAuthorizationProvider : NSObject
 
+@property (nonatomic) NSString *token;
+
+- (NSURL *)initialAuthorizationURLForClientID:(NSString *)clientID redirectURI:(NSString *)redirectURI;
+
 @end
