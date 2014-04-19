@@ -13,6 +13,8 @@
 
 @implementation GBRGoogleAuthorizationProvider
 
+static NSString *const kGoogleAuthenticationBaseURLString = @"https://accounts.google.com/";
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -51,19 +53,44 @@
     }
 }
 
-- (NSURL *)initialAuthorizationURLForClientID:(NSString *)clientID redirectURI:(NSString *)redirectURI {
-    NSString *(^queryParameter)(NSString *, NSString *) = ^(NSString *key, NSString *value) {
-        return [NSString stringWithFormat:@"%@=%@", key, value];
-    };
+- (NSString *)queryParameterWithKey:(NSString *)key value:(NSString *)value {
+    return [NSString stringWithFormat:@"%@=%@", key, value];
+}
 
-    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:@"o/oauth2/auth" relativeToURL:[NSURL URLWithString:@"https://accounts.google.com/"]] resolvingAgainstBaseURL:YES];
+- (NSURL *)initialAuthorizationURLForClientID:(NSString *)clientID redirectURI:(NSString *)redirectURI {
+    NSParameterAssert([clientID length] > 0);
+    NSParameterAssert([redirectURI length] > 0);
+
+    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:@"o/oauth2/auth" relativeToURL:[NSURL URLWithString:kGoogleAuthenticationBaseURLString]] resolvingAgainstBaseURL:YES];
     components.query = [@[
-            queryParameter(@"client_id", clientID),
-            queryParameter(@"redirect_uri", redirectURI),
-            queryParameter(@"response_type", @"code")
+            [self queryParameterWithKey:@"client_id" value:clientID],
+            [self queryParameterWithKey:@"redirect_uri" value:redirectURI],
+            [self queryParameterWithKey:@"response_type" value:@"code"],
     ] componentsJoinedByString:@"&"];
     return [components URL];
 }
+
+- (NSURLRequest *)tokenAcquizitionRequestForClientID:(NSString *)clientID clientSecret:(NSString *)clientSecret redirectURI:(NSString *)redirectURI code:(NSString *)code {
+    NSParameterAssert([clientID length] > 0);
+    NSParameterAssert([clientSecret length] > 0);
+    NSParameterAssert([redirectURI length] > 0);
+    NSParameterAssert([code length] > 0);
+
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"o/oauth2/token" relativeToURL:[NSURL URLWithString:kGoogleAuthenticationBaseURLString]]];
+    [request setHTTPMethod:@"POST"];
+
+    NSData *body = [[@[
+            [self queryParameterWithKey:@"code" value:code],
+            [self queryParameterWithKey:@"client_id" value:clientID],
+            [self queryParameterWithKey:@"client_secret" value:clientSecret],
+            [self queryParameterWithKey:@"redirect_uri" value:redirectURI],
+            [self queryParameterWithKey:@"grant_type" value:@"authorization_code"],
+    ] componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:body];
+
+    return [request copy];
+}
+
 
 @end
 

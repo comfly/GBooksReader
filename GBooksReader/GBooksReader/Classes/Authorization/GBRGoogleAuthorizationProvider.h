@@ -16,4 +16,6 @@
 
 - (NSURL *)initialAuthorizationURLForClientID:(NSString *)clientID redirectURI:(NSString *)redirectURI;
 
+- (NSURLRequest *)tokenAcquizitionRequestForClientID:(NSString *)clientID clientSecret:(NSString *)clientSecret redirectURI:(NSString *)redirectURI code:(NSString *)code;
+
 @end
