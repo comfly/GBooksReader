@@ -13,4 +13,7 @@
 #define SELECTOR_NAME(_selector)   \
     NSStringFromSelector(@selector(_selector))
 
+#define DESIGNATED_INITIALIZER  \
+    __attribute__((objc_designated_initializer))
+
 #endif //__GBRUtilities_H_
