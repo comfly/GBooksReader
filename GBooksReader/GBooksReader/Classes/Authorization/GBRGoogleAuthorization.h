@@ -14,6 +14,10 @@
 
 @interface GBRGoogleAuthorization : NSObject
 
-- (GPPSignInButton *)authenticationButtonAtCenterPoint:(CGPoint)center;
+- (UIViewController *)authorizationViewController;
+- (BOOL)handleAuthorizationURL:(NSURL *)URL sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+- (BOOL)isAuthenticated;
+- (NSString *)token;
+- (NSString *)userEmail;
 
 @end

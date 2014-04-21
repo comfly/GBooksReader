@@ -9,12 +9,15 @@
 
 #import "GBRGoogleAuthorization.h"
 #import "GBRConfiguration.h"
+#import "GBRAuthorizationViewController.h"
 #import <GoogleOpenSource/GTMOAuth2Authentication.h>
-#import <GooglePlus/GPPSignInButton.h>
+#import <GooglePlus/GPPURLHandler.h>
 #import <GooglePlus/GPPSignIn.h>
 
 
 @interface GBRGoogleAuthorization () <GPPSignInDelegate>
+
+@property (nonatomic, readonly) GPPSignIn *signIn;
 
 @end
 
@@ -23,21 +26,21 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self configureSignIn:[GPPSignIn sharedInstance] withDelegate:self];
+        _signIn = [self configureSignInWithDelegate:self];
     }
 
     return self;
 }
 
-- (GPPSignIn *)configureSignIn:(GPPSignIn *)signIn withDelegate:(id<GPPSignInDelegate>)delegate {
-    NSParameterAssert(signIn);
+- (GPPSignIn *)configureSignInWithDelegate:(id<GPPSignInDelegate>)delegate {
+    GPPSignIn *result = [GPPSignIn sharedInstance];
 
-    signIn.clientID = [self clientID];
-    signIn.shouldFetchGoogleUserEmail = YES;
-    signIn.scopes = [self scopes];
-    signIn.delegate = delegate;
+    result.clientID = [self clientID];
+    result.shouldFetchGoogleUserEmail = YES;
+    result.scopes = [self scopes];
+    result.delegate = delegate;
 
-    return signIn;
+    return result;
 }
 
 - (NSString *)clientID {
@@ -49,14 +52,31 @@
 }
 
 - (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error {
+    if (error) {
 
+    } else if (auth) {
+
+    }
 }
 
-- (GPPSignInButton *)authenticationButtonAtCenterPoint:(CGPoint)center {
-    GPPSignInButton *result = [[GPPSignInButton alloc] init];
-    result.center = center;
-    
-    return result;
+- (UIViewController *)authorizationViewController {
+    return [[GBRAuthorizationViewController alloc] init];
+}
+
+- (BOOL)handleAuthorizationURL:(NSURL *)URL sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [GPPURLHandler handleURL:URL sourceApplication:sourceApplication annotation:annotation];
+}
+
+- (BOOL)isAuthenticated {
+    return self.signIn.authentication != nil;
+}
+
+- (NSString *)token {
+    return self.signIn.authentication.accessToken;
+}
+
+- (NSString *)userEmail {
+    return self.signIn.authentication.userEmail;
 }
 
 @end

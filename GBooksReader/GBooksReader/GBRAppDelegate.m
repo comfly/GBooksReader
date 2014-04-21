@@ -7,8 +7,7 @@
 //
 
 #import "GBRAppDelegate.h"
-#import "GBRAuthorizationViewController.h"
-#import <GooglePlus/GPPURLHandler.h>
+#import "GBRGoogleAuthorization.h"
 
 @implementation GBRAppDelegate
 
@@ -17,7 +16,7 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[GBRAuthorizationViewController alloc] init];
+    self.window.rootViewController = [[[GBRGoogleAuthorization alloc] init] authorizationViewController];
 
     [self.window makeKeyAndVisible];
 
@@ -32,7 +31,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+    return [[[GBRGoogleAuthorization alloc] init] handleAuthorizationURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 @end

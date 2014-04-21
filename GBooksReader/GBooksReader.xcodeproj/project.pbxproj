@@ -76,7 +76,6 @@
 				AF3F0B2252A4C8B7246D071B /* Authorization */,
 				AF3F0E6A5B9219C73B8C355C /* UI */,
 				AF3F0FA8B68F9124F05878C7 /* Utilities */,
-				AF3F0EB07E8CB7C7A4E8592D /* Extensions */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -105,13 +104,6 @@
 				AF3F0C01B1001F49D9A39013 /* Controllers */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		AF3F0EB07E8CB7C7A4E8592D /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AF3F0FA8B68F9124F05878C7 /* Utilities */ = {

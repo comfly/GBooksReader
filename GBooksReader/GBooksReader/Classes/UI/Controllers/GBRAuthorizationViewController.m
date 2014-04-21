@@ -17,10 +17,39 @@
 
 @implementation GBRAuthorizationViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    GPPSignInButton *button = [[[GBRGoogleAuthorization alloc] init] authenticationButtonAtCenterPoint:CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))];
-    [self.view addSubview:button];
+- (void)loadView {
+    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [view setTranslatesAutoresizingMaskIntoConstraints:YES];
+    self.view = view;
+
+    GPPSignInButton *button = [self authenticationButton];
+    [view addSubview:button];
+
+    NSLayoutConstraint *horizontalConstraints = [NSLayoutConstraint constraintWithItem:button
+                                                                             attribute:NSLayoutAttributeCenterX
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:view
+                                                                             attribute:NSLayoutAttributeCenterX
+                                                                            multiplier:1.0
+                                                                              constant:0.0];
+
+    NSLayoutConstraint *verticalConstraints = [NSLayoutConstraint constraintWithItem:button
+                                                                           attribute:NSLayoutAttributeCenterY
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:view
+                                                                           attribute:NSLayoutAttributeCenterY
+                                                                          multiplier:1.0
+                                                                            constant:0.0];
+
+    [view addConstraints:@[ horizontalConstraints, verticalConstraints ]];
+}
+
+- (GPPSignInButton *)authenticationButton {
+    GPPSignInButton *result = [[GPPSignInButton alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+    [result setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+    return result;
 }
 
 @end
