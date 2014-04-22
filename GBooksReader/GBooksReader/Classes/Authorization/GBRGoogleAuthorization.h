@@ -10,14 +10,26 @@
 @import Foundation;
 
 
-@class GPPSignInButton;
+@protocol GBRGoogleAuthorizationDelegate;
 
 @interface GBRGoogleAuthorization : NSObject
+
+- (instancetype)initWithDelegate:(id<GBRGoogleAuthorizationDelegate>)delegate DESIGNATED_INITIALIZER;
 
 - (UIViewController *)authorizationViewController;
 - (BOOL)handleAuthorizationURL:(NSURL *)URL sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 - (BOOL)isAuthenticated;
 - (NSString *)token;
 - (NSString *)userEmail;
+
+@end
+
+
+@protocol GBRGoogleAuthorizationDelegate <NSObject>
+
+- (void)authorizationDidSuccessfullyAuthorized:(GBRGoogleAuthorization *)authorization;
+
+@optional
+- (void)authorization:(GBRGoogleAuthorization *)authorization didFailAuthorizationWithError:(NSError *)error;
 
 @end

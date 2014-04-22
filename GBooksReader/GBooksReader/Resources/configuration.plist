@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>booksScope</key>
+    <string>https://www.google.com/books/feeds/</string>
 	<key>clientID</key>
 	<string>620187246597-r0a4ul0pd609gatm7mo8agnnfpmlk54n.apps.googleusercontent.com</string>
-	<key>clientSecret</key>
-	<string>hELG5unmfBMFxhUOJxrfBaGQ</string>
-	<key>redirectURI</key>
-	<string>urn:ietf:wg:oauth:2.0:oob</string>
+    <key>baseURL</key>
+    <string>https://www.googleapis.com/books/v1/</string>
 </dict>
 </plist>

@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		AF3F028BCD982CC352D0BFE3 /* GBRAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */; };
 		AF3F02B43C1491E3CF0C188A /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3F0F94E31BEE47503135AA /* configuration.plist */; };
+		AF3F04265DCF886E16BCC2D1 /* GBRHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0C9D5B7818B58F5F1F44 /* GBRHTTPClient.m */; };
 		AF3F075B8A5E8AB82A9D433D /* GBRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */; };
 		AF3F0D04EE2BBEB493DEAA74 /* GBRGoogleAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */; };
+		AF3F0D5019A91C08C70CCE0F /* GBRHTTPClientProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0CDA28A27F75FA9C1732 /* GBRHTTPClientProvider.m */; };
 		D6E21ACA48E84A259D36A1CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6A8E3F9D024744B1DD9B4E /* libPods.a */; };
 		F1B4D4371901D9F1006BDF11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4361901D9F1006BDF11 /* Foundation.framework */; };
 		F1B4D4391901D9F1006BDF11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4381901D9F1006BDF11 /* CoreGraphics.framework */; };
@@ -24,11 +26,15 @@
 /* Begin PBXFileReference section */
 		4C6A8E3F9D024744B1DD9B4E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		758C9900D2A64E1F882F8250 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AF3F00BE8A8BDB4213135298 /* GBRHTTPClientProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRHTTPClientProvider.h; sourceTree = "<group>"; };
 		AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRLogging.h; sourceTree = "<group>"; };
 		AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRGoogleAuthorization.m; sourceTree = "<group>"; };
 		AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRAuthorizationViewController.m; sourceTree = "<group>"; };
+		AF3F085390E7181FEB5A103E /* GBRHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRHTTPClient.h; sourceTree = "<group>"; };
 		AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRConfiguration.m; sourceTree = "<group>"; };
 		AF3F0BF48364969809AAC89D /* GBRAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAuthorizationViewController.h; sourceTree = "<group>"; };
+		AF3F0C9D5B7818B58F5F1F44 /* GBRHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRHTTPClient.m; sourceTree = "<group>"; };
+		AF3F0CDA28A27F75FA9C1732 /* GBRHTTPClientProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRHTTPClientProvider.m; sourceTree = "<group>"; };
 		AF3F0E196B8D466E7B6E886E /* GBRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRUtilities.h; sourceTree = "<group>"; };
 		AF3F0EAF49D872F1E11A5493 /* GBRConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRConfiguration.h; sourceTree = "<group>"; };
 		AF3F0F6EFA822A266AB64367 /* GBRGoogleAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRGoogleAuthorization.h; sourceTree = "<group>"; };
@@ -76,8 +82,20 @@
 				AF3F0B2252A4C8B7246D071B /* Authorization */,
 				AF3F0E6A5B9219C73B8C355C /* UI */,
 				AF3F0FA8B68F9124F05878C7 /* Utilities */,
+				AF3F038B86762D1C250D62F9 /* Networking */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		AF3F038B86762D1C250D62F9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F0C9D5B7818B58F5F1F44 /* GBRHTTPClient.m */,
+				AF3F085390E7181FEB5A103E /* GBRHTTPClient.h */,
+				AF3F0CDA28A27F75FA9C1732 /* GBRHTTPClientProvider.m */,
+				AF3F00BE8A8BDB4213135298 /* GBRHTTPClientProvider.h */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		AF3F0B2252A4C8B7246D071B /* Authorization */ = {
@@ -276,6 +294,8 @@
 				AF3F028BCD982CC352D0BFE3 /* GBRAuthorizationViewController.m in Sources */,
 				AF3F075B8A5E8AB82A9D433D /* GBRConfiguration.m in Sources */,
 				AF3F0D04EE2BBEB493DEAA74 /* GBRGoogleAuthorization.m in Sources */,
+				AF3F04265DCF886E16BCC2D1 /* GBRHTTPClient.m in Sources */,
+				AF3F0D5019A91C08C70CCE0F /* GBRHTTPClientProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

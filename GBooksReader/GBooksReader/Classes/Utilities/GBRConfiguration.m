@@ -10,10 +10,6 @@
 #import "GBRConfiguration.h"
 
 
-@interface GBRConfiguration ()
-
-@end
-
 @implementation GBRConfiguration
 
 - (instancetype)initInternal {
@@ -30,11 +26,11 @@
     [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfURL:[self configurationFileURL]]];
 
     _clientID = [defaults stringForKey:SELECTOR_NAME(clientID)];
-    _clientSecret = [defaults stringForKey:SELECTOR_NAME(clientSecret)];
-    _redirectURI = [defaults stringForKey:SELECTOR_NAME(redirectURI)];
+    _baseURL = [NSURL URLWithString:[defaults objectForKey:SELECTOR_NAME(baseURL)]];
+    _booksScope = [defaults stringForKey:SELECTOR_NAME(booksScope)];
 }
 
-+ (instancetype)sharedInstance {
++ (instancetype)configuration {
     static GBRConfiguration *instance;
 
     static dispatch_once_t token;

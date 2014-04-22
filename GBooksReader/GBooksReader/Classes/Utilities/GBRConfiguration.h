@@ -13,10 +13,10 @@
 @interface GBRConfiguration : NSObject
 
 @property (nonatomic, readonly) NSString *clientID;
-@property (nonatomic, readonly) NSString *clientSecret;
-@property (nonatomic, readonly) NSString *redirectURI;
+@property (nonatomic, readonly) NSURL *baseURL;
+@property (nonatomic, readonly) NSString *booksScope;
 
 - (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)sharedInstance;
++ (instancetype)configuration;
 
 @end

@@ -18,44 +18,55 @@
 @interface GBRGoogleAuthorization () <GPPSignInDelegate>
 
 @property (nonatomic, readonly) GPPSignIn *signIn;
+@property (nonatomic, readonly, weak) id<GBRGoogleAuthorizationDelegate> delegate;
 
 @end
 
 @implementation GBRGoogleAuthorization
 
 - (instancetype)init {
+    return (self = [self initWithDelegate:nil]);
+}
+
+- (instancetype)initWithDelegate:(id<GBRGoogleAuthorizationDelegate>)delegate{
     self = [super init];
     if (self) {
-        _signIn = [self configureSignInWithDelegate:self];
+        _signIn = [self configureSign];
+        _delegate = delegate;
     }
 
     return self;
 }
 
-- (GPPSignIn *)configureSignInWithDelegate:(id<GPPSignInDelegate>)delegate {
+- (GPPSignIn *)configureSign {
     GPPSignIn *result = [GPPSignIn sharedInstance];
 
     result.clientID = [self clientID];
     result.shouldFetchGoogleUserEmail = YES;
     result.scopes = [self scopes];
-    result.delegate = delegate;
+    result.delegate = self;
 
     return result;
 }
 
 - (NSString *)clientID {
-    return [GBRConfiguration sharedInstance].clientID;
+    return [GBRConfiguration configuration].clientID;
 }
 
 - (NSArray *)scopes {
-    return @[ @"https://www.google.com/books/feeds/" ];
+    return @[ [GBRConfiguration configuration].booksScope ];
 }
 
 - (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error {
+    __typeof__(self.delegate) delegate = self.delegate;
     if (error) {
+        DDLogError(@"Unable to login: %@", error);
 
-    } else if (auth) {
-
+        if ([delegate respondsToSelector:@selector(authorization:didFailAuthorizationWithError:)]) {
+            [delegate authorization:self didFailAuthorizationWithError:error];
+        }
+    } else {
+        [delegate authorizationDidSuccessfullyAuthorized:self];
     }
 }
 
