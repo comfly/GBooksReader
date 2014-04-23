@@ -33,8 +33,7 @@
 + (instancetype)configuration {
     static GBRConfiguration *instance;
 
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
+    ONCE(^{
         instance = [[self alloc] initInternal];
     });
 

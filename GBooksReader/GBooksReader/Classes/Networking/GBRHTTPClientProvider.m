@@ -4,10 +4,10 @@
 //
 
 #import "GBRHTTPClientProvider.h"
-#import "GBRHTTPClient.h"
+#import "GBRBaseNetworkFetcher.h"
 
 
-@interface GBRHTTPClient (Internal)
+@interface GBRBaseNetworkFetcher (Internal)
 
 - (instancetype)initWithToken:(NSString *)token;
 - (NSString *)token;
@@ -42,22 +42,15 @@
 + (instancetype)provider {
     static GBRHTTPClientProvider *instance;
 
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
+    ONCE(^{
         instance = [[self alloc] initInternal];
     });
 
     return instance;
 }
 
-- (GBRHTTPClient *)objectForKeyedSubscript:(NSString *)token {
-    GBRHTTPClient *result = [self.clients objectForKey:token];
-    if (!result) {
-        result = [[GBRHTTPClient alloc] initWithToken:token];
-        [self.clients setObject:result forKey:token];
-    }
-
-    return result;
+- (GBRBaseNetworkFetcher *)objectForKeyedSubscript:(NSString *)token {
+    return self.clients[token] ?: (self.clients[token] = [[GBRBaseNetworkFetcher alloc] initWithToken:token]);
 }
 
 

@@ -6,13 +6,13 @@
 @import Foundation;
 
 
-@class GBRHTTPClient;
+@class GBRBaseNetworkFetcher;
 
 @interface GBRHTTPClientProvider : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)provider;
 
-- (GBRHTTPClient *)objectForKeyedSubscript:(NSString *)token;
+- (GBRBaseNetworkFetcher *)objectForKeyedSubscript:(NSString *)token;
 
 @end

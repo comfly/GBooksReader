@@ -3,18 +3,19 @@
 // Copyright (c) 2014 comfly. All rights reserved.
 //
 
-#import "GBRHTTPClient.h"
+#import "GBRBaseNetworkFetcher.h"
+#import "GBRBaseNetworkFetcher+Protected.h"
 #import "GBRConfiguration.h"
 
 
-@interface GBRHTTPClient ()
+@interface GBRBaseNetworkFetcher ()
 
-@property (nonatomic, readonly) AFHTTPSessionManager *manager;
 @property (nonatomic, readonly, copy) NSString *token;
+@property (nonatomic, readonly) NSMapTable *tasksByPromises;
 
 @end
 
-@implementation GBRHTTPClient
+@implementation GBRBaseNetworkFetcher
 
 - (instancetype)initWithToken:(NSString *)token {
     NSParameterAssert(token);
@@ -25,9 +26,38 @@
         _manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[self baseURL] sessionConfiguration:[self sessionConfiguration]];
         _manager.requestSerializer = [self requestSerializerWithToken:token];
         _manager.responseSerializer = [self responseSerializer];
+
+        _tasksByPromises = [NSMapTable mapTableWithKeyOptions:NSMapTableObjectPointerPersonality | NSPointerFunctionsOpaqueMemory
+                                                 valueOptions:NSMapTableStrongMemory | NSPointerFunctionsObjectPersonality];
     }
 
     return self;
+}
+
+- (Promise *)initiateTask:(NSURLSessionTask *)task forPromise:(Promise *)promise {
+    Promise *extendedPromise = promise.then(^{
+        [self completeTaskForPromise:extendedPromise];
+    }).catch(^{
+        [self completeTaskForPromise:extendedPromise];
+    });
+    self.tasksByPromises[extendedPromise] = task;
+    return extendedPromise;
+}
+
+- (void)completeTaskForPromise:(Promise *)promise {
+    [self.tasksByPromises removeObjectForKey:promise];
+}
+
+- (void)cancelTaskForPromise:(Promise *)promise {
+    [self.tasksByPromises[promise] cancel];
+    [self.tasksByPromises removeObjectForKey:promise];
+}
+
+- (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithDeferred:(Deferred *)deferred {
+    return ^(NSURLSessionDataTask *task, NSError *error) {
+        DDLogCError(@"Network error: %@", error);
+        [deferred reject:error];
+    };
 }
 
 - (AFHTTPResponseSerializer *)responseSerializer {

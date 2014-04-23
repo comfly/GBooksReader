@@ -19,6 +19,7 @@
 - (UIViewController *)authorizationViewController;
 - (BOOL)handleAuthorizationURL:(NSURL *)URL sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 - (BOOL)isAuthenticated;
+- (BOOL)trySilentAuthentication;
 - (NSString *)token;
 - (NSString *)userEmail;
 

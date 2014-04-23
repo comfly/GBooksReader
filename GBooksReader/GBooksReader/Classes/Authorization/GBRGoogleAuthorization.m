@@ -82,6 +82,10 @@
     return self.signIn.authentication != nil;
 }
 
+- (BOOL)trySilentAuthentication {
+    return [self.signIn trySilentAuthentication];
+}
+
 - (NSString *)token {
     return self.signIn.authentication.accessToken;
 }

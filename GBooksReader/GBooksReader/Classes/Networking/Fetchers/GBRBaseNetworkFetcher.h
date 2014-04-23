@@ -6,6 +6,6 @@
 @import Foundation;
 
 
-@interface GBRHTTPClient : NSObject
+@interface GBRBaseNetworkFetcher : NSObject
 
 @end

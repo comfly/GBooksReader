@@ -24,8 +24,7 @@
 }
 
 - (void)setupApplication {
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
+    ONCE(^{
         GBRSetupLogger();
     });
 }
