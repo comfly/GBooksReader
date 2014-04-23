@@ -9,28 +9,17 @@
 
 @import Foundation;
 
+#import "GBRAuthorization.h"
 
-@protocol GBRGoogleAuthorizationDelegate;
 
-@interface GBRGoogleAuthorization : NSObject
+@interface GBRGoogleAuthorization : NSObject<GBRAuthorization>
 
-- (instancetype)initWithDelegate:(id<GBRGoogleAuthorizationDelegate>)delegate DESIGNATED_INITIALIZER;
+- (instancetype)initWithDelegate:(id<GBRAuthorizationDelegate>)delegate DESIGNATED_INITIALIZER;
 
 - (UIViewController *)authorizationViewController;
 - (BOOL)handleAuthorizationURL:(NSURL *)URL sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
-- (BOOL)isAuthenticated;
+
 - (BOOL)trySilentAuthentication;
-- (NSString *)token;
-- (NSString *)userEmail;
 
 @end
 
-
-@protocol GBRGoogleAuthorizationDelegate <NSObject>
-
-- (void)authorizationDidSuccessfullyAuthorized:(GBRGoogleAuthorization *)authorization;
-
-@optional
-- (void)authorization:(GBRGoogleAuthorization *)authorization didFailAuthorizationWithError:(NSError *)error;
-
-@end

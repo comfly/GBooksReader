@@ -48,6 +48,7 @@
 		AF3F081CD804827B36347CA4 /* GBRBaseNetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRBaseNetworkFetcher.m; sourceTree = "<group>"; };
 		AF3F084096EC7735DF8273BB /* NSMapTable+GBRKeySubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMapTable+GBRKeySubscript.h"; sourceTree = "<group>"; };
 		AF3F08A2D1148BEA6F34F37D /* NSCache+GBRKeySubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCache+GBRKeySubscript.m"; sourceTree = "<group>"; };
+		AF3F09028AB8B79D123A6859 /* GBRAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAuthorization.h; sourceTree = "<group>"; };
 		AF3F0922F2E9459092CB9D19 /* NSError+GBRExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+GBRExtra.m"; sourceTree = "<group>"; };
 		AF3F097F292249F874514507 /* NSError+GBRExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+GBRExtra.h"; sourceTree = "<group>"; };
 		AF3F09D2325CF0A596D18A73 /* GBRMyLibraryNetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyLibraryNetworkFetcher.m; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 			children = (
 				AF3F0F6EFA822A266AB64367 /* GBRGoogleAuthorization.h */,
 				AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */,
+				AF3F09028AB8B79D123A6859 /* GBRAuthorization.h */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";

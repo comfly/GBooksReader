@@ -10,9 +10,12 @@
 @import Foundation;
 
 
+@protocol GBRAuthorization;
 @class GBRBaseNetworkFetcher;
 
 @interface GBRAssembly : TyphoonAssembly
+
+- (id<GBRAuthorization>)authorizer;
 
 - (id)myLibraryNetworkFetcher;
 

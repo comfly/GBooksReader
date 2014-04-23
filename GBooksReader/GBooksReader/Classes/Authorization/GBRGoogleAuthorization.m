@@ -18,7 +18,7 @@
 @interface GBRGoogleAuthorization () <GPPSignInDelegate>
 
 @property (nonatomic, readonly) GPPSignIn *signIn;
-@property (nonatomic, readonly, weak) id<GBRGoogleAuthorizationDelegate> delegate;
+@property (nonatomic, readonly, weak) id<GBRAuthorizationDelegate> delegate;
 
 @end
 
@@ -28,7 +28,7 @@
     return (self = [self initWithDelegate:nil]);
 }
 
-- (instancetype)initWithDelegate:(id<GBRGoogleAuthorizationDelegate>)delegate{
+- (instancetype)initWithDelegate:(id<GBRAuthorizationDelegate>)delegate {
     self = [super init];
     if (self) {
         _signIn = [self configureSign];

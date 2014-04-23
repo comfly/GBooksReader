@@ -10,10 +10,21 @@
 #import "GBRAssembly.h"
 #import "GBRBaseNetworkFetcher.h"
 #import "GBRBaseNetworkFetcher+Protected.h"
+#import "GBRAuthorization.h"
 #import "GBRMyLibraryNetworkFetcher.h"
+#import "GBRGoogleAuthorization.h"
 
 
 @implementation GBRAssembly
+
+- (id<GBRAuthorization>)authorizer {
+    return (id<GBRAuthorization>) [TyphoonDefinition withClass:[GBRGoogleAuthorization class] initialization:^(TyphoonInitializer *initializer) {
+        initializer.selector = @selector(initWithDelegate:);
+        [initializer injectWithObjectInstance:[UIApplication sharedApplication].delegate];
+    }                                               properties:^(TyphoonDefinition *definition) {
+        definition.scope = TyphoonScopeSingleton;
+    }];
+}
 
 - (id)myLibraryNetworkFetcher {
     return [TyphoonDefinition withClass:[GBRMyLibraryNetworkFetcher class] properties:^(TyphoonDefinition *definition) {
@@ -25,13 +36,13 @@
     return [TyphoonDefinition withClass:[GBRBaseNetworkFetcher class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithToken:);
         [initializer injectWithValueAsText:[self token]];
-    }                        properties:^(TyphoonDefinition *definition) {
+    } properties:^(TyphoonDefinition *definition) {
         definition.abstract = YES;
     }];
 }
 
 - (NSString *)token {
-    return nil;
+    return [[self authorizer] token];
 }
 
 @end

@@ -10,6 +10,12 @@
 #import "GBRGoogleAuthorization.h"
 #import "GBRAssembly.h"
 
+
+@interface GBRAppDelegate ()<GBRAuthorizationDelegate>
+
+@end
+
+
 @implementation GBRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -37,6 +43,14 @@
 
 - (void)setupDependencyInjector {
     [TyphoonBlockComponentFactory factoryWithAssembly:[GBRAssembly assembly]];
+}
+
+- (void)authorization:(id<GBRAuthorization>)authorization didFailAuthorizationWithError:(NSError *)error {
+
+}
+
+- (void)authorizationDidSuccessfullyAuthorized:(id<GBRAuthorization>)authorization {
+
 }
 
 @end
