@@ -21,6 +21,7 @@
 #import <BlocksKit/BlocksKit.h>
 #import <Mantle/Mantle.h>
 #import <PromiseKit/PromiseKit.h>
+#import <Typhoon/Typhoon.h>
 #import "ObjectiveCGenerics.h"
 
 #include "GBRUtilities.h"

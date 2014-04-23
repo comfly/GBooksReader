@@ -8,6 +8,7 @@
 
 #import "GBRAppDelegate.h"
 #import "GBRGoogleAuthorization.h"
+#import "GBRAssembly.h"
 
 @implementation GBRAppDelegate
 
@@ -26,11 +27,16 @@
 - (void)setupApplication {
     ONCE(^{
         GBRSetupLogger();
+        [self setupDependencyInjector];
     });
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [[[GBRGoogleAuthorization alloc] init] handleAuthorizationURL:url sourceApplication:sourceApplication annotation:annotation];
+}
+
+- (void)setupDependencyInjector {
+    [TyphoonBlockComponentFactory factoryWithAssembly:[GBRAssembly assembly]];
 }
 
 @end
