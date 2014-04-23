@@ -66,7 +66,7 @@
 }
 
 - (void)rejectDeferred:(Deferred *)deferred withParsingErrorForClass:(Class)class {
-    NSString *message = [NSString stringWithFormat:@"Unable to parse %@ network response", NSStringFromClass(class)];
+    NSString *message = FORMAT(@"Unable to parse %@ network response", NSStringFromClass(class));
     [deferred reject:[NSError applicationErrorWithCode:GBRResponseParsingError message:message]];
 }
 

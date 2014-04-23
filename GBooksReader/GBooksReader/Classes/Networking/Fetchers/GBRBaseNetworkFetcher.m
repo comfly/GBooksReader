@@ -80,7 +80,7 @@
 }
 
 - (NSString *)tokenHeaderValueForToken:(NSString *)token {
-    return [NSString stringWithFormat:@"Bearer %@", token];
+    return FORMAT(@"Bearer %@", token);
 }
 
 @end
