@@ -8,4 +8,6 @@
 
 @interface GBRBaseNetworkFetcher : NSObject
 
+- (void)cancelTaskForPromise:(Promise *)promise;
+
 @end

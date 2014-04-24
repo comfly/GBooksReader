@@ -13,6 +13,7 @@
 #import "GBRConfiguration.h"
 #import "OHHTTPStubsResponse+JSON.h"
 #import "GBRDateFormatters.h"
+#import "GBRNetworkPaths.h"
 
 
 SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
@@ -27,14 +28,21 @@ SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
                 return [[GBRMyLibraryNetworkFetcher alloc] initWithToken:kToken];
             });
 
-
             let(utilities, ^{
                 return [GBRTestUtilities utilities];
             });
 
+            let(kRequestPath, ^{
+                return [GBRNetworkPaths pathToMyLibraryBookshelves];
+            });
+
+            let(kResponseFixture, ^{
+                return @"my-bookshelves-response";
+            });
+
             it(@"should load My Bookshelves", ^{
                 [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-                    NSURL *kRequestURL = [[NSURL URLWithString:@"mylibrary/bookshelves" relativeToURL:[GBRConfiguration configuration].baseURL] absoluteURL];
+                    NSURL *kRequestURL = [[NSURL URLWithString:kRequestPath relativeToURL:[GBRConfiguration configuration].baseURL] absoluteURL];
                     BOOL URLsMatch = [[request URL] isEqual:kRequestURL];
                     BOOL bodyMatch = [request HTTPBody] == nil;
                     BOOL headersMatch = [[request valueForHTTPHeaderField:@"Authorization"] isEqualToString:FORMAT(@"Bearer %@", kToken)];
@@ -45,7 +53,7 @@ SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
 
                     return URLsMatch && bodyMatch && headersMatch;
                 }                   withStubResponse:^(NSURLRequest *request) {
-                    id jsonObject = [utilities jsonObjectFromFixtureWithName:@"my-bookshelves-response"];
+                    id jsonObject = [utilities jsonObjectFromFixtureWithName:kResponseFixture];
                     return [OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil];
                 }];
 
@@ -70,6 +78,29 @@ SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
                     done = YES;
                 });
 
+                [[expectFutureValue(theValue(done)) shouldEventually] beYes];
+            });
+
+            it(@"should support cancelling of loading My Bookshelves", ^{
+                [OHHTTPStubs stubRequestsPassingTest:^(id _) {
+                    return YES;
+                }                   withStubResponse:^(NSURLRequest *request) {
+                    id jsonObject = [utilities jsonObjectFromFixtureWithName:kResponseFixture];
+                    return [[OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil] responseTime:3];
+                }];
+
+
+                __block BOOL done = NO;
+
+                Promise *promise = [fetcher loadAllBookshelves];
+                promise.catch(^(NSError *error) {
+                    [[theValue([error isUserCancelled]) should] beYes];
+                    done = YES;
+                });
+
+                [NSThread sleepForTimeInterval:0.3];
+
+                [fetcher cancelTaskForPromise:promise];
                 [[expectFutureValue(theValue(done)) shouldEventually] beYes];
             });
         });

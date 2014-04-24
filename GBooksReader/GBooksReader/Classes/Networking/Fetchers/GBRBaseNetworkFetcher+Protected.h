@@ -4,18 +4,20 @@
 //
 
 @import Foundation;
+
+#import <Maris/REMHTTPSessionManager.h>
 #import "GBRBaseNetworkFetcher.h"
 
 
 @interface GBRBaseNetworkFetcher ()
 
-@property (nonatomic, readonly) AFHTTPSessionManager *manager;
+@property (nonatomic, readonly) REMHTTPSessionManager *manager;
 
 - (instancetype)initWithToken:(NSString *)token;
 
 - (Promise *)initiateTask:(NSURLSessionTask *)task forPromise:(Promise *)promise;
+
 - (void)completeTaskForPromise:(Promise *)promise;
-- (void)cancelTaskForPromise:(Promise *)promise;
 
 - (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithDeferred:(Deferred *)deferred;
 

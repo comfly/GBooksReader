@@ -15,9 +15,15 @@ NSString *const GBRErrorDomain = @"com.comfly.GBooksReader.ErrorDomain";
 }
 
 + (NSError *)applicationErrorWithCode:(GBRErrorCodes)code message:(NSString *)message {
-    return [self applicationErrorWithCode:code userInfo:message ? @{
-        NSLocalizedDescriptionKey : message
-    } : nil];
+    return [self applicationErrorWithCode:code userInfo:message ? @{ NSLocalizedDescriptionKey : message } : nil];
+}
+
+- (BOOL)isOfflineError {
+    return [[self domain] isEqualToString:NSURLErrorDomain] && [self code] == NSURLErrorNotConnectedToInternet;
+}
+
+- (BOOL)isUserCancelled {
+    return [[self domain] isEqualToString:NSURLErrorDomain] && [self code] == NSURLErrorCancelled;
 }
 
 @end

@@ -9,6 +9,8 @@ pod 'BlocksKit'
 pod 'Mantle'
 pod 'PromiseKit'
 pod 'Typhoon'
+pod 'Maris'
+pod 'CompactConstraint'
 
 target 'GBooksReaderTests', :exclusive => true do
   pod 'Kiwi'

@@ -5,6 +5,7 @@
 
 #import "GBRBaseNetworkFetcher.h"
 #import "GBRBaseNetworkFetcher+Protected.h"
+
 #import "GBRConfiguration.h"
 
 
@@ -23,12 +24,13 @@
     self = [super init];
     if (self) {
         _token = [token copy];
-        _manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[self baseURL] sessionConfiguration:[self sessionConfiguration]];
+        _manager = [[REMHTTPSessionManager alloc] initWithBaseURL:[self baseURL] sessionConfiguration:[self sessionConfiguration]];
         _manager.requestSerializer = [self requestSerializerWithToken:token];
         _manager.responseSerializer = [self responseSerializer];
 
-        _tasksByPromises = [NSMapTable mapTableWithKeyOptions:NSMapTableObjectPointerPersonality | NSPointerFunctionsOpaqueMemory
-                                                 valueOptions:NSMapTableStrongMemory | NSPointerFunctionsObjectPersonality];
+        NSPointerFunctionsOptions keyOptions = NSPointerFunctionsOpaqueMemory | NSMapTableObjectPointerPersonality;
+        NSPointerFunctionsOptions valueOptions = NSMapTableStrongMemory | NSPointerFunctionsObjectPersonality;
+        _tasksByPromises = [NSMapTable mapTableWithKeyOptions:keyOptions valueOptions:valueOptions];
     }
 
     return self;
@@ -57,13 +59,19 @@
 
 - (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithDeferred:(Deferred *)deferred {
     return ^(NSURLSessionDataTask *task, NSError *error) {
-        DDLogCError(@"Network error: %@", error);
+        if ([self mustLogNetworkError:error]) {
+            DDLogCError(@"Network error: %@", error);
+        }
         [deferred reject:error];
     };
 }
 
-- (AFHTTPResponseSerializer *)responseSerializer {
-    return [AFJSONResponseSerializer serializer];
+- (BOOL)mustLogNetworkError:(NSError *)error {
+    return !([error isOfflineError] || [error isUserCancelled]);
+}
+
+- (REMCompoundResponseSerializer *)responseSerializer {
+    return [REMCompoundResponseSerializer serializer];
 }
 
 - (AFHTTPRequestSerializer *)requestSerializerWithToken:(NSString *)token {

@@ -6,9 +6,16 @@
 //  Copyright (c) 2014 comfly. All rights reserved.
 //
 
-#ifndef GBooksReader_GBRTypes____FILEEXTENSION___
-#define GBooksReader_GBRTypes____FILEEXTENSION___
+
+@import Foundation;
+
 
 typedef UInt64 GBRID;
 
-#endif
+extern id GBRBoxID(GBRID);
+
+extern GBRID GBRUnboxID(id);
+
+extern NSString *NSStringFromGBRID(GBRID);
+
+extern GBRID GBRIDFromString(NSString *);
