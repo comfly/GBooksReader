@@ -25,7 +25,7 @@
                                             @strongify(self);
 
                                             if (bookshelves) {
-                                                [deferred resolve:[bookshelves gbr_compact]];
+                                                [deferred resolve:[bookshelves compact]];
                                             } else {
                                                 [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
                                             }
@@ -42,12 +42,12 @@
                                      modelClass:itemClass
                                         keyPath:@"items"
                                         success:^(NSURLSessionDataTask *_, NSArray<GBRBook> *books) {
-                                            @strongify(self);
-                                            if (books) {
-                                                [deferred resolve:[books gbr_compact]];
-                                            } else {
-                                                [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
-                                            }
+        @strongify(self);
+        if (books) {
+            [deferred resolve:[books compact]];
+        } else {
+            [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
+        }
     } failure:[self defaultNetworkErrorProcessingBlockWithDeferred:deferred]] forPromise:deferred.promise];
 }
 

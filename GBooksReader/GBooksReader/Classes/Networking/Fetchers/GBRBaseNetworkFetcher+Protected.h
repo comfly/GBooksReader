@@ -16,9 +16,8 @@
 - (instancetype)initWithToken:(NSString *)token;
 
 - (Promise *)initiateTask:(NSURLSessionTask *)task forPromise:(Promise *)promise;
-
 - (void)completeTaskForPromise:(Promise *)promise;
-
 - (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithDeferred:(Deferred *)deferred;
+- (BOOL)mustLogNetworkError:(NSError *)error;
 
 @end

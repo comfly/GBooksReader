@@ -6,18 +6,21 @@
 @import Foundation;
 
 
-@protocol GBRAuthorization<NSObject>
+@protocol GBRAuthorization <NSObject>
 
 - (BOOL)isAuthenticated;
-
 - (NSString *)token;
-
 - (NSString *)userEmail;
+
+- (UIViewController *)authorizationViewController;
+- (BOOL)handleAuthorizationURL:(NSURL *)URL sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+
+- (BOOL)trySilentAuthentication;
 
 @end
 
 
-@protocol GBRAuthorizationDelegate<NSObject>
+@protocol GBRAuthorizationDelegate <NSObject>
 
 - (void)authorizationDidSuccessfullyAuthorized:(id<GBRAuthorization>)authorization;
 

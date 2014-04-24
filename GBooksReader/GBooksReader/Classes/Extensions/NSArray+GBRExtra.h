@@ -9,9 +9,8 @@
 
 @import Foundation;
 
-
 @interface NSArray (GBRExtra)
 
-- (NSArray *)gbr_compact;
+- (NSArray *)compact;
 
 @end

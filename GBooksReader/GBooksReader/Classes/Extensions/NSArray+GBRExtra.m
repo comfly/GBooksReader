@@ -7,12 +7,9 @@
 //
 
 
-#import "NSArray+GBRExtra.h"
-
-
 @implementation NSArray (GBRExtra)
 
-- (NSArray *)gbr_compact {
+- (NSArray *)compact {
     return [self bk_reject:^BOOL(id item) {
         return item == [NSNull null];
     }];

@@ -16,11 +16,9 @@ extern NSString *const GBRErrorDomain;
 @interface NSError (GBRExtra)
 
 + (NSError *)applicationErrorWithCode:(GBRErrorCodes)code userInfo:(NSDictionary *)userInfo;
-
 + (NSError *)applicationErrorWithCode:(GBRErrorCodes)code message:(NSString *)message;
 
 - (BOOL)isOfflineError;
-
 - (BOOL)isUserCancelled;
 
 @end
