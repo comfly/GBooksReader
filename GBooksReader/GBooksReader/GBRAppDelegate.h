@@ -8,7 +8,10 @@
 
 @import UIKit;
 
-@interface GBRAppDelegate : UIResponder <UIApplicationDelegate>
+@class GBRAssembly;
+extern GBRAssembly *GBRObjectFactory;
+
+@interface GBRAppDelegate : UIResponder<UIApplicationDelegate>
 
 @property (nonatomic) UIWindow *window;
 

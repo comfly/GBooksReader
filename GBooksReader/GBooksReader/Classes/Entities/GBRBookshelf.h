@@ -10,7 +10,7 @@
 GENERICSABLE(GBRBookshelf)
 
 
-@interface GBRBookshelf : GBRBaseEntity <GBRBookshelf>
+@interface GBRBookshelf : GBRBaseEntity<MTLJSONSerializing, GBRBookshelf>
 
 @property (nonatomic, readonly) GBRID id;
 @property (nonatomic, readonly, copy) NSString *title;

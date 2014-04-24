@@ -9,3 +9,8 @@ pod 'BlocksKit'
 pod 'Mantle'
 pod 'PromiseKit'
 pod 'Typhoon'
+
+target 'GBooksReaderTests', :exclusive => true do
+  pod 'Kiwi'
+  pod 'OHHTTPStubs'
+end

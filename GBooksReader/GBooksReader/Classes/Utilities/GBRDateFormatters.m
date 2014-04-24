@@ -11,12 +11,13 @@
 + (NSDateFormatter *)timestampFormatter {
     static NSDateFormatter *formatter = nil;
 
-    NSString *const kRFC3339Format = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+    NSString *const kRFC3339Format = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     ONCE(^{
         formatter = [[NSDateFormatter alloc] init];
         [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
         [formatter setDateFormat:kRFC3339Format];
+        [formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     });
 
     return formatter;

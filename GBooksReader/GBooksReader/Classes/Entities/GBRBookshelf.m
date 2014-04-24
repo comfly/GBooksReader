@@ -42,11 +42,10 @@
                           createdAt:createdAt];
 }
 
-
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-        @"createdAt": @"created",
-        @"updatedAt": @"updated"
+            @"createdAt" : @"created",
+            @"updatedAt" : @"updated"
     };
 }
 
@@ -65,11 +64,12 @@
 + (NSValueTransformer *)timestampValueTransformer {
     NSDateFormatter *timestampFormatter = [GBRDateFormatters timestampFormatter];
 
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
-        return [timestampFormatter dateFromString:str];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *string) {
+        return [timestampFormatter dateFromString:string];
     } reverseBlock:^(NSDate *date) {
         return [timestampFormatter stringFromDate:date];
     }];
 }
+
 
 @end

@@ -24,7 +24,7 @@
         if (items) {
             NSArray *result = [[items bk_map:^GBRBookshelf *(NSDictionary *bookshelfDictionary) {
                 __autoreleasing NSError *error;
-                GBRBookshelf *bookshelf = (GBRBookshelf *) [bookshelfClass modelWithDictionary:bookshelfDictionary error:&error];
+                GBRBookshelf *bookshelf = [MTLJSONAdapter modelOfClass:bookshelfClass fromJSONDictionary:bookshelfDictionary error:&error];
                 if (error) {
                     DDLogCError(@"Error parsing Bookshelf item: %@", error);
                     return nil;

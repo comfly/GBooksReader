@@ -35,10 +35,12 @@
 }
 
 - (Promise *)initiateTask:(NSURLSessionTask *)task forPromise:(Promise *)promise {
-    Promise *extendedPromise = promise.then(^{
+    Promise *extendedPromise = promise.then(^(id result) {
         [self completeTaskForPromise:extendedPromise];
-    }).catch(^{
+        return result;
+    }).catch(^(id error) {
         [self completeTaskForPromise:extendedPromise];
+        return error;
     });
     self.tasksByPromises[extendedPromise] = task;
     return extendedPromise;

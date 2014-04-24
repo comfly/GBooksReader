@@ -11,16 +11,20 @@
 		AF3F01A836EB177462CCBC43 /* GBRBook.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0ABE3F643700B7C63E76 /* GBRBook.m */; };
 		AF3F028BCD982CC352D0BFE3 /* GBRAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */; };
 		AF3F02B43C1491E3CF0C188A /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3F0F94E31BEE47503135AA /* configuration.plist */; };
+		AF3F037C47B6EBEFC3A2550D /* GBRTestUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F07B44FA74F3B9691CD55 /* GBRTestUtilities.m */; };
 		AF3F03CF4658A9795666F99C /* NSMapTable+GBRKeySubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0EE0DBC6B8594D916950 /* NSMapTable+GBRKeySubscript.m */; };
 		AF3F056D5A927F78FA1F88A0 /* GBRBaseNetworkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F081CD804827B36347CA4 /* GBRBaseNetworkFetcher.m */; };
 		AF3F075B8A5E8AB82A9D433D /* GBRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */; };
 		AF3F0828D069533FD22D5EA0 /* GBRMyLibraryNetworkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F09D2325CF0A596D18A73 /* GBRMyLibraryNetworkFetcher.m */; };
+		AF3F0A769167771E28F632BC /* GBRMyLibraryNetworkFetcherSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F083559B3CDAA5AABCB8B /* GBRMyLibraryNetworkFetcherSpec.m */; };
 		AF3F0A8E9267CBF8286797B5 /* GBRAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F058B271988B95F2C58C2 /* GBRAssembly.m */; };
 		AF3F0BE18036CD8631773E90 /* NSError+GBRExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0922F2E9459092CB9D19 /* NSError+GBRExtra.m */; };
 		AF3F0D04EE2BBEB493DEAA74 /* GBRGoogleAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */; };
 		AF3F0DCCBDA8C5683137DDA9 /* GBRBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F007D1BC1CE1BAD56047E /* GBRBaseEntity.m */; };
 		AF3F0DDF1BE087C87D6A3717 /* GBRDateFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F02B50CDAA449BFD2BF1B /* GBRDateFormatters.m */; };
 		AF3F0E4D0510ADE5B5BF6BEA /* NSCache+GBRKeySubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F08A2D1148BEA6F34F37D /* NSCache+GBRKeySubscript.m */; };
+		AF3F0FA081E5067FFA7CB27F /* my-bookshelves-response.json in Resources */ = {isa = PBXBuildFile; fileRef = AF3F0AB463F07B4B6922871B /* my-bookshelves-response.json */; };
+		CD06A7D5AB244DF6AE1A3EEF /* libPods-GBooksReaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CFFA125166242DFBF2DA13A /* libPods-GBooksReaderTests.a */; };
 		D6E21ACA48E84A259D36A1CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6A8E3F9D024744B1DD9B4E /* libPods.a */; };
 		F1B4D4371901D9F1006BDF11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4361901D9F1006BDF11 /* Foundation.framework */; };
 		F1B4D4391901D9F1006BDF11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4381901D9F1006BDF11 /* CoreGraphics.framework */; };
@@ -29,15 +33,32 @@
 		F1B4D4431901D9F1006BDF11 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B4D4421901D9F1006BDF11 /* main.m */; };
 		F1B4D4471901D9F1006BDF11 /* GBRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B4D4461901D9F1006BDF11 /* GBRAppDelegate.m */; };
 		F1B4D4491901D9F1006BDF11 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B4D4481901D9F1006BDF11 /* Images.xcassets */; };
+		F1D980F71908655D00D5233C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D44F1901D9F1006BDF11 /* XCTest.framework */; };
+		F1D980F81908655D00D5233C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4361901D9F1006BDF11 /* Foundation.framework */; };
+		F1D980F91908655D00D5233C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D43A1901D9F1006BDF11 /* UIKit.framework */; };
+		F1D980FF1908655D00D5233C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1D980FD1908655D00D5233C /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F1D981031908655E00D5233C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1B4D42B1901D9F1006BDF11 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1B4D4321901D9F1006BDF11;
+			remoteInfo = GBooksReader;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0CFFA125166242DFBF2DA13A /* libPods-GBooksReaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GBooksReaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6A8E3F9D024744B1DD9B4E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		758C9900D2A64E1F882F8250 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A95FA39F2F944017B08F3EE4 /* Pods-GBooksReaderTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBooksReaderTests.xcconfig"; path = "Pods/Pods-GBooksReaderTests.xcconfig"; sourceTree = "<group>"; };
 		AF3F0021339307D513B018C6 /* GBRTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRTypes.h; sourceTree = "<group>"; };
 		AF3F007D1BC1CE1BAD56047E /* GBRBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRBaseEntity.m; sourceTree = "<group>"; };
 		AF3F00D32115F03863079E74 /* GBRAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAssembly.h; sourceTree = "<group>"; };
 		AF3F02253626D9CBC428F8AD /* GBRBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBaseEntity.h; sourceTree = "<group>"; };
+		AF3F029AE41723239DE5502C /* GBRTestUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRTestUtilities.h; sourceTree = "<group>"; };
 		AF3F02B50CDAA449BFD2BF1B /* GBRDateFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRDateFormatters.m; sourceTree = "<group>"; };
 		AF3F02B584EA553C658FBCAF /* GBRBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBook.h; sourceTree = "<group>"; };
 		AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRLogging.h; sourceTree = "<group>"; };
@@ -45,17 +66,21 @@
 		AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRGoogleAuthorization.m; sourceTree = "<group>"; };
 		AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRAuthorizationViewController.m; sourceTree = "<group>"; };
 		AF3F058B271988B95F2C58C2 /* GBRAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRAssembly.m; sourceTree = "<group>"; };
+		AF3F07B44FA74F3B9691CD55 /* GBRTestUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRTestUtilities.m; sourceTree = "<group>"; };
 		AF3F081CD804827B36347CA4 /* GBRBaseNetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRBaseNetworkFetcher.m; sourceTree = "<group>"; };
+		AF3F083559B3CDAA5AABCB8B /* GBRMyLibraryNetworkFetcherSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyLibraryNetworkFetcherSpec.m; sourceTree = "<group>"; };
 		AF3F084096EC7735DF8273BB /* NSMapTable+GBRKeySubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMapTable+GBRKeySubscript.h"; sourceTree = "<group>"; };
 		AF3F08A2D1148BEA6F34F37D /* NSCache+GBRKeySubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCache+GBRKeySubscript.m"; sourceTree = "<group>"; };
 		AF3F09028AB8B79D123A6859 /* GBRAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAuthorization.h; sourceTree = "<group>"; };
 		AF3F0922F2E9459092CB9D19 /* NSError+GBRExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+GBRExtra.m"; sourceTree = "<group>"; };
 		AF3F097F292249F874514507 /* NSError+GBRExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+GBRExtra.h"; sourceTree = "<group>"; };
 		AF3F09D2325CF0A596D18A73 /* GBRMyLibraryNetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyLibraryNetworkFetcher.m; sourceTree = "<group>"; };
+		AF3F0A3B1A0D553DB32E500F /* GBRObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRObjectFactory.h; sourceTree = "<group>"; };
 		AF3F0A69AE177243249CC593 /* NSCache+GBRKeySubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCache+GBRKeySubscript.h"; sourceTree = "<group>"; };
 		AF3F0A8392A5470239D8DCEB /* GBRBookshelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBookshelf.h; sourceTree = "<group>"; };
 		AF3F0AA8E08B79D06E06B260 /* ObjectiveCGenerics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCGenerics.h; sourceTree = "<group>"; };
 		AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRConfiguration.m; sourceTree = "<group>"; };
+		AF3F0AB463F07B4B6922871B /* my-bookshelves-response.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = "my-bookshelves-response.json"; sourceTree = "<group>"; };
 		AF3F0ABE3F643700B7C63E76 /* GBRBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRBook.m; sourceTree = "<group>"; };
 		AF3F0BF48364969809AAC89D /* GBRAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAuthorizationViewController.h; sourceTree = "<group>"; };
 		AF3F0C11652C297BE05EF42E /* GBRDateFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRDateFormatters.h; sourceTree = "<group>"; };
@@ -67,6 +92,7 @@
 		AF3F0EE0DBC6B8594D916950 /* NSMapTable+GBRKeySubscript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMapTable+GBRKeySubscript.m"; sourceTree = "<group>"; };
 		AF3F0F6EFA822A266AB64367 /* GBRGoogleAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRGoogleAuthorization.h; sourceTree = "<group>"; };
 		AF3F0F94E31BEE47503135AA /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = configuration.plist; sourceTree = "<group>"; };
+		F10096AC19087CC6001FE1EF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		F1B4D4331901D9F1006BDF11 /* GBooksReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBooksReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B4D4361901D9F1006BDF11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1B4D4381901D9F1006BDF11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +105,10 @@
 		F1B4D4461901D9F1006BDF11 /* GBRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBRAppDelegate.m; sourceTree = "<group>"; };
 		F1B4D4481901D9F1006BDF11 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1B4D44F1901D9F1006BDF11 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F1D980F61908655D00D5233C /* GBooksReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GBooksReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1D980FC1908655D00D5233C /* GBooksReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GBooksReaderTests-Info.plist"; sourceTree = "<group>"; };
+		F1D980FE1908655D00D5233C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F1D981021908655D00D5233C /* GBooksReaderTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GBooksReaderTests-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +120,17 @@
 				F1B4D43B1901D9F1006BDF11 /* UIKit.framework in Frameworks */,
 				F1B4D4371901D9F1006BDF11 /* Foundation.framework in Frameworks */,
 				D6E21ACA48E84A259D36A1CE /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1D980F31908655D00D5233C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1D980F71908655D00D5233C /* XCTest.framework in Frameworks */,
+				F1D980F91908655D00D5233C /* UIKit.framework in Frameworks */,
+				F1D980F81908655D00D5233C /* Foundation.framework in Frameworks */,
+				CD06A7D5AB244DF6AE1A3EEF /* libPods-GBooksReaderTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,14 +149,22 @@
 			isa = PBXGroup;
 			children = (
 				AF3F0B2252A4C8B7246D071B /* Authorization */,
+				AF3F0716A0C161692FD121DA /* DI */,
+				AF3F0868A7B894CA4956984C /* Entities */,
+				AF3F0EAC44E14EF4AA100811 /* Extensions */,
+				AF3F038B86762D1C250D62F9 /* Networking */,
 				AF3F0E6A5B9219C73B8C355C /* UI */,
 				AF3F0FA8B68F9124F05878C7 /* Utilities */,
-				AF3F038B86762D1C250D62F9 /* Networking */,
-				AF3F0EAC44E14EF4AA100811 /* Extensions */,
-				AF3F0868A7B894CA4956984C /* Entities */,
-				AF3F0716A0C161692FD121DA /* DI */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		AF3F024B4E9FD5058B6AA3E6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F083559B3CDAA5AABCB8B /* GBRMyLibraryNetworkFetcherSpec.m */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		AF3F038B86762D1C250D62F9 /* Networking */ = {
@@ -129,8 +178,9 @@
 		AF3F0716A0C161692FD121DA /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				AF3F058B271988B95F2C58C2 /* GBRAssembly.m */,
 				AF3F00D32115F03863079E74 /* GBRAssembly.h */,
+				AF3F058B271988B95F2C58C2 /* GBRAssembly.m */,
+				AF3F0A3B1A0D553DB32E500F /* GBRObjectFactory.h */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -138,23 +188,31 @@
 		AF3F0868A7B894CA4956984C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				AF3F0CE856B63505586ABB9D /* GBRBookshelf.m */,
-				AF3F0A8392A5470239D8DCEB /* GBRBookshelf.h */,
-				AF3F0021339307D513B018C6 /* GBRTypes.h */,
-				AF3F007D1BC1CE1BAD56047E /* GBRBaseEntity.m */,
 				AF3F02253626D9CBC428F8AD /* GBRBaseEntity.h */,
-				AF3F0ABE3F643700B7C63E76 /* GBRBook.m */,
+				AF3F007D1BC1CE1BAD56047E /* GBRBaseEntity.m */,
 				AF3F02B584EA553C658FBCAF /* GBRBook.h */,
+				AF3F0ABE3F643700B7C63E76 /* GBRBook.m */,
+				AF3F0A8392A5470239D8DCEB /* GBRBookshelf.h */,
+				AF3F0CE856B63505586ABB9D /* GBRBookshelf.m */,
+				AF3F0021339307D513B018C6 /* GBRTypes.h */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		AF3F0A8718458C02CF4A1374 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F0AB463F07B4B6922871B /* my-bookshelves-response.json */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		AF3F0B2252A4C8B7246D071B /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				AF3F09028AB8B79D123A6859 /* GBRAuthorization.h */,
 				AF3F0F6EFA822A266AB64367 /* GBRGoogleAuthorization.h */,
 				AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */,
-				AF3F09028AB8B79D123A6859 /* GBRAuthorization.h */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -191,12 +249,12 @@
 		AF3F0EAC44E14EF4AA100811 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AF3F08A2D1148BEA6F34F37D /* NSCache+GBRKeySubscript.m */,
 				AF3F0A69AE177243249CC593 /* NSCache+GBRKeySubscript.h */,
-				AF3F0EE0DBC6B8594D916950 /* NSMapTable+GBRKeySubscript.m */,
-				AF3F084096EC7735DF8273BB /* NSMapTable+GBRKeySubscript.h */,
-				AF3F0922F2E9459092CB9D19 /* NSError+GBRExtra.m */,
+				AF3F08A2D1148BEA6F34F37D /* NSCache+GBRKeySubscript.m */,
 				AF3F097F292249F874514507 /* NSError+GBRExtra.h */,
+				AF3F0922F2E9459092CB9D19 /* NSError+GBRExtra.m */,
+				AF3F084096EC7735DF8273BB /* NSMapTable+GBRKeySubscript.h */,
+				AF3F0EE0DBC6B8594D916950 /* NSMapTable+GBRKeySubscript.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,11 +264,11 @@
 			children = (
 				AF3F0EAF49D872F1E11A5493 /* GBRConfiguration.h */,
 				AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */,
+				AF3F0C11652C297BE05EF42E /* GBRDateFormatters.h */,
+				AF3F02B50CDAA449BFD2BF1B /* GBRDateFormatters.m */,
 				AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */,
 				AF3F0E196B8D466E7B6E886E /* GBRUtilities.h */,
 				AF3F0AA8E08B79D06E06B260 /* ObjectiveCGenerics.h */,
-				AF3F02B50CDAA449BFD2BF1B /* GBRDateFormatters.m */,
-				AF3F0C11652C297BE05EF42E /* GBRDateFormatters.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -219,9 +277,11 @@
 			isa = PBXGroup;
 			children = (
 				F1B4D43C1901D9F1006BDF11 /* GBooksReader */,
+				F1D980FA1908655D00D5233C /* GBooksReaderTests */,
 				F1B4D4351901D9F1006BDF11 /* Frameworks */,
 				F1B4D4341901D9F1006BDF11 /* Products */,
 				758C9900D2A64E1F882F8250 /* Pods.xcconfig */,
+				A95FA39F2F944017B08F3EE4 /* Pods-GBooksReaderTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				F1B4D4331901D9F1006BDF11 /* GBooksReader.app */,
+				F1D980F61908655D00D5233C /* GBooksReaderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,11 +297,13 @@
 		F1B4D4351901D9F1006BDF11 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F10096AC19087CC6001FE1EF /* libxml2.dylib */,
 				F1B4D4361901D9F1006BDF11 /* Foundation.framework */,
 				F1B4D4381901D9F1006BDF11 /* CoreGraphics.framework */,
 				F1B4D43A1901D9F1006BDF11 /* UIKit.framework */,
 				F1B4D44F1901D9F1006BDF11 /* XCTest.framework */,
 				4C6A8E3F9D024744B1DD9B4E /* libPods.a */,
+				0CFFA125166242DFBF2DA13A /* libPods-GBooksReaderTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -262,9 +325,31 @@
 			isa = PBXGroup;
 			children = (
 				F1B4D43E1901D9F1006BDF11 /* GBooksReader-Info.plist */,
+				F1B4D4441901D9F1006BDF11 /* GBooksReader-Prefix.pch */,
 				F1B4D43F1901D9F1006BDF11 /* InfoPlist.strings */,
 				F1B4D4421901D9F1006BDF11 /* main.m */,
-				F1B4D4441901D9F1006BDF11 /* GBooksReader-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1D980FA1908655D00D5233C /* GBooksReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F0A8718458C02CF4A1374 /* Fixtures */,
+				AF3F024B4E9FD5058B6AA3E6 /* Networking */,
+				F1D980FB1908655D00D5233C /* Supporting Files */,
+				AF3F07B44FA74F3B9691CD55 /* GBRTestUtilities.m */,
+				AF3F029AE41723239DE5502C /* GBRTestUtilities.h */,
+			);
+			path = GBooksReaderTests;
+			sourceTree = "<group>";
+		};
+		F1D980FB1908655D00D5233C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1D980FC1908655D00D5233C /* GBooksReaderTests-Info.plist */,
+				F1D980FD1908655D00D5233C /* InfoPlist.strings */,
+				F1D981021908655D00D5233C /* GBooksReaderTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -291,6 +376,26 @@
 			productReference = F1B4D4331901D9F1006BDF11 /* GBooksReader.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F1D980F51908655D00D5233C /* GBooksReaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1D981071908655E00D5233C /* Build configuration list for PBXNativeTarget "GBooksReaderTests" */;
+			buildPhases = (
+				4164B6F0914840FCA58B86CE /* Check Pods Manifest.lock */,
+				F1D980F21908655D00D5233C /* Sources */,
+				F1D980F31908655D00D5233C /* Frameworks */,
+				F1D980F41908655D00D5233C /* Resources */,
+				378D50E7004D4BFB8E7634E2 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1D981041908655E00D5233C /* PBXTargetDependency */,
+			);
+			name = GBooksReaderTests;
+			productName = GBooksReaderTests;
+			productReference = F1D980F61908655D00D5233C /* GBooksReaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -300,6 +405,11 @@
 				CLASSPREFIX = GBR;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = comfly;
+				TargetAttributes = {
+					F1D980F51908655D00D5233C = {
+						TestTargetID = F1B4D4321901D9F1006BDF11;
+					};
+				};
 			};
 			buildConfigurationList = F1B4D42E1901D9F1006BDF11 /* Build configuration list for PBXProject "GBooksReader" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -314,6 +424,7 @@
 			projectRoot = "";
 			targets = (
 				F1B4D4321901D9F1006BDF11 /* GBooksReader */,
+				F1D980F51908655D00D5233C /* GBooksReaderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -329,10 +440,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1D980F41908655D00D5233C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1D980FF1908655D00D5233C /* InfoPlist.strings in Resources */,
+				AF3F0FA081E5067FFA7CB27F /* my-bookshelves-response.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		23F4CE0473D5415685F01EC5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		378D50E7004D4BFB8E7634E2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-GBooksReaderTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4164B6F0914840FCA58B86CE /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -387,13 +537,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1D980F21908655D00D5233C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF3F0A769167771E28F632BC /* GBRMyLibraryNetworkFetcherSpec.m in Sources */,
+				AF3F037C47B6EBEFC3A2550D /* GBRTestUtilities.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1D981041908655E00D5233C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1B4D4321901D9F1006BDF11 /* GBooksReader */;
+			targetProxy = F1D981031908655E00D5233C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F1B4D43F1901D9F1006BDF11 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F1B4D4401901D9F1006BDF11 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F1D980FD1908655D00D5233C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1D980FE1908655D00D5233C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -513,6 +688,7 @@
 				INFOPLIST_FILE = "GBooksReader/GBooksReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/** \"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -528,7 +704,82 @@
 				INFOPLIST_FILE = "GBooksReader/GBooksReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/** \"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F1D981051908655E00D5233C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A95FA39F2F944017B08F3EE4 /* Pods-GBooksReaderTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GBooksReader.app/GBooksReader";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GBooksReaderTests/GBooksReaderTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/ChuzzleKit\"",
+					"\"${PODS_ROOT}/Headers/CocoaLumberjack\"",
+					"\"${PODS_ROOT}/Headers/Kiwi\"",
+					"\"${PODS_ROOT}/Headers/Mantle\"",
+					"\"${PODS_ROOT}/Headers/OHHTTPStubs\"",
+					"\"${PODS_ROOT}/Headers/PromiseKit\"",
+					"\"${PODS_ROOT}/Headers/Typhoon\"",
+					"\"${PODS_ROOT}/Headers/google-plus-ios-sdk\"",
+					"\"${PODS_ROOT}/Headers/libextobjc\"",
+					/usr/include/libxml2,
+				);
+				INFOPLIST_FILE = "GBooksReaderTests/GBooksReaderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F1D981061908655E00D5233C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A95FA39F2F944017B08F3EE4 /* Pods-GBooksReaderTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GBooksReader.app/GBooksReader";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GBooksReaderTests/GBooksReaderTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/ChuzzleKit\"",
+					"\"${PODS_ROOT}/Headers/CocoaLumberjack\"",
+					"\"${PODS_ROOT}/Headers/Kiwi\"",
+					"\"${PODS_ROOT}/Headers/Mantle\"",
+					"\"${PODS_ROOT}/Headers/OHHTTPStubs\"",
+					"\"${PODS_ROOT}/Headers/PromiseKit\"",
+					"\"${PODS_ROOT}/Headers/Typhoon\"",
+					"\"${PODS_ROOT}/Headers/google-plus-ios-sdk\"",
+					"\"${PODS_ROOT}/Headers/libextobjc\"",
+					/usr/include/libxml2,
+				);
+				INFOPLIST_FILE = "GBooksReaderTests/GBooksReaderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -549,6 +800,15 @@
 			buildConfigurations = (
 				F1B4D4601901D9F1006BDF11 /* Debug */,
 				F1B4D4611901D9F1006BDF11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1D981071908655E00D5233C /* Build configuration list for PBXNativeTarget "GBooksReaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1D981051908655E00D5233C /* Debug */,
+				F1D981061908655E00D5233C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

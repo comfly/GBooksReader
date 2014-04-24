@@ -21,7 +21,7 @@
     return (id<GBRAuthorization>) [TyphoonDefinition withClass:[GBRGoogleAuthorization class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithDelegate:);
         [initializer injectWithObjectInstance:[UIApplication sharedApplication].delegate];
-    }                                               properties:^(TyphoonDefinition *definition) {
+    } properties:^(TyphoonDefinition *definition) {
         definition.scope = TyphoonScopeSingleton;
     }];
 }
@@ -42,7 +42,7 @@
 }
 
 - (NSString *)token {
-    return [[self authorizer] token];
+    return [[GBRObjectFactory authorizer] token];
 }
 
 @end

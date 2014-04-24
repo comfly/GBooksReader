@@ -7,9 +7,10 @@
 //
 
 #import "GBRAppDelegate.h"
-#import "GBRGoogleAuthorization.h"
 #import "GBRAssembly.h"
+#import "GBRGoogleAuthorization.h"
 
+GBRAssembly *GBRObjectFactory = nil;
 
 @interface GBRAppDelegate ()<GBRAuthorizationDelegate>
 
@@ -33,7 +34,7 @@
 - (void)setupApplication {
     ONCE(^{
         GBRSetupLogger();
-        [self setupDependencyInjector];
+        GBRObjectFactory = [self setupDependencyInjector];
     });
 }
 
@@ -41,8 +42,8 @@
     return [[[GBRGoogleAuthorization alloc] init] handleAuthorizationURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
-- (void)setupDependencyInjector {
-    [TyphoonBlockComponentFactory factoryWithAssembly:[GBRAssembly assembly]];
+- (GBRAssembly *)setupDependencyInjector {
+    return (GBRAssembly *) (id) [TyphoonBlockComponentFactory factoryWithAssembly:[GBRAssembly assembly]];
 }
 
 - (void)authorization:(id<GBRAuthorization>)authorization didFailAuthorizationWithError:(NSError *)error {
@@ -50,7 +51,7 @@
 }
 
 - (void)authorizationDidSuccessfullyAuthorized:(id<GBRAuthorization>)authorization {
-
+    DDLogInfo(@"Token: %@", [authorization token]);
 }
 
 @end
