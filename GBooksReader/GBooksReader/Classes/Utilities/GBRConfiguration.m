@@ -48,4 +48,8 @@
     return [[NSBundle mainBundle] URLForResource:@"configuration" withExtension:@"plist"];
 }
 
+- (BOOL)isTestRun {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"com.comfly.GBooksReader.TestRun"];
+}
+
 @end

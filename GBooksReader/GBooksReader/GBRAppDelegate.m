@@ -9,6 +9,7 @@
 #import "GBRAppDelegate.h"
 #import "GBRAssembly.h"
 #import "GBRGoogleAuthorization.h"
+#import "GBRConfiguration.h"
 
 GBRAssembly *GBRObjectFactory = nil;
 
@@ -25,15 +26,17 @@ GBRAssembly *GBRObjectFactory = nil;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
 
-    id<GBRAuthorization> authorization = [GBRObjectFactory authorizer];
-    NSAssert(authorization, @"Authorizer must be instantiated");
-
-    if ([authorization isAuthenticated] || [authorization trySilentAuthentication]) {
+    if ([[GBRConfiguration configuration] isTestRun]) {
         self.window.rootViewController = [[UIViewController alloc] init];
     } else {
-        self.window.rootViewController = [[[GBRGoogleAuthorization alloc] init] authorizationViewController];
+        id<GBRAuthorization> authorization = [GBRObjectFactory authorizer];
+        if ([authorization isAuthenticated] || [authorization trySilentAuthentication]) {
+            self.window.rootViewController = [[UIViewController alloc] init];
+        } else {
+            self.window.rootViewController = [[[GBRGoogleAuthorization alloc] init] authorizationViewController];
+        }
     }
-
+    
     [self.window makeKeyAndVisible];
 
     return YES;

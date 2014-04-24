@@ -19,4 +19,6 @@
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)configuration;
 
+- (BOOL)isTestRun;
+
 @end

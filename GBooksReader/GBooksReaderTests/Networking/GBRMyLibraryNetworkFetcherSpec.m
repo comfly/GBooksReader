@@ -43,16 +43,12 @@ SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
             it(@"should load My Bookshelves", ^{
                 [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
                     NSURL *kRequestURL = [[NSURL URLWithString:kRequestPath relativeToURL:[GBRConfiguration configuration].baseURL] absoluteURL];
-                    BOOL URLsMatch = [[request URL] isEqual:kRequestURL];
-                    BOOL bodyMatch = [request HTTPBody] == nil;
-                    BOOL headersMatch = [[request valueForHTTPHeaderField:@"Authorization"] isEqualToString:FORMAT(@"Bearer %@", kToken)];
+                    [[[[request URL] absoluteURL] should] equal:kRequestURL];
+                    [[[request HTTPBody] should] beNil];
+                    [[[request valueForHTTPHeaderField:@"Authorization"] should] equal:FORMAT(@"Bearer %@", kToken)];
 
-                    [[theValue(URLsMatch) should] beYes];
-                    [[theValue(bodyMatch) should] beYes];
-                    [[theValue(headersMatch) should] beYes];
-
-                    return URLsMatch && bodyMatch && headersMatch;
-                }                   withStubResponse:^(NSURLRequest *request) {
+                    return YES;
+                } withStubResponse:^(NSURLRequest *request) {
                     id jsonObject = [utilities jsonObjectFromFixtureWithName:kResponseFixture];
                     return [OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil];
                 }];
