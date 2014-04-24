@@ -84,7 +84,7 @@ SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
             it(@"should support cancelling of loading My Bookshelves", ^{
                 [OHHTTPStubs stubRequestsPassingTest:^(id _) {
                     return YES;
-                }                   withStubResponse:^(NSURLRequest *request) {
+                } withStubResponse:^(NSURLRequest *request) {
                     id jsonObject = [utilities jsonObjectFromFixtureWithName:kResponseFixture];
                     return [[OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil] responseTime:3];
                 }];

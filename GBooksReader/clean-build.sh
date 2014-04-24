@@ -1,0 +1,1 @@
+xctool -workspace GBooksReader.xcworkspace -scheme GBooksReader -sdk iphonesimulator clean build
