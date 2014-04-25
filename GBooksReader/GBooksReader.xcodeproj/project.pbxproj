@@ -247,8 +247,8 @@
 				AF3F081CD804827B36347CA4 /* GBRBaseNetworkFetcher.m */,
 				AF3F0DB5A0ECA8FE7CABF7A0 /* GBRMyLibraryNetworkFetcher.h */,
 				AF3F09D2325CF0A596D18A73 /* GBRMyLibraryNetworkFetcher.m */,
-				AF3F0E7C9C5B731D6D792E7E /* GBRNetworkPaths.m */,
 				AF3F053D2711CB28BA177050 /* GBRNetworkPaths.h */,
+				AF3F0E7C9C5B731D6D792E7E /* GBRNetworkPaths.m */,
 			);
 			path = Fetchers;
 			sourceTree = "<group>";
@@ -264,14 +264,14 @@
 		AF3F0EAC44E14EF4AA100811 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AF3F0594B2F5C4509007642E /* NSArray+GBRExtra.h */,
+				AF3F06FBC9900325236312CD /* NSArray+GBRExtra.m */,
 				AF3F0A69AE177243249CC593 /* NSCache+GBRKeySubscript.h */,
 				AF3F08A2D1148BEA6F34F37D /* NSCache+GBRKeySubscript.m */,
 				AF3F097F292249F874514507 /* NSError+GBRExtra.h */,
 				AF3F0922F2E9459092CB9D19 /* NSError+GBRExtra.m */,
 				AF3F084096EC7735DF8273BB /* NSMapTable+GBRKeySubscript.h */,
 				AF3F0EE0DBC6B8594D916950 /* NSMapTable+GBRKeySubscript.m */,
-				AF3F06FBC9900325236312CD /* NSArray+GBRExtra.m */,
-				AF3F0594B2F5C4509007642E /* NSArray+GBRExtra.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -284,10 +284,10 @@
 				AF3F0C11652C297BE05EF42E /* GBRDateFormatters.h */,
 				AF3F02B50CDAA449BFD2BF1B /* GBRDateFormatters.m */,
 				AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */,
+				AF3F0D67B7CE92476B3A9236 /* GBRNumberFormatters.h */,
+				AF3F09DBBDD097960799272F /* GBRNumberFormatters.m */,
 				AF3F0E196B8D466E7B6E886E /* GBRUtilities.h */,
 				AF3F0AA8E08B79D06E06B260 /* ObjectiveCGenerics.h */,
-				AF3F09DBBDD097960799272F /* GBRNumberFormatters.m */,
-				AF3F0D67B7CE92476B3A9236 /* GBRNumberFormatters.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -716,7 +716,7 @@
 				INFOPLIST_FILE = "GBooksReader/GBooksReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/** \"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -735,7 +735,7 @@
 				INFOPLIST_FILE = "GBooksReader/GBooksReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/** \"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
