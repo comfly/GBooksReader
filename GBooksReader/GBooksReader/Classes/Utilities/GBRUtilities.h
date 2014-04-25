@@ -25,5 +25,7 @@
 #define FORMAT(_template, ...)  \
     [NSString stringWithFormat:_template, ##__VA_ARGS__]
 
+#define IS_TEST_RUN \
+    [[GBRConfiguration configuration] isTestRun]
 
 #endif //__GBRUtilities_H_

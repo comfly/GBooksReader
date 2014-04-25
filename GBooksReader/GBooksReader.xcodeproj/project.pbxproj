@@ -65,6 +65,7 @@
 		AF3F029AE41723239DE5502C /* GBRTestUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRTestUtilities.h; sourceTree = "<group>"; };
 		AF3F02B50CDAA449BFD2BF1B /* GBRDateFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRDateFormatters.m; sourceTree = "<group>"; };
 		AF3F02B584EA553C658FBCAF /* GBRBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBook.h; sourceTree = "<group>"; };
+		AF3F04B5D4D56B9BC0E54A69 /* common-headers.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = "common-headers.inc"; sourceTree = "<group>"; };
 		AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRLogging.h; sourceTree = "<group>"; };
 		AF3F05118F34F1A90BF130CD /* GBRBaseNetworkFetcher+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBRBaseNetworkFetcher+Protected.h"; sourceTree = "<group>"; };
 		AF3F053D2711CB28BA177050 /* GBRNetworkPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRNetworkPaths.h; sourceTree = "<group>"; };
@@ -300,6 +301,7 @@
 				F1B4D4341901D9F1006BDF11 /* Products */,
 				758C9900D2A64E1F882F8250 /* Pods.xcconfig */,
 				A95FA39F2F944017B08F3EE4 /* Pods-GBooksReaderTests.xcconfig */,
+				AF3F04B5D4D56B9BC0E54A69 /* common-headers.inc */,
 			);
 			sourceTree = "<group>";
 		};
@@ -646,6 +648,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -693,6 +696,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LLVM_LTO = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -742,6 +746,7 @@
 			baseConfigurationReference = A95FA39F2F944017B08F3EE4 /* Pods-GBooksReaderTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GBooksReader.app/GBooksReader";
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -781,6 +786,7 @@
 			baseConfigurationReference = A95FA39F2F944017B08F3EE4 /* Pods-GBooksReaderTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GBooksReader.app/GBooksReader";
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

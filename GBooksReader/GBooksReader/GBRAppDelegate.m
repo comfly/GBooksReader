@@ -9,7 +9,6 @@
 #import "GBRAppDelegate.h"
 #import "GBRAssembly.h"
 #import "GBRGoogleAuthorization.h"
-#import "GBRConfiguration.h"
 
 GBRAssembly *GBRObjectFactory = nil;
 
@@ -26,7 +25,7 @@ GBRAssembly *GBRObjectFactory = nil;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
 
-    if ([[GBRConfiguration configuration] isTestRun]) {
+    if (IS_TEST_RUN) {
         self.window.rootViewController = [[UIViewController alloc] init];
     } else {
         id<GBRAuthorization> authorization = [GBRObjectFactory authorizer];
