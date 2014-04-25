@@ -2,6 +2,6 @@ language: objective-c
 xcode_workspace: GBooksReader/GBooksReader.xcworkspace # path to your xcodeproj folder
 xcode_scheme: GBooksReaderTests
 install:
-	cd ./GBooksReader
-	pod install
-	cd ..
+    cd ./GBooksReader
+    pod install
+    cd ..
