@@ -21,27 +21,27 @@
                                      parameters:nil
                                      modelClass:itemClass
                                         keyPath:@"items"
-                                        success:^(NSURLSessionDataTask *_, NSArray<GBRBookshelf> *bookshelves) {
-                                            @strongify(self);
+                                        success:^(NSURLSessionDataTask *_, NSArray OF_TYPE(GBRBookshelf) *bookshelves) {
+        @strongify(self);
 
-                                            if (bookshelves) {
-                                                [deferred resolve:[bookshelves compact]];
-                                            } else {
-                                                [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
-                                            }
+        if (bookshelves) {
+            [deferred resolve:[bookshelves compact]];
+        } else {
+            [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
+        }
     } failure:[self defaultNetworkErrorProcessingBlockWithDeferred:deferred]] forPromise:deferred.promise];
 }
 
-- (Promise *)loadBooksFromBookshelfWithID:(GBRID)bookshelfID {
+- (Promise *)loadBooksFromUploadedBookshelf {
     Deferred *deferred = [[Deferred alloc] init];
     Class itemClass = [GBRBook class];
 
     @weakify(self);
-    return [self initiateTask:[self.manager GET:[GBRNetworkPaths pathToMyLibraryVolumesOnBookshelfWithID:bookshelfID]
+    return [self initiateTask:[self.manager GET:[GBRNetworkPaths pathToMyLibraryVolumesOnUploadedBookshelf]
                                      parameters:nil
                                      modelClass:itemClass
                                         keyPath:@"items"
-                                        success:^(NSURLSessionDataTask *_, NSArray<GBRBook> *books) {
+                                        success:^(NSURLSessionDataTask *_, NSArray OF_TYPE(GBRBooks) *books) {
         @strongify(self);
         if (books) {
             [deferred resolve:[books compact]];

@@ -7,24 +7,12 @@
 #import "GBRBaseEntity.h"
 
 
-GENERICSABLE(GBRBookshelf)
-
-
-@interface GBRBookshelf : GBRBaseEntity<MTLJSONSerializing, GBRBookshelf>
+@interface GBRBookshelf : GBRBaseEntity <MTLJSONSerializing>
 
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) NSUInteger volumeCount;
 @property (nonatomic, readonly) NSDate *volumesLastUpdated;
 @property (nonatomic, readonly) NSDate *updatedAt;
 @property (nonatomic, readonly) NSDate *createdAt;
-
-- (instancetype)initWithID:(GBRID)id NS_UNAVAILABLE;
-
-- (instancetype)initWithID:(GBRID)id
-                     title:(NSString *)title
-               volumeCount:(NSUInteger)volumeCount
-        volumesLastUpdated:(NSDate *)volumesLastUpdated
-                 updatedAt:(NSDate *)updatedAt
-                 createdAt:(NSDate *)createdAt;
 
 @end

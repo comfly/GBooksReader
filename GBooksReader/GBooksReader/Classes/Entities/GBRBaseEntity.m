@@ -8,13 +8,4 @@
 
 @implementation GBRBaseEntity
 
-- (instancetype)initWithID:(GBRID)id {
-    self = [super init];
-    if (self) {
-        _id = id;
-    }
-
-    return self;
-}
-
 @end

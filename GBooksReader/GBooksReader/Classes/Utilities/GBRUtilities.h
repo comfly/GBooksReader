@@ -28,4 +28,7 @@
 #define IS_TEST_RUN \
     [[GBRConfiguration configuration] isTestRun]
 
+#define OF_TYPE(_type)
+
+
 #endif //__GBRUtilities_H_

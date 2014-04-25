@@ -29,3 +29,11 @@ typedef NS_ENUM(NSUInteger, GBRPrintType) {
     GBRPrintTypeMagazines   // "magazines"
 };
 
+typedef NS_ENUM(NSUInteger, GBRRating) {
+    GBRRatingNone,  // "NOT_RATED"
+    GBRRatingOne,   // "ONE"
+    GBRRatingTwo,   // "TWO"
+    GBRRatingThree, // "THREE"
+    GBRRatingFour,  // "FOUR"
+    GBRRatingFive,  // "FIVE"
+};

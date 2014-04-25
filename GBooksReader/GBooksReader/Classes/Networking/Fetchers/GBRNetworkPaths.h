@@ -11,7 +11,6 @@
 @interface GBRNetworkPaths : NSObject
 
 + (NSString *)pathToMyLibraryBookshelves;
-
-+ (NSString *)pathToMyLibraryVolumesOnBookshelfWithID:(GBRID)bookshelfID;
++ (NSString *)pathToMyLibraryVolumesOnUploadedBookshelf;
 
 @end

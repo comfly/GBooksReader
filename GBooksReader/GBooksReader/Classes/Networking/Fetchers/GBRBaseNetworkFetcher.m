@@ -6,8 +6,6 @@
 #import "GBRBaseNetworkFetcher.h"
 #import "GBRBaseNetworkFetcher+Protected.h"
 
-#import "GBRConfiguration.h"
-
 
 @interface GBRBaseNetworkFetcher ()
 
@@ -58,12 +56,51 @@
 }
 
 - (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithDeferred:(Deferred *)deferred {
-    return ^(NSURLSessionDataTask *task, NSError *error) {
+    @weakify(self);
+    return ^(NSURLSessionDataTask *_, NSError *error) {
+        @strongify(self);
+        if ([[error domain] isEqualToString:NSURLErrorDomain]) {
+            [self processStandardNetworkError:error];
+        }
         if ([self mustLogNetworkError:error]) {
             DDLogCError(@"Network error: %@", error);
         }
         [deferred reject:error];
     };
+}
+
+- (void)processStandardNetworkError:(NSError *)error {
+    NSParameterAssert([[error domain] isEqualToString:NSURLErrorDomain]);
+
+    switch ([error code]) {
+        case NSURLErrorCancelled:
+            [self respondToOperationCancelledError:error];
+            break;
+        case NSURLErrorNotConnectedToInternet:
+            [self respondToNotConnectedError:error];
+            break;
+        case NSURLErrorNetworkConnectionLost:
+            [self respondToNetworkConnectionError:error];
+            break;
+        default:
+            // Do nothing special. Let code of upper levels handle this.
+            break;
+    }
+}
+
+- (void)respondToNetworkConnectionError:(NSError *)error {
+    NSParameterAssert([[error domain] isEqualToString:NSURLErrorDomain] && [error code] == NSURLErrorNetworkConnectionLost);
+    // Do processing.
+}
+
+- (void)respondToNotConnectedError:(NSError *)error {
+    NSParameterAssert([[error domain] isEqualToString:NSURLErrorDomain] && [error code] == NSURLErrorNotConnectedToInternet);
+    // Do processing.
+}
+
+- (void)respondToOperationCancelledError:(NSError *)error {
+    NSParameterAssert([[error domain] isEqualToString:NSURLErrorDomain] && [error code] == NSURLErrorCancelled);
+    // Do nothing. User cancelled operation just goes in vain.
 }
 
 - (BOOL)mustLogNetworkError:(NSError *)error {

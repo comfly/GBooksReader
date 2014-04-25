@@ -14,8 +14,8 @@
     return @"mylibrary/bookshelves";
 }
 
-+ (NSString *)pathToMyLibraryVolumesOnBookshelfWithID:(GBRID)bookshelfID {
-    return FORMAT(@"mylibrary/bookshelves/%@/volumes", NSStringFromGBRID(bookshelfID));
++ (NSString *)pathToMyLibraryVolumesOnUploadedBookshelf {
+    return @"volumes/useruploaded";
 }
 
 @end
