@@ -1,6 +1,9 @@
 language: objective-c
 before_install:
   - export LANG=en_US.UTF-8
+  - brew update
+  - brew remove --force xctool
+  - brew install xctool
   - cd ./GBooksReader
 install:
   - bundle install
