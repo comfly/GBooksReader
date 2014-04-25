@@ -3,3 +3,6 @@ xcode_workspace: GBooksReader.xcworkspace # path to your xcodeproj folder
 xcode_scheme: GBooksReaderTests
 before_install:
     - cd ./GBooksReader
+install:
+    - bundle install
+    - bundle exec pod install
