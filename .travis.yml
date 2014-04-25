@@ -1,7 +1,7 @@
 language: objective-c
 xcode_workspace: GBooksReader.xcworkspace # path to your xcodeproj folder
 xcode_scheme: GBooksReaderTests
-xcode_sdk: iphonesimulator7.1
+xcode_sdk: iphonesimulator7.0
 before_install:
   - export LANG=en_US.UTF-8
   - cd ./GBooksReader
