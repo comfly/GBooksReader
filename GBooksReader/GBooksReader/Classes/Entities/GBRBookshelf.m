@@ -15,9 +15,8 @@
         volumesLastUpdated:(NSDate *)volumesLastUpdated
                  updatedAt:(NSDate *)updatedAt
                  createdAt:(NSDate *)createdAt {
-    self = [super init];
+    self = [super initWithID:id];
     if (self) {
-        _id = id;
         _title = [title copy];
         _volumeCount = volumeCount;
         _volumesLastUpdated = volumesLastUpdated;
@@ -28,24 +27,10 @@
     return self;
 }
 
-+ (instancetype)bookshelfWithID:(GBRID)id
-                          title:(NSString *)title
-                    volumeCount:(NSUInteger)volumeCount
-             volumesLastUpdated:(NSDate *)volumesLastUpdated
-                      updatedAt:(NSDate *)updatedAt
-                      createdAt:(NSDate *)createdAt {
-    return [[self alloc] initWithID:id
-                              title:title
-                        volumeCount:volumeCount
-                 volumesLastUpdated:volumesLastUpdated
-                          updatedAt:updatedAt
-                          createdAt:createdAt];
-}
-
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-            @"createdAt" : @"created",
-            @"updatedAt" : @"updated"
+        @"createdAt" : @"created",
+        @"updatedAt" : @"updated"
     };
 }
 
@@ -70,6 +55,5 @@
         return [timestampFormatter stringFromDate:date];
     }];
 }
-
 
 @end

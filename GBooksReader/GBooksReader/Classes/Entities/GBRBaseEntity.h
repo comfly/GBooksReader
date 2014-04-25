@@ -8,4 +8,8 @@
 
 @interface GBRBaseEntity : MTLModel
 
+@property (nonatomic, readonly) GBRID id;
+
+- (instancetype)initWithID:(GBRID)id;
+
 @end

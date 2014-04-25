@@ -10,7 +10,6 @@
 #import "GBRBaseNetworkFetcher+Protected.h"
 #import "GBRTestUtilities.h"
 #import "GBRBookshelf.h"
-#import "GBRConfiguration.h"
 #import "OHHTTPStubsResponse+JSON.h"
 #import "GBRDateFormatters.h"
 #import "GBRNetworkPaths.h"
@@ -53,7 +52,6 @@ SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
                     return [OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil];
                 }];
 
-
                 Promise *promise = [fetcher loadAllBookshelves];
 
                 __block BOOL done = NO;
@@ -84,7 +82,6 @@ SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
                     id jsonObject = [utilities jsonObjectFromFixtureWithName:kResponseFixture];
                     return [[OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil] responseTime:3];
                 }];
-
 
                 __block BOOL done = NO;
 
