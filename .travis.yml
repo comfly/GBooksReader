@@ -6,4 +6,4 @@ install:
   - bundle install
   - bundle exec pod install
 script:
-	- ./run-tests.sh
+  - ./run-tests.sh
