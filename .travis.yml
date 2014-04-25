@@ -1,10 +1,9 @@
 language: objective-c
-xcode_workspace: GBooksReader.xcworkspace
-xcode_scheme: GBooksReader
-xcode_sdk: iphonesimulator
 before_install:
   - export LANG=en_US.UTF-8
   - cd ./GBooksReader
 install:
   - bundle install
   - bundle exec pod install
+script:
+	- ./run-tests.sh
