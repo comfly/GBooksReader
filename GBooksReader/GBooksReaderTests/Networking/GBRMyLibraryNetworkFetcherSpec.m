@@ -56,7 +56,7 @@ SPEC_BEGIN(GBRMyLibraryNetworkFetcherSpec)
 
                 __block BOOL done = NO;
 
-                promise.then(^(NSArray<GBRBookshelf> *bookshelves) {
+                promise.then(^(NSArray OF_TYPE(GBRBookshelf) *bookshelves) {
                     [[bookshelves should] beNonNil];
                     [[bookshelves should] haveCountOf:10];
 

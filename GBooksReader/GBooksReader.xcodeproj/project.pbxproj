@@ -71,7 +71,7 @@
 		AF3F02B50CDAA449BFD2BF1B /* GBRDateFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRDateFormatters.m; sourceTree = "<group>"; };
 		AF3F02B584EA553C658FBCAF /* GBRBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBook.h; sourceTree = "<group>"; };
 		AF3F036AE4379F649E74B4EB /* GBRThumbnailURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRThumbnailURLs.m; sourceTree = "<group>"; };
-		AF3F04B5D4D56B9BC0E54A69 /* common-headers.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = "common-headers.inc"; sourceTree = "<group>"; };
+		AF3F04B5D4D56B9BC0E54A69 /* common-headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "common-headers.h"; sourceTree = "<group>"; };
 		AF3F04BC9F518D7B4C60C3F7 /* GBRLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRLogging.h; sourceTree = "<group>"; };
 		AF3F04F1AE2A10439BE30C8E /* GBRThumbnailURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRThumbnailURLs.h; sourceTree = "<group>"; };
 		AF3F05118F34F1A90BF130CD /* GBRBaseNetworkFetcher+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBRBaseNetworkFetcher+Protected.h"; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 				F1B4D4341901D9F1006BDF11 /* Products */,
 				758C9900D2A64E1F882F8250 /* Pods.xcconfig */,
 				A95FA39F2F944017B08F3EE4 /* Pods-GBooksReaderTests.xcconfig */,
-				AF3F04B5D4D56B9BC0E54A69 /* common-headers.inc */,
+				AF3F04B5D4D56B9BC0E54A69 /* common-headers.h */,
 			);
 			sourceTree = "<group>";
 		};
