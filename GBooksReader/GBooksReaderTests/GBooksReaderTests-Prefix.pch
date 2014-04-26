@@ -12,6 +12,6 @@
 #import <Kiwi/Kiwi.h>
 #import <OHHTTPStubs/OHHTTPStubs.h>
 
-#include "../common-headers.inc"
+#include "../common-headers.h"
 
 #endif
