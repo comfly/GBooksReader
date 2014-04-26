@@ -118,7 +118,7 @@
     return serializer;
 }
 
-- (NSURL *)baseURL {
+- (NSURL *)baseURL GBR_CONST {
     return [GBRConfiguration configuration].baseURL;
 }
 

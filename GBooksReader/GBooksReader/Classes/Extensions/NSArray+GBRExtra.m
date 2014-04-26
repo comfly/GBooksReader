@@ -9,10 +9,26 @@
 
 @implementation NSArray (GBRExtra)
 
-- (NSArray *)compact {
+- (NSArray *)gbr_compact {
     return [self bk_reject:^BOOL(id item) {
         return item == [NSNull null];
     }];
+}
+
+- (NSDictionary *)gbr_dictionaryWithKeyBlock:(GBRKeyGeneratorBlock)keyBlock valueBlock:(id (^)(id))valueBlock {
+    NSParameterAssert(keyBlock);
+    NSParameterAssert(valueBlock);
+
+    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:[self count]];
+    for (id item in self) {
+        result[keyBlock(item)] = valueBlock(item);
+    }
+
+    return [result copy];
+}
+
+- (NSDictionary *)gbr_dictionaryWithKeyBlock:(GBRKeyGeneratorBlock)keyBlock {
+    return [self gbr_dictionaryWithKeyBlock:keyBlock valueBlock:^(id _) { return _; }];
 }
 
 @end

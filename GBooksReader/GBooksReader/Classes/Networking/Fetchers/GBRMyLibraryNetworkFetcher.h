@@ -9,7 +9,13 @@
 
 @interface GBRMyLibraryNetworkFetcher : GBRBaseNetworkFetcher
 
-- (Promise OF_TYPE(NSArray OF_TYPE(GBRBookshelf)) *)loadAllBookshelves;
-- (Promise OF_TYPE(NSArray OF_TYPE(GBRBook)) *)loadBooksFromUploadedBookshelf;
+/**
+* Promise of NSArray of GBRBookshelf
+*/
+- (Promise *)loadAllBookshelves;
+/**
+* Promise of NSArray of GBRBook
+*/
+- (Promise *)loadBooksFromUploadedBookshelf;
 
 @end

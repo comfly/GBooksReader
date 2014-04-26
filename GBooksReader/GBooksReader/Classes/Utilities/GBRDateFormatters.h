@@ -8,6 +8,6 @@
 
 @interface GBRDateFormatters : NSObject
 
-+ (NSDateFormatter *)timestampFormatter;
++ (NSDateFormatter *)timestampFormatter __attribute__((const));
 
 @end

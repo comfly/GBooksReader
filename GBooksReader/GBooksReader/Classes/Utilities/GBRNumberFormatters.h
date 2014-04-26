@@ -12,6 +12,6 @@
 
 @interface GBRNumberFormatters : NSObject
 
-+ (NSNumberFormatter *)idFormatter;
++ (NSNumberFormatter *)idFormatter  __attribute__((const));
 
 @end

@@ -16,12 +16,18 @@
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSString *subtitle;
 @property (nonatomic, readonly, copy) NSString *synopsis;
-@property (nonatomic, readonly, copy) NSArray OF_TYPE(NSString) *authors;
+/**
+* NSArray of NSString *
+*/
+@property (nonatomic, readonly, copy) NSArray *authors;
 @property (nonatomic, readonly, copy) NSString *publisher;
 @property (nonatomic, readonly) NSDate *publishedDate;
 @property (nonatomic, readonly) NSUInteger pageCount;
 @property (nonatomic, readonly) GBRPrintType printType;
-@property (nonatomic, readonly, copy) NSArray OF_TYPE(NSString) *categories;
+/**
+* NSArray of NSString *
+*/
+@property (nonatomic, readonly, copy) NSArray *categories;
 @property (nonatomic, readonly) GBRThumbnailURLs *imageLinks;
 @property (nonatomic, readonly, copy) NSString *mainCategory;
 @property (nonatomic, readonly) GBRRating rating;

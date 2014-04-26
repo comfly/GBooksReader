@@ -52,4 +52,16 @@
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"com.comfly.GBooksReader.TestRun"];
 }
 
+- (NSURL *)cachesDirectoryURL {
+    static NSURL *folderURL;
+
+    ONCE(^{
+        NSString *applicationName = [[NSBundle mainBundle] bundleIdentifier];
+        folderURL = [[[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject]
+                URLByAppendingPathComponent:applicationName isDirectory:YES];
+    });
+
+    return folderURL;
+}
+
 @end

@@ -56,7 +56,7 @@ describe(@"GBRMyLibraryNetworkFetcher", ^{
 
         __block BOOL done = NO;
 
-        promise.then(^(NSArray OF_TYPE(GBRBookshelf) *bookshelves) {
+        promise.then(^(NSArray *bookshelves) {
             [[bookshelves should] beNonNil];
             [[bookshelves should] haveCountOf:10];
 

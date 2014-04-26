@@ -28,7 +28,6 @@
 #define IS_TEST_RUN \
     [[GBRConfiguration configuration] isTestRun]
 
-#define OF_TYPE(_type)
-
+#define GBR_CONST __attribute__((const))
 
 #endif //__GBRUtilities_H_

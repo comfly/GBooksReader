@@ -8,7 +8,6 @@
 
 
 #import "GBRGoogleAuthorization.h"
-#import "GBRConfiguration.h"
 #import "GBRAuthorizationViewController.h"
 #import <GoogleOpenSource/GTMOAuth2Authentication.h>
 #import <GooglePlus/GPPURLHandler.h>

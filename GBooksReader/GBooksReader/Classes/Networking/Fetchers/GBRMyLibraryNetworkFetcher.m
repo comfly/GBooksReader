@@ -21,11 +21,11 @@
                                      parameters:nil
                                      modelClass:itemClass
                                         keyPath:@"items"
-                                        success:^(NSURLSessionDataTask *_, NSArray OF_TYPE(GBRBookshelf) *bookshelves) {
+                                        success:^(NSURLSessionDataTask *_, NSArray *bookshelves) {
         @strongify(self);
 
         if (bookshelves) {
-            [deferred resolve:[bookshelves compact]];
+            [deferred resolve:[bookshelves gbr_compact]];
         } else {
             [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
         }
@@ -41,10 +41,10 @@
                                      parameters:nil
                                      modelClass:itemClass
                                         keyPath:@"items"
-                                        success:^(NSURLSessionDataTask *_, NSArray OF_TYPE(GBRBooks) *books) {
+                                        success:^(NSURLSessionDataTask *_, NSArray *books) {
         @strongify(self);
         if (books) {
-            [deferred resolve:[books compact]];
+            [deferred resolve:[books gbr_compact]];
         } else {
             [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
         }

@@ -11,6 +11,10 @@
 
 @interface NSArray (GBRExtra)
 
-- (NSArray *)compact;
+- (NSArray *)gbr_compact;
+
+typedef id<NSCopying> (^GBRKeyGeneratorBlock)(id);
+- (NSDictionary *)gbr_dictionaryWithKeyBlock:(GBRKeyGeneratorBlock)keyBlock valueBlock:(id (^)(id))valueBlock;
+- (NSDictionary *)gbr_dictionaryWithKeyBlock:(GBRKeyGeneratorBlock)keyBlock;
 
 @end
