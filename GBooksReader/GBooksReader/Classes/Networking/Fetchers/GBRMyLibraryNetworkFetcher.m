@@ -5,32 +5,11 @@
 
 #import "GBRMyLibraryNetworkFetcher.h"
 #import "GBRBaseNetworkFetcher+Protected.h"
-#import "GBRBookshelf.h"
 #import "GBRBook.h"
 #import "GBRNetworkPaths.h"
 
 
 @implementation GBRMyLibraryNetworkFetcher
-
-- (Promise *)loadAllBookshelves {
-    Deferred *deferred = [[Deferred alloc] init];
-    Class itemClass = [GBRBookshelf class];
-
-    @weakify(self);
-    return [self initiateTask:[self.manager GET:[GBRNetworkPaths pathToMyLibraryBookshelves]
-                                     parameters:nil
-                                     modelClass:itemClass
-                                        keyPath:@"items"
-                                        success:^(NSURLSessionDataTask *_, NSArray *bookshelves) {
-        @strongify(self);
-
-        if (bookshelves) {
-            [deferred resolve:[bookshelves gbr_compact]];
-        } else {
-            [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
-        }
-    } failure:[self defaultNetworkErrorProcessingBlockWithDeferred:deferred]] forPromise:deferred.promise];
-}
 
 - (Promise *)loadBooksFromUploadedBookshelf {
     Deferred *deferred = [[Deferred alloc] init];

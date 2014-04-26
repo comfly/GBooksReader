@@ -10,10 +10,6 @@
 @interface GBRMyLibraryNetworkFetcher : GBRBaseNetworkFetcher
 
 /**
-* Promise of NSArray of GBRBookshelf
-*/
-- (Promise *)loadAllBookshelves;
-/**
 * Promise of NSArray of GBRBook
 */
 - (Promise *)loadBooksFromUploadedBookshelf;

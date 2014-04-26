@@ -129,6 +129,28 @@ describe(@"GBRMyLibraryNetworkFetcher", ^{
 
         [[expectFutureValue(theValue(done)) shouldEventually] beYes];
     });
+
+    it(@"should support cancelling of loading books", ^{
+        [OHHTTPStubs stubRequestsPassingTest:^(id _) {
+            return YES;
+        } withStubResponse:^(NSURLRequest *request) {
+            id jsonObject = [utilities jsonObjectFromFixtureWithName:kResponseFixture];
+            return [[OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil] responseTime:3];
+        }];
+
+        __block BOOL done = NO;
+
+        Promise *promise = [fetcher loadBooksFromUploadedBookshelf];
+        promise.catch(^(NSError *error) {
+            [[theValue([error isUserCancelled]) should] beYes];
+            done = YES;
+        });
+
+        [NSThread sleepForTimeInterval:0.3];
+
+        [fetcher cancelTaskForPromise:promise];
+        [[expectFutureValue(theValue(done)) shouldEventually] beYes];
+    });
 });
 
 SPEC_END
