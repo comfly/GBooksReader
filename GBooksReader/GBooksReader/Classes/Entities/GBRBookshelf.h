@@ -9,6 +9,7 @@
 
 @interface GBRBookshelf : GBRBaseEntity <MTLJSONSerializing>
 
+@property (nonatomic, readonly) NSUInteger id;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) NSUInteger volumeCount;
 @property (nonatomic, readonly) NSDate *volumesLastUpdated;

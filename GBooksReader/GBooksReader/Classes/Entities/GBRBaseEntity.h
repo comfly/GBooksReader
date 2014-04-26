@@ -8,6 +8,4 @@
 
 @interface GBRBaseEntity : MTLModel
 
-@property (nonatomic, readonly) GBRID id;
-
 @end

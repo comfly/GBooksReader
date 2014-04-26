@@ -10,13 +10,6 @@
 @import Foundation;
 
 
-typedef UInt64 GBRID;
-
-extern id GBRBoxID(GBRID);
-extern GBRID GBRUnboxID(id);
-extern NSString *NSStringFromGBRID(GBRID);
-extern GBRID GBRIDFromString(NSString *);
-
 typedef NS_ENUM(NSUInteger, GBRProcessingState) {
     GBRProcessingStateFailed,       // "COMPLETED_FAILED"
     GBRProcessingStateSuccess,      // "COMPLETED_SUCCESS"
@@ -24,9 +17,10 @@ typedef NS_ENUM(NSUInteger, GBRProcessingState) {
 };
 
 typedef NS_ENUM(NSUInteger, GBRPrintType) {
-    GBRPrintTypeAll,        // "all"
-    GBRPrintTypeBooks,      // "books"
-    GBRPrintTypeMagazines   // "magazines"
+    GBRPrintTypeNone,
+    GBRPrintTypeAll = GBRPrintTypeNone, // "ALL"
+    GBRPrintTypeBook,                   // "BOOK"
+    GBRPrintTypeMagazine                // "MAGAZINE"
 };
 
 typedef NS_ENUM(NSUInteger, GBRRating) {

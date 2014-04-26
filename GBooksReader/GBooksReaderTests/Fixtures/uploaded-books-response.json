@@ -1,0 +1,120 @@
+{
+ "totalItems": 2,
+ "items": [
+  {
+   "id": "The ID 1",
+   "volumeInfo": {
+    "title": "The Title 1",
+    "subtitle": "The Subtitle 1",
+    "description": "The Description 1",
+    "publisher": "The Publisher 1",
+    "publishedDate": "2014-03-06T22:26:05.486Z",
+    "printType": "BOOK",
+    "pageCount": 200,
+    "categories" : [
+        "fiction",
+        "books"
+    ],
+    "imageLinks": {
+     "smallThumbnail": "http://test.link.ru/smallThumbnail",
+     "thumbnail": "http://test.link.ru/thumbnail",
+     "small": "http://test.link.ru/small",
+     "medium": "http://test.link.ru/medium",
+     "large": "http://test.link.ru/large",
+     "extraLarge": "http://test.link.ru/extraLarge"
+    },
+    "mainCategory": "fiction"
+   },
+   "userInfo": {
+    "review": {
+        "rating": "FIVE"
+    },
+    "readingPosition": {
+        "epubCfiPosition" : "epubCfiPosition 1",
+        "gbImagePosition" : "gbImagePosition 1",
+        "gbTextPosition" : "gbTextPosition 1",
+        "pdfPosition" : "pdfPosition 1",
+        "updated" : "2014-03-10T22:59:15.741Z"
+    },
+    "updated": "2014-04-13T22:59:15.741Z",
+    "userUploadedVolumeInfo": {
+     "processingState": "COMPLETED_SUCCESS"
+    }
+   },
+   "saleInfo": {
+    "country": "RU",
+    "saleability": "NOT_FOR_SALE",
+    "isEbook": true
+   },
+   "accessInfo": {
+    "country": "RU",
+    "viewability": "UNKNOWN",
+    "embeddable": false,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "pdf": {
+     "isAvailable": true,
+     "downloadLink": "http://book.google.com/pdf",
+     "acsTokenLink": "http://book.google.com/acstokenlink"
+    },
+    "webReaderLink": "http://books.google.ru/books/reader?id=m2o4AQAAAEAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+    "accessViewStatus": "FULL_PURCHASED",
+    "quoteSharingAllowed": false
+   }
+  },
+  {
+    "kind": "books#volume",
+    "id": "skoBAQAAAEAJ",
+    "etag": "WqtFCT5y8JU",
+    "selfLink": "https://content.googleapis.com/books/v1/volumes/skoBAQAAAEAJ",
+    "volumeInfo": {
+        "title": "Learning iOS Development: A Hands-on Guide to the Fundamentals of iOS Programming (Jason Arnold's Library)",
+        "authors": [
+            "Maurice Sharp"
+        ],
+        "publisher": "Addison-Wesley Professional",
+        "printType": "MAGAZINE",
+        "contentVersion": "full-1.0.0",
+        "imageLinks": {
+            "smallThumbnail": "http://bks0.books.google.ru/books?id=skoBAQAAAEAJ&printsec=frontcover&img=1&zoom=5&uvs=3&source=gbs_api",
+            "thumbnail": "http://bks0.books.google.ru/books?id=skoBAQAAAEAJ&printsec=frontcover&img=1&zoom=1&uvs=3&source=gbs_api"
+        },
+        "previewLink": "http://books.google.ru/books?id=skoBAQAAAEAJ&printsec=frontcover&hl=&source=gbs_api",
+        "infoLink": "http://books.google.ru/books?id=skoBAQAAAEAJ&hl=&source=gbs_api",
+        "canonicalVolumeLink": "http://books.google.ru/books/about/Learning_iOS_Development_A_Hands_on_Guid.html?hl=&id=skoBAQAAAEAJ"
+    },
+    "userInfo": {
+        "copy": {
+            "limitType": "unlimited"
+        },
+        "isPurchased": true,
+        "isUploaded": true,
+        "isInMyBooks": true,
+        "updated": "2014-03-06T22:26:05.486Z",
+        "userUploadedVolumeInfo": {
+            "processingState": "COMPLETED_SUCCESS"
+        }
+    },
+    "saleInfo": {
+        "country": "RU",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": true
+    },
+    "accessInfo": {
+        "country": "RU",
+        "viewability": "UNKNOWN",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+            "isAvailable": true,
+            "downloadLink": "http://books.google.com/epub",
+            "acsTokenLink": "http://books.google.com/epubAcsLink"
+        },
+        "webReaderLink": "http://books.google.ru/books/reader?id=skoBAQAAAEAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "FULL_PURCHASED",
+        "quoteSharingAllowed": false
+  }
+  }
+ ]
+}

@@ -5,7 +5,6 @@
 
 #import "GBRBook.h"
 #import "GBRThumbnailURLs.h"
-#import "GBRIndustryIdentifier.h"
 #import "GBRReadingPosition.h"
 #import "GBRValueTransformers.h"
 
@@ -20,14 +19,11 @@
         SELECTOR_NAME(authors) : @"volumeInfo.authors",
         SELECTOR_NAME(publisher) : @"volumeInfo.publisher",
         SELECTOR_NAME(publishedDate) : @"volumeInfo.publishedDate",
-        SELECTOR_NAME(identifiers) : @"volumeInfo.industryIdentifiers",
         SELECTOR_NAME(pageCount) : @"volumeInfo.pageCount",
         SELECTOR_NAME(printType) : @"volumeInfo.printType",
         SELECTOR_NAME(categories) : @"volumeInfo.categories",
         SELECTOR_NAME(mainCategory) : @"volumeInfo.mainCategory",
-        SELECTOR_NAME(contentVersion) : @"volumeInfo.contentVersion",
         SELECTOR_NAME(imageLinks) : @"volumeInfo.imageLinks",
-        SELECTOR_NAME(canonicalVolumeLink) : @"volumeInfo.canonicalVolumeLink",
         SELECTOR_NAME(rating) : @"userInfo.review.rating",
         SELECTOR_NAME(readingPosition) : @"userInfo.readingPosition",
         SELECTOR_NAME(status) : @"userInfo.userUploadedVolumeInfo.processingState",
@@ -39,27 +35,23 @@
     };
 }
 
-- (NSValueTransformer *)publishedDateJSONTransformer {
++ (NSValueTransformer *)publishedDateJSONTransformer {
     return [GBRValueTransformers timestampValueTransformer];
 }
 
-- (NSValueTransformer *)industryIdentifiersJSONTransformer {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[GBRIndustryIdentifier class]];
-}
-
-- (NSValueTransformer *)printTypeJSONTransformer {
++ (NSValueTransformer *)printTypeJSONTransformer {
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
-        @"all" : @(GBRPrintTypeAll),
-        @"books" : @(GBRPrintTypeBooks),
-        @"magazines" : @(GBRPrintTypeMagazines)
+        @"ALL" : @(GBRPrintTypeAll),
+        @"BOOK" : @(GBRPrintTypeBook),
+        @"MAGAZINE" : @(GBRPrintTypeMagazine)
     }];
 }
 
-- (NSValueTransformer *)imageLinksJSONTransformer {
++ (NSValueTransformer *)imageLinksJSONTransformer {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[GBRThumbnailURLs class]];
 }
 
-- (NSValueTransformer *)ratingJSONTransformer {
++ (NSValueTransformer *)ratingJSONTransformer {
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
         @"NOT_RATED" : @(GBRRatingNone),
         @"ONE" : @(GBRRatingOne),
@@ -70,11 +62,11 @@
     }];
 }
 
-- (NSValueTransformer *)readingPositionJSONTransformer {
++ (NSValueTransformer *)readingPositionJSONTransformer {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[GBRReadingPosition class]];
 }
 
-- (NSValueTransformer *)processingStateJSONTransformer {
++ (NSValueTransformer *)statusJSONTransformer {
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
         @"COMPLETED_FAILED" : @(GBRProcessingStateFailed),
         @"COMPLETED_SUCCESS" : @(GBRProcessingStateSuccess),
@@ -82,7 +74,7 @@
     }];
 }
 
-- (NSValueTransformer *)updatedAtJSONTransformer {
++ (NSValueTransformer *)updatedAtJSONTransformer {
     return [GBRValueTransformers timestampValueTransformer];
 }
 
