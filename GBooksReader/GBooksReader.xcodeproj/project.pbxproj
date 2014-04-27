@@ -13,17 +13,19 @@
 		AF3F02B43C1491E3CF0C188A /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3F0F94E31BEE47503135AA /* configuration.plist */; };
 		AF3F037C47B6EBEFC3A2550D /* GBRTestUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F07B44FA74F3B9691CD55 /* GBRTestUtilities.m */; };
 		AF3F03CF4658A9795666F99C /* NSMapTable+GBRKeySubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0EE0DBC6B8594D916950 /* NSMapTable+GBRKeySubscript.m */; };
+		AF3F053660C49E15272A1B2A /* book-sample.json in Resources */ = {isa = PBXBuildFile; fileRef = AF3F072F3CF29766FD598F7B /* book-sample.json */; };
 		AF3F056D5A927F78FA1F88A0 /* GBRBaseNetworkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F081CD804827B36347CA4 /* GBRBaseNetworkFetcher.m */; };
 		AF3F05EBB8AF282893457356 /* NSSet+GBRExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F09D542C0A6C2E7A649ED /* NSSet+GBRExtra.m */; };
 		AF3F06448974873647C19DE1 /* GBRMyLibraryUploadedBooksNetworkFetcherSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F07E20904EDEA69F8F292 /* GBRMyLibraryUploadedBooksNetworkFetcherSpec.m */; };
 		AF3F067CE2CD49E6747A10BC /* GBRThumbnailURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F036AE4379F649E74B4EB /* GBRThumbnailURLs.m */; };
 		AF3F075B8A5E8AB82A9D433D /* GBRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */; };
-		AF3F0828D069533FD22D5EA0 /* GBRMyLibraryNetworkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F09D2325CF0A596D18A73 /* GBRMyLibraryNetworkFetcher.m */; };
+		AF3F0828D069533FD22D5EA0 /* GBRMyUploadedBooksNetworkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F09D2325CF0A596D18A73 /* GBRMyUploadedBooksNetworkFetcher.m */; };
 		AF3F0851A6FEFFDA4FAC41B2 /* NSArray+GBRExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F06FBC9900325236312CD /* NSArray+GBRExtra.m */; };
 		AF3F0879A90BEA2B4AB815B9 /* GBRTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0E894BD4C72EBF433115 /* GBRTypes.m */; };
 		AF3F0977D99006B144475E35 /* GBRReadingPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0F6205CF6AAEDCB37EB8 /* GBRReadingPosition.m */; };
 		AF3F0A8E9267CBF8286797B5 /* GBRAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F058B271988B95F2C58C2 /* GBRAssembly.m */; };
 		AF3F0AA569263AF0FBACD8A3 /* GBRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F08DE7BBCF896CE3A9A77 /* GBRStorage.m */; };
+		AF3F0BA13C1C86A69AB15409 /* GBRMyUploadedBooksStorageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0FB49DE95BBADA71453F /* GBRMyUploadedBooksStorageSpec.m */; };
 		AF3F0BE18036CD8631773E90 /* NSError+GBRExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0922F2E9459092CB9D19 /* NSError+GBRExtra.m */; };
 		AF3F0D04EE2BBEB493DEAA74 /* GBRGoogleAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */; };
 		AF3F0D2E69CAF43C623A22DB /* GBRValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0D219B28376462A5E40E /* GBRValueTransformers.m */; };
@@ -82,6 +84,7 @@
 		AF3F058B271988B95F2C58C2 /* GBRAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRAssembly.m; sourceTree = "<group>"; };
 		AF3F0594B2F5C4509007642E /* NSArray+GBRExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+GBRExtra.h"; sourceTree = "<group>"; };
 		AF3F06FBC9900325236312CD /* NSArray+GBRExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+GBRExtra.m"; sourceTree = "<group>"; };
+		AF3F072F3CF29766FD598F7B /* book-sample.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = "book-sample.json"; sourceTree = "<group>"; };
 		AF3F07B44FA74F3B9691CD55 /* GBRTestUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRTestUtilities.m; sourceTree = "<group>"; };
 		AF3F07E20904EDEA69F8F292 /* GBRMyLibraryUploadedBooksNetworkFetcherSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyLibraryUploadedBooksNetworkFetcherSpec.m; sourceTree = "<group>"; };
 		AF3F081CD804827B36347CA4 /* GBRBaseNetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRBaseNetworkFetcher.m; sourceTree = "<group>"; };
@@ -93,7 +96,8 @@
 		AF3F0922F2E9459092CB9D19 /* NSError+GBRExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+GBRExtra.m"; sourceTree = "<group>"; };
 		AF3F097F292249F874514507 /* NSError+GBRExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+GBRExtra.h"; sourceTree = "<group>"; };
 		AF3F09816BC33A55F58C90FF /* GBRMyUploadedBooksStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyUploadedBooksStorage.m; sourceTree = "<group>"; };
-		AF3F09D2325CF0A596D18A73 /* GBRMyLibraryNetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyLibraryNetworkFetcher.m; sourceTree = "<group>"; };
+		AF3F09911D5D60D2228522F9 /* GBRMyUploadedBooksStorage+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBRMyUploadedBooksStorage+Tests.h"; sourceTree = "<group>"; };
+		AF3F09D2325CF0A596D18A73 /* GBRMyUploadedBooksNetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyUploadedBooksNetworkFetcher.m; sourceTree = "<group>"; };
 		AF3F09D542C0A6C2E7A649ED /* NSSet+GBRExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+GBRExtra.m"; sourceTree = "<group>"; };
 		AF3F0A3B1A0D553DB32E500F /* GBRObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRObjectFactory.h; sourceTree = "<group>"; };
 		AF3F0A69AE177243249CC593 /* NSCache+GBRKeySubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCache+GBRKeySubscript.h"; sourceTree = "<group>"; };
@@ -105,7 +109,7 @@
 		AF3F0CA17A76E2D9D83C9738 /* GBRMyUploadedBooksStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRMyUploadedBooksStorage.h; sourceTree = "<group>"; };
 		AF3F0D219B28376462A5E40E /* GBRValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRValueTransformers.m; sourceTree = "<group>"; };
 		AF3F0D22A350E086D6CD3145 /* GBRReadingPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRReadingPosition.h; sourceTree = "<group>"; };
-		AF3F0DB5A0ECA8FE7CABF7A0 /* GBRMyLibraryNetworkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRMyLibraryNetworkFetcher.h; sourceTree = "<group>"; };
+		AF3F0DB5A0ECA8FE7CABF7A0 /* GBRMyUploadedBooksNetworkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRMyUploadedBooksNetworkFetcher.h; sourceTree = "<group>"; };
 		AF3F0DF8900511B3F78E7047 /* uploaded-books-response.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = "uploaded-books-response.json"; sourceTree = "<group>"; };
 		AF3F0E02109E48F27B7FEF50 /* GBRBaseNetworkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBaseNetworkFetcher.h; sourceTree = "<group>"; };
 		AF3F0E196B8D466E7B6E886E /* GBRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRUtilities.h; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 		AF3F0F6205CF6AAEDCB37EB8 /* GBRReadingPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRReadingPosition.m; sourceTree = "<group>"; };
 		AF3F0F6EFA822A266AB64367 /* GBRGoogleAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRGoogleAuthorization.h; sourceTree = "<group>"; };
 		AF3F0F94E31BEE47503135AA /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = configuration.plist; sourceTree = "<group>"; };
+		AF3F0FB49DE95BBADA71453F /* GBRMyUploadedBooksStorageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyUploadedBooksStorageSpec.m; sourceTree = "<group>"; };
 		F10096AC19087CC6001FE1EF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		F1B4D4331901D9F1006BDF11 /* GBooksReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBooksReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B4D4361901D9F1006BDF11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -245,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				AF3F0DF8900511B3F78E7047 /* uploaded-books-response.json */,
+				AF3F072F3CF29766FD598F7B /* book-sample.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -274,12 +280,21 @@
 				AF3F05118F34F1A90BF130CD /* GBRBaseNetworkFetcher+Protected.h */,
 				AF3F0E02109E48F27B7FEF50 /* GBRBaseNetworkFetcher.h */,
 				AF3F081CD804827B36347CA4 /* GBRBaseNetworkFetcher.m */,
-				AF3F0DB5A0ECA8FE7CABF7A0 /* GBRMyLibraryNetworkFetcher.h */,
-				AF3F09D2325CF0A596D18A73 /* GBRMyLibraryNetworkFetcher.m */,
+				AF3F0DB5A0ECA8FE7CABF7A0 /* GBRMyUploadedBooksNetworkFetcher.h */,
+				AF3F09D2325CF0A596D18A73 /* GBRMyUploadedBooksNetworkFetcher.m */,
 				AF3F053D2711CB28BA177050 /* GBRNetworkPaths.h */,
 				AF3F0E7C9C5B731D6D792E7E /* GBRNetworkPaths.m */,
 			);
 			path = Fetchers;
+			sourceTree = "<group>";
+		};
+		AF3F0DEF219BC3F1DD1EBCEA /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F0FB49DE95BBADA71453F /* GBRMyUploadedBooksStorageSpec.m */,
+				AF3F09911D5D60D2228522F9 /* GBRMyUploadedBooksStorage+Tests.h */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		AF3F0E6A5B9219C73B8C355C /* UI */ = {
@@ -388,6 +403,7 @@
 				F1D980FB1908655D00D5233C /* Supporting Files */,
 				AF3F07B44FA74F3B9691CD55 /* GBRTestUtilities.m */,
 				AF3F029AE41723239DE5502C /* GBRTestUtilities.h */,
+				AF3F0DEF219BC3F1DD1EBCEA /* Storage */,
 			);
 			path = GBooksReaderTests;
 			sourceTree = "<group>";
@@ -494,6 +510,7 @@
 			files = (
 				F1D980FF1908655D00D5233C /* InfoPlist.strings in Resources */,
 				AF3F0253A2C948B49C1C442D /* uploaded-books-response.json in Resources */,
+				AF3F053660C49E15272A1B2A /* book-sample.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +593,7 @@
 				AF3F0DCCBDA8C5683137DDA9 /* GBRBaseEntity.m in Sources */,
 				AF3F0DDF1BE087C87D6A3717 /* GBRDateFormatters.m in Sources */,
 				AF3F056D5A927F78FA1F88A0 /* GBRBaseNetworkFetcher.m in Sources */,
-				AF3F0828D069533FD22D5EA0 /* GBRMyLibraryNetworkFetcher.m in Sources */,
+				AF3F0828D069533FD22D5EA0 /* GBRMyUploadedBooksNetworkFetcher.m in Sources */,
 				AF3F03CF4658A9795666F99C /* NSMapTable+GBRKeySubscript.m in Sources */,
 				AF3F0BE18036CD8631773E90 /* NSError+GBRExtra.m in Sources */,
 				AF3F01A836EB177462CCBC43 /* GBRBook.m in Sources */,
@@ -599,6 +616,7 @@
 			files = (
 				AF3F037C47B6EBEFC3A2550D /* GBRTestUtilities.m in Sources */,
 				AF3F06448974873647C19DE1 /* GBRMyLibraryUploadedBooksNetworkFetcherSpec.m in Sources */,
+				AF3F0BA13C1C86A69AB15409 /* GBRMyUploadedBooksStorageSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

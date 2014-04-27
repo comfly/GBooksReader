@@ -10,6 +10,8 @@
 
 - (BOOL)isAuthenticated;
 - (NSString *)token;
+
+- (NSString *)userName;
 - (NSString *)userEmail;
 
 - (UIViewController *)authorizationViewController;

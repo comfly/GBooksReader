@@ -7,11 +7,11 @@
 #import "GBRBaseNetworkFetcher.h"
 
 
-@interface GBRMyLibraryNetworkFetcher : GBRBaseNetworkFetcher
+@interface GBRMyUploadedBooksNetworkFetcher : GBRBaseNetworkFetcher
 
 /**
 * Promise of NSArray of GBRBook
 */
-- (Promise *)loadBooksFromUploadedBookshelf;
+- (Promise *)loadMyUploadedBooks;
 
 @end

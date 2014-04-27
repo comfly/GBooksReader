@@ -8,7 +8,7 @@
 
 #import <Kiwi/Kiwi.h>
 #import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
-#import "GBRMyLibraryNetworkFetcher.h"
+#import "GBRMyUploadedBooksNetworkFetcher.h"
 #import "GBRBaseNetworkFetcher+Protected.h"
 #import "GBRTestUtilities.h"
 #import "GBRNetworkPaths.h"
@@ -20,27 +20,17 @@
 
 SPEC_BEGIN(GBRMyLibraryUploadedBooksNetworkFetcherSpec)
 
-describe(@"GBRMyLibraryNetworkFetcher", ^{
+describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
 
-    let(kToken, ^{
-        return @"$@MPL3_T0KeN";
-    });
+    let(kToken, ^{ return @"$@MPL3_T0KeN"; });
 
-    let(fetcher, ^{
-        return [[GBRMyLibraryNetworkFetcher alloc] initWithToken:kToken];
-    });
+    let(fetcher, ^{ return [[GBRMyUploadedBooksNetworkFetcher alloc] initWithToken:kToken]; });
 
-    let(utilities, ^{
-        return [GBRTestUtilities utilities];
-    });
+    let(utilities, ^{ return [GBRTestUtilities utilities]; });
 
-    let(kRequestPath, ^{
-        return [GBRNetworkPaths pathToMyLibraryVolumesOnUploadedBookshelf];
-    });
+    let(kRequestPath, ^{ return [GBRNetworkPaths pathToMyUploadedBooks]; });
 
-    let(kResponseFixture, ^{
-        return @"uploaded-books-response";
-    });
+    let(kResponseFixture, ^{ return @"uploaded-books-response"; });
 
     it(@"should load Uploaded Books", ^{
         [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
@@ -55,7 +45,7 @@ describe(@"GBRMyLibraryNetworkFetcher", ^{
             return [OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil];
         }];
 
-        Promise *promise = [fetcher loadBooksFromUploadedBookshelf];
+        Promise *promise = [fetcher loadMyUploadedBooks];
 
         __block BOOL done = NO;
 
@@ -140,7 +130,7 @@ describe(@"GBRMyLibraryNetworkFetcher", ^{
 
         __block BOOL done = NO;
 
-        Promise *promise = [fetcher loadBooksFromUploadedBookshelf];
+        Promise *promise = [fetcher loadMyUploadedBooks];
         promise.catch(^(NSError *error) {
             [[theValue([error isUserCancelled]) should] beYes];
             done = YES;

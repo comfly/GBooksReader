@@ -17,6 +17,8 @@
 
 - (id<GBRAuthorization>)authorizer;
 
-- (id)myLibraryNetworkFetcher;
+- (id)myUploadedBooksNetworkFetcher;
+
+- (id)myUploadedBooksStorage;
 
 @end

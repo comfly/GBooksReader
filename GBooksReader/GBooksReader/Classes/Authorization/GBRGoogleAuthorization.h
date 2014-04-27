@@ -16,10 +16,5 @@
 
 - (instancetype)initWithDelegate:(id<GBRAuthorizationDelegate>)delegate DESIGNATED_INITIALIZER;
 
-- (UIViewController *)authorizationViewController;
-- (BOOL)handleAuthorizationURL:(NSURL *)URL sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
-
-- (BOOL)trySilentAuthentication;
-
 @end
 

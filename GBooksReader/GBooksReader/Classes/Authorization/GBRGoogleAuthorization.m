@@ -42,6 +42,7 @@
 
     result.clientID = [self clientID];
     result.shouldFetchGoogleUserEmail = YES;
+    result.shouldFetchGoogleUserID = YES;
     result.scopes = [self scopes];
     result.delegate = self;
 
@@ -87,6 +88,10 @@
 
 - (NSString *)token {
     return self.signIn.authentication.accessToken;
+}
+
+- (NSString *)userName {
+    return self.signIn.authentication.userID;
 }
 
 - (NSString *)userEmail {

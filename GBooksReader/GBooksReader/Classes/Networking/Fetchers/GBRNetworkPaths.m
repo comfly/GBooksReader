@@ -10,7 +10,7 @@
 
 @implementation GBRNetworkPaths
 
-+ (NSString *)pathToMyLibraryVolumesOnUploadedBookshelf {
++ (NSString *)pathToMyUploadedBooks {
     return @"volumes/useruploaded";
 }
 

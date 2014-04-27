@@ -15,5 +15,6 @@
 @interface GBRStorage (Protected)
 
 - (NSURL *)networkCachesDirectoryURL;
++ (NSURL *)cachesDirectoryURLForUserName:(NSString *)userName;
 
 @end

@@ -11,8 +11,9 @@
 #import "GBRBaseNetworkFetcher.h"
 #import "GBRBaseNetworkFetcher+Protected.h"
 #import "GBRAuthorization.h"
-#import "GBRMyLibraryNetworkFetcher.h"
+#import "GBRMyUploadedBooksNetworkFetcher.h"
 #import "GBRGoogleAuthorization.h"
+#import "GBRMyUploadedBooksStorage.h"
 
 
 @implementation GBRAssembly
@@ -26,9 +27,15 @@
     }];
 }
 
-- (id)myLibraryNetworkFetcher {
-    return [TyphoonDefinition withClass:[GBRMyLibraryNetworkFetcher class] properties:^(TyphoonDefinition *definition) {
+- (id)myUploadedBooksNetworkFetcher {
+    return [TyphoonDefinition withClass:[GBRMyUploadedBooksNetworkFetcher class] properties:^(TyphoonDefinition *definition) {
         definition.parent = [self baseNetworkFetcher];
+    }];
+}
+
+- (id)myUploadedBooksStorage {
+    return [TyphoonDefinition withClass:[GBRMyUploadedBooksStorage class] properties:^(TyphoonDefinition *definition) {
+        definition.parent = [self baseStorage];
     }];
 }
 
@@ -41,8 +48,21 @@
     }];
 }
 
+- (id)baseStorage {
+    return [TyphoonDefinition withClass:[GBRStorage class] initialization:^(TyphoonInitializer *initializer) {
+        initializer.selector = @selector(initWithUserName:);
+        [initializer injectWithValueAsText:[self userName]];
+    } properties:^(TyphoonDefinition *definition) {
+        definition.abstract = YES;
+    }];
+}
+
 - (NSString *)token {
     return [[GBRObjectFactory authorizer] token];
+}
+
+- (NSString *)userName {
+    return [[GBRObjectFactory authorizer] userName];
 }
 
 @end

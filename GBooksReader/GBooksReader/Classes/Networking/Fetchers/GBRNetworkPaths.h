@@ -10,6 +10,6 @@
 
 @interface GBRNetworkPaths : NSObject
 
-+ (NSString *)pathToMyLibraryVolumesOnUploadedBookshelf GBR_CONST;
++ (NSString *)pathToMyUploadedBooks GBR_CONST;
 
 @end

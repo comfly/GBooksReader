@@ -3,20 +3,20 @@
 // Copyright (c) 2014 comfly. All rights reserved.
 //
 
-#import "GBRMyLibraryNetworkFetcher.h"
+#import "GBRMyUploadedBooksNetworkFetcher.h"
 #import "GBRBaseNetworkFetcher+Protected.h"
 #import "GBRBook.h"
 #import "GBRNetworkPaths.h"
 
 
-@implementation GBRMyLibraryNetworkFetcher
+@implementation GBRMyUploadedBooksNetworkFetcher
 
-- (Promise *)loadBooksFromUploadedBookshelf {
+- (Promise *)loadMyUploadedBooks {
     Deferred *deferred = [[Deferred alloc] init];
     Class itemClass = [GBRBook class];
 
     @weakify(self);
-    return [self initiateTask:[self.manager GET:[GBRNetworkPaths pathToMyLibraryVolumesOnUploadedBookshelf]
+    return [self initiateTask:[self.manager GET:[GBRNetworkPaths pathToMyUploadedBooks]
                                      parameters:nil
                                      modelClass:itemClass
                                         keyPath:@"items"

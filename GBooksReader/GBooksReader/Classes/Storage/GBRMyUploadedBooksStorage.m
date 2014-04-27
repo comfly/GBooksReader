@@ -12,7 +12,23 @@
 #import "GBRBook.h"
 
 
+@interface GBRMyUploadedBooksStorage ()
+
+@property (nonatomic, readonly) NSString *booksStoragePath;
+
+@end
+
+
 @implementation GBRMyUploadedBooksStorage
+
+- (instancetype)initWithUserName:(NSString *)userName {
+    self = [super initWithUserName:userName];
+    if (self) {
+        _booksStoragePath = [[[self networkCachesDirectoryURL] URLByAppendingPathComponent:@"books-list.bin" isDirectory:NO] path];
+    }
+
+    return self;
+}
 
 - (NSDictionary *)loadAllBooks {
     return [self booksByIDsDictionaryFromBooks:[self loadBooksArray]];
@@ -23,31 +39,41 @@
 
     NSSet *IDsOfBooksToDelete = [[NSSet setWithArray:[existingBooks allKeys]] gbr_setMinusSet:[NSSet setWithArray:[books allKeys]]];
 
-    for (GBRBook *newBook in books) {
-        GBRBook *oldBook = existingBooks[newBook.id];
+    [books bk_each:^(NSString *id, GBRBook *newBook) {
+        GBRBook *oldBook = existingBooks[id];
         if (oldBook) {
             // Need merging.
             [oldBook mergeValuesForKeysFromModel:newBook];
         } else {
             // New book. Add as is.
-            existingBooks[newBook.id] = newBook;
+            existingBooks[id] = newBook;
         }
-    }
+    }];
 
     [existingBooks removeObjectsForKeys:[IDsOfBooksToDelete allObjects]];
-    [[existingBooks allValues] writeToURL:[self booksStorageURL] atomically:YES];
+    [self storeBooksArray:[existingBooks allValues]];
+}
+
+- (void)storeBooksArray:(NSArray *)books {
+    [NSKeyedArchiver archiveRootObject:[books bk_map:^(GBRBook *book) {
+        return [MTLJSONAdapter JSONDictionaryFromModel:book];
+    }] toFile:self.booksStoragePath];
 }
 
 - (NSArray *)loadBooksArray {
-    return [NSArray arrayWithContentsOfURL:[self booksStorageURL]];
+    return [[NSKeyedUnarchiver unarchiveObjectWithFile:self.booksStoragePath] bk_map:^(NSDictionary *serializedBook) {
+        __autoreleasing NSError *error;
+        GBRBook *result = [MTLJSONAdapter modelOfClass:[GBRBook class] fromJSONDictionary:serializedBook error:&error];
+        if (error) {
+            DDLogCError(@"Error parsing GBRBook from Dictionary representation: %@", error);
+        }
+
+        return result;
+    }];
 }
 
 - (NSDictionary *)booksByIDsDictionaryFromBooks:(NSArray *)books {
     return [books gbr_dictionaryWithKeyBlock:^(GBRBook *_) { return _.id; }];
-}
-
-- (NSURL *)booksStorageURL {
-    return [[self networkCachesDirectoryURL] URLByAppendingPathComponent:@"books-list.plist" isDirectory:NO];
 }
 
 @end

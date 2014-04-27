@@ -1,0 +1,61 @@
+{
+    "id": "The ID 1",
+    "volumeInfo": {
+        "title": "The Title 1",
+        "subtitle": "The Subtitle 1",
+        "description": "The Description 1",
+        "publisher": "The Publisher 1",
+        "publishedDate": "2014-03-06T22:26:05.486Z",
+        "printType": "BOOK",
+        "pageCount": 200,
+        "categories": [
+            "fiction",
+            "books"
+        ],
+        "imageLinks": {
+            "smallThumbnail": "http://test.link.ru/smallThumbnail",
+            "thumbnail": "http://test.link.ru/thumbnail",
+            "small": "http://test.link.ru/small",
+            "medium": "http://test.link.ru/medium",
+            "large": "http://test.link.ru/large",
+            "extraLarge": "http://test.link.ru/extraLarge"
+        },
+        "mainCategory": "fiction"
+    },
+    "userInfo": {
+        "review": {
+            "rating": "FIVE"
+        },
+        "readingPosition": {
+            "epubCfiPosition": "epubCfiPosition 1",
+            "gbImagePosition": "gbImagePosition 1",
+            "gbTextPosition": "gbTextPosition 1",
+            "pdfPosition": "pdfPosition 1",
+            "updated": "2014-03-10T22:59:15.741Z"
+        },
+        "updated": "2014-04-13T22:59:15.741Z",
+        "userUploadedVolumeInfo": {
+            "processingState": "COMPLETED_SUCCESS"
+        }
+    },
+    "saleInfo": {
+        "country": "RU",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": true
+    },
+    "accessInfo": {
+        "country": "RU",
+        "viewability": "UNKNOWN",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "pdf": {
+            "isAvailable": true,
+            "downloadLink": "http://book.google.com/pdf",
+            "acsTokenLink": "http://book.google.com/acstokenlink"
+        },
+        "webReaderLink": "http://books.google.ru/books/reader?id=m2o4AQAAAEAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "FULL_PURCHASED",
+        "quoteSharingAllowed": false
+    }
+}

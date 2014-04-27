@@ -24,7 +24,7 @@
 
     self = [super init];
     if (self) {
-        _networkCachesDirectoryURL = [self produceCachesDirectoryURLForUserName:userName];
+        _networkCachesDirectoryURL = [[self class] cachesDirectoryURLForUserName:userName];
 
         NSError *error = [self createDirectoryIfNotExistsAtURL:self.networkCachesDirectoryURL];
         if (error) {
@@ -53,7 +53,7 @@
     return error;
 }
 
-- (NSURL *)produceCachesDirectoryURLForUserName:(NSString *)userName {
++ (NSURL *)cachesDirectoryURLForUserName:(NSString *)userName {
     return [[GBRConfiguration configuration].cachesDirectoryURL URLByAppendingPathComponent:userName isDirectory:YES];
 }
 
