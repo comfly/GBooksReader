@@ -18,8 +18,9 @@
 
 @implementation GBRAssembly
 
-- (id<GBRAuthorization>)authorizer {
-    return (id<GBRAuthorization>) [TyphoonDefinition withClass:[GBRGoogleAuthorization class] configuration:^(TyphoonDefinition *definition) {
+- (id)authorizer {
+    return [TyphoonDefinition withClass:[GBRGoogleAuthorization class] configuration:^(TyphoonDefinition *definition) {
+        definition.scope = TyphoonScopeSingleton;
         [definition useInitializer:@selector(initWithDelegate:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[UIApplication sharedApplication].delegate];
         }];
@@ -42,7 +43,8 @@
     return [TyphoonDefinition withClass:[GBRBaseNetworkFetcher class] configuration:^(TyphoonDefinition *definition) {
         definition.abstract = YES;
         [definition useInitializer:@selector(initWithToken:) parameters:^(TyphoonMethod *initializer) {
-            [initializer injectParameterWith:[self token]];
+            NSString *token = [[self authorizer] property:@selector(token)];
+            [initializer injectParameterWith:token];
         }];
     }];
 }
@@ -51,17 +53,9 @@
     return [TyphoonDefinition withClass:[GBRStorage class] configuration:^(TyphoonDefinition *definition) {
         definition.abstract = YES;
         [definition useInitializer:@selector(initWithUserName:) parameters:^(TyphoonMethod *initializer) {
-            [initializer injectParameterWith:[self token]];
+            [initializer injectParameterWith:[[self authorizer] property:@selector(userName)]];
         }];
     }];
-}
-
-- (NSString *)token {
-    return [[GBRObjectFactory authorizer] token];
-}
-
-- (NSString *)userName {
-    return [[GBRObjectFactory authorizer] userName];
 }
 
 @end

@@ -10,15 +10,10 @@
 @import Foundation;
 
 
-@protocol GBRAuthorization;
-@class GBRBaseNetworkFetcher;
-
 @interface GBRAssembly : TyphoonAssembly
 
-- (id<GBRAuthorization>)authorizer;
-
+- (id)authorizer;
 - (id)myUploadedBooksNetworkFetcher;
-
 - (id)myUploadedBooksStorage;
 
 @end
