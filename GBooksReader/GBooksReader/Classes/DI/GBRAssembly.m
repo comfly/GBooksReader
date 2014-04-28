@@ -19,41 +19,40 @@
 @implementation GBRAssembly
 
 - (id<GBRAuthorization>)authorizer {
-    return (id<GBRAuthorization>) [TyphoonDefinition withClass:[GBRGoogleAuthorization class] initialization:^(TyphoonInitializer *initializer) {
-        initializer.selector = @selector(initWithDelegate:);
-        [initializer injectWithObjectInstance:[UIApplication sharedApplication].delegate];
-    } properties:^(TyphoonDefinition *definition) {
-        definition.scope = TyphoonScopeSingleton;
+    return (id<GBRAuthorization>) [TyphoonDefinition withClass:[GBRGoogleAuthorization class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithDelegate:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[UIApplication sharedApplication].delegate];
+        }];
     }];
 }
 
 - (id)myUploadedBooksNetworkFetcher {
-    return [TyphoonDefinition withClass:[GBRMyUploadedBooksNetworkFetcher class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[GBRMyUploadedBooksNetworkFetcher class] configuration:^(TyphoonDefinition *definition) {
         definition.parent = [self baseNetworkFetcher];
     }];
 }
 
 - (id)myUploadedBooksStorage {
-    return [TyphoonDefinition withClass:[GBRMyUploadedBooksStorage class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[GBRMyUploadedBooksStorage class] configuration:^(TyphoonDefinition *definition) {
         definition.parent = [self baseStorage];
     }];
 }
 
 - (id)baseNetworkFetcher {
-    return [TyphoonDefinition withClass:[GBRBaseNetworkFetcher class] initialization:^(TyphoonInitializer *initializer) {
-        initializer.selector = @selector(initWithToken:);
-        [initializer injectWithValueAsText:[self token]];
-    } properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[GBRBaseNetworkFetcher class] configuration:^(TyphoonDefinition *definition) {
         definition.abstract = YES;
+        [definition useInitializer:@selector(initWithToken:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self token]];
+        }];
     }];
 }
 
 - (id)baseStorage {
-    return [TyphoonDefinition withClass:[GBRStorage class] initialization:^(TyphoonInitializer *initializer) {
-        initializer.selector = @selector(initWithUserName:);
-        [initializer injectWithValueAsText:[self userName]];
-    } properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[GBRStorage class] configuration:^(TyphoonDefinition *definition) {
         definition.abstract = YES;
+        [definition useInitializer:@selector(initWithUserName:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self token]];
+        }];
     }];
 }
 

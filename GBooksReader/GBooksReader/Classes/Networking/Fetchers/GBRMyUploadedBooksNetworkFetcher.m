@@ -12,27 +12,34 @@
 @implementation GBRMyUploadedBooksNetworkFetcher
 
 - (Promise *)loadMyUploadedBooks {
-    Deferred *deferred = [[Deferred alloc] init];
-    Class itemClass = [GBRBook class];
+    __block NSURLSessionTask *task;
+    Promise *promise = [Promise new:^(PromiseResolver fulfiller, PromiseResolver rejecter) {
+        Class itemClass = [GBRBook class];
 
-    @weakify(self);
-    return [self initiateTask:[self.manager GET:[GBRNetworkPaths pathToMyUploadedBooks]
-                                     parameters:nil
-                                     modelClass:itemClass
-                                        keyPath:@"items"
-                                        success:^(NSURLSessionDataTask *_, NSArray *books) {
-        @strongify(self);
-        if (books) {
-            [deferred resolve:[books gbr_compact]];
-        } else {
-            [self rejectDeferred:deferred withParsingErrorForClass:itemClass];
-        }
-    } failure:[self defaultNetworkErrorProcessingBlockWithDeferred:deferred]] forPromise:deferred.promise];
+        @weakify(self);
+        void(^successBlock)(NSURLSessionDataTask *, NSArray *) = ^(NSURLSessionDataTask *_, NSArray *books) {
+            @strongify(self);
+            if (books) {
+                fulfiller([books gbr_compact]);
+            } else {
+                rejecter([self parsingErrorForClass:itemClass]);
+            }
+        };
+
+        task = [self.manager GET:[GBRNetworkPaths pathToMyUploadedBooks]
+               parameters:nil
+               modelClass:itemClass
+                  keyPath:@"items"
+                  success:successBlock
+                  failure:[self defaultNetworkErrorProcessingBlockWithRejecter:rejecter]];
+    }];
+
+    return [self registerCancellationTokenForTask:task withPromise:promise];
 }
 
-- (void)rejectDeferred:(Deferred *)deferred withParsingErrorForClass:(Class)class {
-    NSString *message = FORMAT(@"Unable to parse %@ network response", NSStringFromClass(class));
-    [deferred reject:[NSError applicationErrorWithCode:GBRResponseParsingError message:message]];
+- (NSError *)parsingErrorForClass:(Class)klass {
+    NSString *message = FORMAT(@"Unable to parse %@ network response", NSStringFromClass(klass));
+    return [NSError applicationErrorWithCode:GBRResponseParsingError message:message];
 }
 
 @end

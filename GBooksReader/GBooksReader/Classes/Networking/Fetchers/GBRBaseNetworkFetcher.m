@@ -34,7 +34,7 @@
     return self;
 }
 
-- (Promise *)initiateTask:(NSURLSessionTask *)task forPromise:(Promise *)promise {
+- (Promise *)registerCancellationTokenForTask:(NSURLSessionTask *)task withPromise:(Promise *)promise {
     __block Promise *extendedPromise = promise.then(^(id result) {
         [self completeTaskForPromise:extendedPromise];
         return result;
@@ -42,7 +42,8 @@
         [self completeTaskForPromise:extendedPromise];
         return error;
     });
-    self.tasksByPromises[extendedPromise] = task;
+
+    [self.tasksByPromises setObject:task forKey:extendedPromise];
     return extendedPromise;
 }
 
@@ -55,7 +56,7 @@
     [self.tasksByPromises removeObjectForKey:promise];
 }
 
-- (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithDeferred:(Deferred *)deferred {
+- (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithRejecter:(PromiseResolver)rejecter {
     @weakify(self);
     return ^(NSURLSessionDataTask *_, NSError *error) {
         @strongify(self);
@@ -65,7 +66,7 @@
         if ([self mustLogNetworkError:error]) {
             DDLogCError(@"Network error: %@", error);
         }
-        [deferred reject:error];
+        rejecter(error);
     };
 }
 
