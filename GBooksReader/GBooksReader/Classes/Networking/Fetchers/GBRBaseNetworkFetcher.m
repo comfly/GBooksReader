@@ -34,7 +34,7 @@
     return self;
 }
 
-- (Promise *)registerCancellationTokenForTask:(NSURLSessionTask *)task withPromise:(Promise *)promise {
+- (Promise *)registerCancellationBlock:(GBRNetworkFetcherCancellationBlock)cancellationBlock withPromise:(Promise *)promise {
     __block Promise *extendedPromise = promise.then(^(id result) {
         [self completeTaskForPromise:extendedPromise];
         return result;
@@ -43,7 +43,7 @@
         return error;
     });
 
-    [self.tasksByPromises setObject:task forKey:extendedPromise];
+    [self.tasksByPromises setObject:cancellationBlock forKey:extendedPromise];
     return extendedPromise;
 }
 
@@ -52,7 +52,8 @@
 }
 
 - (void)cancelTaskForPromise:(Promise *)promise {
-    [self.tasksByPromises[promise] cancel];
+    GBRNetworkFetcherCancellationBlock cancellationBlock = self.tasksByPromises[promise];
+    SAFE_BLOCK_CALL(cancellationBlock);
     [self.tasksByPromises removeObjectForKey:promise];
 }
 
@@ -124,7 +125,7 @@
 }
 
 - (NSURLSessionConfiguration *)sessionConfiguration {
-    return [NSURLSessionConfiguration defaultSessionConfiguration];
+    return [NSURLSessionConfiguration backgroundSessionConfiguration:@"com.comfly.GBooksReader.BackgroundSessionConfiguration"];
 }
 
 - (NSString *)tokenHeaderValueForToken:(NSString *)token {

@@ -8,3 +8,25 @@
 
 #import "GBRTypes.h"
 
+BOOL GBRIsBookTypeValid(GBRBookType type) {
+    switch (type) {
+        case GBRBookTypePDF:
+        case GBRBookTypeEPUB:
+            return YES;
+        default:
+            return NO;
+    }
+}
+
+NSString *GBRFileExtensionForType(GBRBookType type) {
+    NSCParameterAssert(GBRIsBookTypeValid(type));
+
+    switch (type) {
+        case GBRBookTypePDF:
+            return @"pdf";
+        case GBRBookTypeEPUB:
+            return @"epub";
+        default:
+            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:FORMAT(@"Unknown type of Book: %u", type) userInfo:nil];
+    }
+}

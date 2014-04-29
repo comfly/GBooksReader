@@ -30,4 +30,8 @@
 
 #define GBR_CONST __attribute__((const))
 
+#define SAFE_BLOCK_CALL(_block, ...)	\
+	if (_block) { _block(__VA_ARGS__); }
+
+
 #endif //__GBRUtilities_H_

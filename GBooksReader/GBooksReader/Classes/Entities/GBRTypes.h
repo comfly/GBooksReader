@@ -9,6 +9,14 @@
 
 @import Foundation;
 
+typedef NS_ENUM(NSUInteger, GBRBookType) {
+    GBRBookTypeUnknown,
+    GBRBookTypePDF,
+    GBRBookTypeEPUB
+};
+
+extern BOOL GBRIsBookTypeValid(GBRBookType);
+extern NSString *GBRFileExtensionForType(GBRBookType);
 
 typedef NS_ENUM(NSUInteger, GBRProcessingState) {
     GBRProcessingStateFailed,       // "COMPLETED_FAILED"

@@ -15,7 +15,9 @@
 
 SPEC_BEGIN(GBRMyUploadedBooksStorageSpec)
 
+
 describe(@"GBRMyUploadedBooksStorage", ^{
+
     let(kUserName, ^{ return @"sample-user-name"; });
     let(fileManager, ^{ return [[NSFileManager alloc] init]; });
 
@@ -24,38 +26,77 @@ describe(@"GBRMyUploadedBooksStorage", ^{
         [fileManager removeItemAtURL:storageURL error:NULL];
     });
 
-    it(@"should create Storage directory if not created on instantiation", ^{
-        NSString *storagePath = [[GBRMyUploadedBooksStorage cachesDirectoryURLForUserName:kUserName] path];
-        [[storagePath shouldNot] beEmpty];
+    context(@"saving books", ^{
+        beforeEach(^{
+            NSURL *storageURL = [GBRMyUploadedBooksStorage cachesDirectoryURLForUserName:kUserName];
+            [fileManager removeItemAtURL:storageURL error:NULL];
+        });
 
-        [[theValue([fileManager fileExistsAtPath:storagePath isDirectory:NULL]) should] beNo];
+        it(@"should create Storage directory if not created on instantiation", ^{
+            NSString *storagePath = [[GBRMyUploadedBooksStorage cachesDirectoryURLForUserName:kUserName] path];
+            [[storagePath shouldNot] beEmpty];
 
-        [[[[GBRMyUploadedBooksStorage alloc] initWithUserName:kUserName] should] beNonNil];
+            [[theValue([fileManager fileExistsAtPath:storagePath isDirectory:NULL]) should] beNo];
 
-        BOOL isDirectory;
-        [[theValue([fileManager fileExistsAtPath:storagePath isDirectory:&isDirectory] && isDirectory) should] beYes];
+            [[[[GBRMyUploadedBooksStorage alloc] initWithUserName:kUserName] should] beNonNil];
+
+            BOOL isDirectory;
+            [[theValue([fileManager fileExistsAtPath:storagePath isDirectory:&isDirectory] && isDirectory) should] beYes];
+        });
+
+        it(@"should store books into the Storage", ^{
+            GBRMyUploadedBooksStorage *storage = [[GBRMyUploadedBooksStorage alloc] initWithUserName:kUserName];
+
+            NSData *JSONData = [NSData dataWithContentsOfURL:[[NSBundle bundleForClass:[self class]] URLForResource:@"book-sample" withExtension:@"json"]];
+            __autoreleasing NSError *error;
+            NSArray *JSONObject = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:&error];
+            [[JSONObject should] beNonNil];
+            [[JSONObject should] haveCountOf:2];
+            [[error should] beNil];
+
+            NSArray *books = [JSONObject bk_map:^(NSDictionary *bookDictionary) {
+                __autoreleasing NSError *parsingError;
+                GBRBook *result = [MTLJSONAdapter modelOfClass:[GBRBook class] fromJSONDictionary:bookDictionary error:&parsingError];
+                [[parsingError should] beNil];
+                [[result should] beNonNil];
+                return result;
+            }];
+
+            [[books should] haveCountOf:2];
+
+            [[[[books firstObject] id] should] equal:@"The ID 1"];
+            [[[[books lastObject] id] should] equal:@"skoBAQAAAEAJ"];
+
+            NSString *filePath = [storage booksStoragePath];
+            [[theValue([fileManager fileExistsAtPath:filePath isDirectory:NULL]) should] beNo];
+
+            [storage storeBooks:[storage booksByIDsDictionaryFromBooks:books]];
+
+            BOOL isDirectory;
+            [[theValue([fileManager fileExistsAtPath:filePath isDirectory:&isDirectory]) should] beYes];
+            [[theValue(isDirectory) should] beNo];
+        });
     });
 
-    it(@"should store books into the Storage", ^{
-        GBRMyUploadedBooksStorage *storage = [[GBRMyUploadedBooksStorage alloc] initWithUserName:kUserName];
+    context(@"having books in the Storage", ^{
+        let(storage, ^{ return [[GBRMyUploadedBooksStorage alloc] initWithUserName:kUserName]; });
 
-        NSData *JSONData = [NSData dataWithContentsOfURL:[[NSBundle bundleForClass:[self class]] URLForResource:@"book-sample" withExtension:@"json"]];
-        __autoreleasing NSError *error;
-        id JSONObject = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:&error];
-        [[JSONObject should] beNonNil];
-        [[error should] beNil];
+        beforeEach(^{
+            __autoreleasing NSError *storingError;
+            BOOL copyResult = [fileManager copyItemAtURL:[[NSBundle bundleForClass:[self class]] URLForResource:@"books-list" withExtension:@"bin"]
+                                                   toURL:[NSURL fileURLWithPath:[storage booksStoragePath]] error:&storingError];
+            [[theValue(copyResult) should] beYes];
+            [[storingError should] beNil];
+        });
 
-        GBRBook *book = [MTLJSONAdapter modelOfClass:[GBRBook class] fromJSONDictionary:JSONObject error:NULL];
-        [[book.id should] equal:@"The ID 1"];
+        it(@"should load books from the Storage", ^{
+            NSDictionary *books = [storage loadAllBooks];
+            [[books should] beNonNil];
+            [[books should] haveCountOf:2];
 
-        NSString *filePath = [storage booksStoragePath];
-        [[theValue([fileManager fileExistsAtPath:filePath isDirectory:NULL]) should] beNo];
-
-        [storage storeBooks:[storage booksByIDsDictionaryFromBooks:@[ book ]]];
-
-        BOOL isDirectory;
-        [[theValue([fileManager fileExistsAtPath:filePath isDirectory:&isDirectory]) should] beYes];
-        [[theValue(isDirectory) should] beNo];
+            [[books[@"The ID 1"] should] beKindOfClass:[GBRBook class]];
+            [[books[@"skoBAQAAAEAJ"] should] beKindOfClass:[GBRBook class]];
+        });
     });
 });
 

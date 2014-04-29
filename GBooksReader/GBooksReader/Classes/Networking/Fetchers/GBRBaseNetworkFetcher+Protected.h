@@ -15,7 +15,8 @@
 
 - (instancetype)initWithToken:(NSString *)token;
 
-- (Promise *)registerCancellationTokenForTask:(NSURLSessionTask *)task withPromise:(Promise *)promise;
+typedef void (^GBRNetworkFetcherCancellationBlock)(void);
+- (Promise *)registerCancellationBlock:(GBRNetworkFetcherCancellationBlock)cancellationBlock withPromise:(Promise *)promise;
 - (void)completeTaskForPromise:(Promise *)promise;
 - (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithRejecter:(PromiseResolver)rejecter;
 - (BOOL)mustLogNetworkError:(NSError *)error;

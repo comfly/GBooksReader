@@ -14,6 +14,7 @@
 #import "GBRMyUploadedBooksNetworkFetcher.h"
 #import "GBRGoogleAuthorization.h"
 #import "GBRMyUploadedBooksStorage.h"
+#import "TyphoonMethod+InstanceBuilder.h"
 
 
 @implementation GBRAssembly

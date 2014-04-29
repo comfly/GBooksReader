@@ -34,7 +34,7 @@
                   failure:[self defaultNetworkErrorProcessingBlockWithRejecter:rejecter]];
     }];
 
-    return [self registerCancellationTokenForTask:task withPromise:promise];
+    return [self registerCancellationBlock:^{ [task cancel]; } withPromise:promise];
 }
 
 - (NSError *)parsingErrorForClass:(Class)klass {
