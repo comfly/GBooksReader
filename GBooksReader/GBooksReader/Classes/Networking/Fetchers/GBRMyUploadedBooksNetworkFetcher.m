@@ -27,11 +27,11 @@
         };
 
         task = [self.manager GET:[GBRNetworkPaths pathToMyUploadedBooks]
-               parameters:nil
-               modelClass:itemClass
-                  keyPath:@"items"
-                  success:successBlock
-                  failure:[self defaultNetworkErrorProcessingBlockWithRejecter:rejecter]];
+                      parameters:@{ }
+                      modelClass:itemClass
+                         keyPath:@"items"
+                         success:successBlock
+                         failure:[self defaultNetworkErrorProcessingBlockWithRejecter:rejecter]];
     }];
 
     return [self registerCancellationBlock:^{ [task cancel]; } withPromise:promise];

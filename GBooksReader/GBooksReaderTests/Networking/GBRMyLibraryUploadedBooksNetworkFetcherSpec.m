@@ -8,29 +8,46 @@
 
 #import <Kiwi/Kiwi.h>
 #import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
+#import <Typhoon/TyphoonPatcher.h>
 #import "GBRMyUploadedBooksNetworkFetcher.h"
-#import "GBRBaseNetworkFetcher+Protected.h"
 #import "GBRTestUtilities.h"
 #import "GBRNetworkPaths.h"
 #import "GBRBook.h"
 #import "GBRDateFormatters.h"
 #import "GBRThumbnailURLs.h"
 #import "GBRReadingPosition.h"
+#import "GBRAssembly.h"
+#import "GBRGoogleAuthorization.h"
 
 
 SPEC_BEGIN(GBRMyLibraryUploadedBooksNetworkFetcherSpec)
 
 describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
 
-    let(kToken, ^{ return @"$@MPL3_T0KeN"; });
-
-    let(fetcher, ^{ return [[GBRMyUploadedBooksNetworkFetcher alloc] initWithToken:kToken]; });
+    NSString *const kToken = @"$@MPL3_T0KeN";
 
     let(utilities, ^{ return [GBRTestUtilities utilities]; });
 
     let(kRequestPath, ^{ return [GBRNetworkPaths pathToMyUploadedBooks]; });
 
     let(kResponseFixture, ^{ return @"uploaded-books-response"; });
+
+    __block GBRMyUploadedBooksNetworkFetcher *fetcher;
+    beforeAll(^{
+        GBRAssembly *assembly = [GBRAssembly assembly];
+
+        TyphoonPatcher *postProcessor = [[TyphoonPatcher alloc] init];
+        [postProcessor patchDefinition:[assembly authorizer] withObject:^{
+            KWMock<GBRAuthorization> *authorization = (KWMock<GBRAuthorization> *)[KWMock mockForProtocol:@protocol(GBRAuthorization)];
+            [authorization stub:@selector(token) andReturn:kToken];
+            return authorization;
+        }];
+
+        TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:assembly];
+        [factory attachPostProcessor:postProcessor];
+
+        fetcher = [factory componentForType:[GBRMyUploadedBooksNetworkFetcher class]];
+    });
 
     it(@"should load Uploaded Books", ^{
         [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {

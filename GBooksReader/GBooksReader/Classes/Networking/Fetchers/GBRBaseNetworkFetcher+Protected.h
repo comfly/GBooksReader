@@ -11,9 +11,7 @@
 
 @interface GBRBaseNetworkFetcher ()
 
-@property (nonatomic, readonly) REMHTTPSessionManager *manager;
-
-- (instancetype)initWithToken:(NSString *)token;
+@property (nonatomic) REMHTTPSessionManager *manager;
 
 typedef void (^GBRNetworkFetcherCancellationBlock)(void);
 - (Promise *)registerCancellationBlock:(GBRNetworkFetcherCancellationBlock)cancellationBlock withPromise:(Promise *)promise;

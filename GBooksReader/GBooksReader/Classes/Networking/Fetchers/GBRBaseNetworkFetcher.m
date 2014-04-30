@@ -16,16 +16,9 @@
 
 @implementation GBRBaseNetworkFetcher
 
-- (instancetype)initWithToken:(NSString *)token {
-    NSParameterAssert(token);
-
+- (instancetype)init {
     self = [super init];
     if (self) {
-        _token = [token copy];
-        _manager = [[REMHTTPSessionManager alloc] initWithBaseURL:[self baseURL] sessionConfiguration:[self sessionConfiguration]];
-        _manager.requestSerializer = [self requestSerializerWithToken:token];
-        _manager.responseSerializer = [self responseSerializer];
-
         NSPointerFunctionsOptions keyOptions = NSPointerFunctionsOpaqueMemory | NSMapTableObjectPointerPersonality;
         NSPointerFunctionsOptions valueOptions = NSMapTableStrongMemory | NSPointerFunctionsObjectPersonality;
         _tasksByPromises = [NSMapTable mapTableWithKeyOptions:keyOptions valueOptions:valueOptions];
@@ -113,23 +106,8 @@
     return [REMCompoundResponseSerializer serializer];
 }
 
-- (AFHTTPRequestSerializer *)requestSerializerWithToken:(NSString *)token {
-    AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
-    [serializer setValue:[self tokenHeaderValueForToken:token] forHTTPHeaderField:@"Authorization"];
-
-    return serializer;
-}
-
 - (NSURL *)baseURL GBR_CONST {
     return [GBRConfiguration configuration].baseURL;
-}
-
-- (NSURLSessionConfiguration *)sessionConfiguration {
-    return [NSURLSessionConfiguration backgroundSessionConfiguration:@"com.comfly.GBooksReader.BackgroundSessionConfiguration"];
-}
-
-- (NSString *)tokenHeaderValueForToken:(NSString *)token {
-    return FORMAT(@"Bearer %@", token);
 }
 
 @end

@@ -9,7 +9,8 @@
 
 @interface GBRBookFetcher : GBRBaseNetworkFetcher
 
-- (instancetype)initWithToken:(NSString *)token booksDownloadDirectory:(NSURL *)downloadDirectory;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithBooksDownloadDirectory:(NSURL *)downloadDirectory;
 
 - (Promise *)loadBookWithID:(NSString *)ID byURL:(NSURL *)URL ofType:(GBRBookType)type progress:(NSProgress *__autoreleasing *)progress cancellationCallback:(void (^)(NSData *))cancellationCallback;
 

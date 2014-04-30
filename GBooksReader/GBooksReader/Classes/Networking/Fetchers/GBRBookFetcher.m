@@ -15,14 +15,10 @@
 
 @implementation GBRBookFetcher
 
-- (instancetype)initWithToken:(NSString *)token {
-    return [self initWithToken:nil booksDownloadDirectory:nil];
-}
-
-- (instancetype)initWithToken:(NSString *)token booksDownloadDirectory:(NSURL *)downloadDirectory {
+- (instancetype)initWithBooksDownloadDirectory:(NSURL *)downloadDirectory {
     NSParameterAssert(downloadDirectory);
 
-    self = [super initWithToken:token];
+    self = [super init];
     if (self) {
         _downloadDirectory = downloadDirectory;
     }

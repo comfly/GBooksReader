@@ -20,7 +20,9 @@ GBRAssembly *GBRObjectFactory = nil;
 @implementation GBRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [self setupApplication];
+    if (!IS_TEST_RUN) {
+        [self setupApplication];
+    }
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
