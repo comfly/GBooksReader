@@ -27,7 +27,7 @@
         };
 
         task = [self.manager GET:[GBRNetworkPaths pathToMyUploadedBooks]
-                      parameters:@{ }
+                      parameters:nil
                       modelClass:itemClass
                          keyPath:@"items"
                          success:successBlock

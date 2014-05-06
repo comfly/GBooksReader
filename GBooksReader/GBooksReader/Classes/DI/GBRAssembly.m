@@ -14,7 +14,7 @@
 #import "GBRMyUploadedBooksNetworkFetcher.h"
 #import "GBRGoogleAuthorization.h"
 #import "GBRMyUploadedBooksStorage.h"
-#import "TyphoonMethod+InstanceBuilder.h"
+#import "AFJSONRequestSerializer+GBRExtra.h"
 
 
 @implementation GBRAssembly
@@ -70,17 +70,22 @@
 }
 
 - (NSURLSessionConfiguration *)sessionConfiguration {
-    return [NSURLSessionConfiguration backgroundSessionConfiguration:@"com.comfly.GBooksReader.FetcherSessionConfiguration"];
+    return [NSURLSessionConfiguration defaultSessionConfiguration];
 }
 
-- (AFHTTPRequestSerializer *)requestSerializer {
-    AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
-    [serializer setValue:FORMAT(@"Bearer %@", [[self authorizer] property:@selector(token)]) forHTTPHeaderField:@"Authorization"];
-    return serializer;
+- (TyphoonDefinition *)requestSerializer {
+    return [TyphoonDefinition withClass:[AFJSONRequestSerializer class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(serializerWithWritingOptions:authorizationToken:) parameters:^(TyphoonMethod *method) {
+            [method injectParameter:@"writingOptions" with:@(NSJSONWritingPrettyPrinted)];
+            [method injectParameter:@"authorizationToken" with:[[self authorizer] property:@selector(token)]];
+        }];
+    }];
 }
 
-- (REMCompoundResponseSerializer *)responseSerializer {
-    return [REMCompoundResponseSerializer serializer];
+- (TyphoonDefinition *)responseSerializer {
+    return [TyphoonDefinition withClass:[REMCompoundResponseSerializer class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(serializer)];
+    }];
 }
 
 @end

@@ -36,6 +36,7 @@
 		AF3F0E036999234D20E83FD0 /* GBRNetworkPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0E7C9C5B731D6D792E7E /* GBRNetworkPaths.m */; };
 		AF3F0E18AEA54AFC196604E6 /* GBRMyUploadedBooksStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F09816BC33A55F58C90FF /* GBRMyUploadedBooksStorage.m */; };
 		AF3F0E4D0510ADE5B5BF6BEA /* NSCache+GBRKeySubscript.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F08A2D1148BEA6F34F37D /* NSCache+GBRKeySubscript.m */; };
+		AF3F0FFB7B370C4D13A44FC6 /* AFJSONRequestSerializer+GBRExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0566FA473BA48E17842C /* AFJSONRequestSerializer+GBRExtra.m */; };
 		CD06A7D5AB244DF6AE1A3EEF /* libPods-GBooksReaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CFFA125166242DFBF2DA13A /* libPods-GBooksReaderTests.a */; };
 		D6E21ACA48E84A259D36A1CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6A8E3F9D024744B1DD9B4E /* libPods.a */; };
 		F1B4D4371901D9F1006BDF11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B4D4361901D9F1006BDF11 /* Foundation.framework */; };
@@ -83,6 +84,7 @@
 		AF3F04F1AE2A10439BE30C8E /* GBRThumbnailURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRThumbnailURLs.h; sourceTree = "<group>"; };
 		AF3F05118F34F1A90BF130CD /* GBRBaseNetworkFetcher+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBRBaseNetworkFetcher+Protected.h"; sourceTree = "<group>"; };
 		AF3F053D2711CB28BA177050 /* GBRNetworkPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRNetworkPaths.h; sourceTree = "<group>"; };
+		AF3F0566FA473BA48E17842C /* AFJSONRequestSerializer+GBRExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFJSONRequestSerializer+GBRExtra.m"; sourceTree = "<group>"; };
 		AF3F056957D303189F28C75E /* GBRGoogleAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRGoogleAuthorization.m; sourceTree = "<group>"; };
 		AF3F05884A087AE48D08F89A /* GBRAuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRAuthorizationViewController.m; sourceTree = "<group>"; };
 		AF3F058B271988B95F2C58C2 /* GBRAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRAssembly.m; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		AF3F0F6EFA822A266AB64367 /* GBRGoogleAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRGoogleAuthorization.h; sourceTree = "<group>"; };
 		AF3F0F94E31BEE47503135AA /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = configuration.plist; sourceTree = "<group>"; };
 		AF3F0FB49DE95BBADA71453F /* GBRMyUploadedBooksStorageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRMyUploadedBooksStorageSpec.m; sourceTree = "<group>"; };
+		AF3F0FB7DF9AB010217325AB /* AFJSONRequestSerializer+GBRExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFJSONRequestSerializer+GBRExtra.h"; sourceTree = "<group>"; };
 		F10096AC19087CC6001FE1EF /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		F1B4D4331901D9F1006BDF11 /* GBooksReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBooksReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B4D4361901D9F1006BDF11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -326,6 +329,8 @@
 				AF3F0EE0DBC6B8594D916950 /* NSMapTable+GBRKeySubscript.m */,
 				AF3F09D542C0A6C2E7A649ED /* NSSet+GBRExtra.m */,
 				AF3F01677A8DC390520B963F /* NSSet+GBRExtra.h */,
+				AF3F0566FA473BA48E17842C /* AFJSONRequestSerializer+GBRExtra.m */,
+				AF3F0FB7DF9AB010217325AB /* AFJSONRequestSerializer+GBRExtra.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 				AF3F0AA569263AF0FBACD8A3 /* GBRStorage.m in Sources */,
 				AF3F05EBB8AF282893457356 /* NSSet+GBRExtra.m in Sources */,
 				AF3F0DE118DA76FD86ECAD66 /* GBRBookFetcher.m in Sources */,
+				AF3F0FFB7B370C4D13A44FC6 /* AFJSONRequestSerializer+GBRExtra.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,6 @@
 //  Copyright 2014 comfly. All rights reserved.
 //
 
-#import <Kiwi/Kiwi.h>
 #import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
 #import <Typhoon/TyphoonPatcher.h>
 #import "GBRMyUploadedBooksNetworkFetcher.h"
@@ -35,18 +34,17 @@ describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
     __block GBRMyUploadedBooksNetworkFetcher *fetcher;
     beforeAll(^{
         GBRAssembly *assembly = [GBRAssembly assembly];
+        TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:assembly];
 
-        TyphoonPatcher *postProcessor = [[TyphoonPatcher alloc] init];
-        [postProcessor patchDefinition:[assembly authorizer] withObject:^{
-            KWMock<GBRAuthorization> *authorization = (KWMock<GBRAuthorization> *)[KWMock mockForProtocol:@protocol(GBRAuthorization)];
+        TyphoonPatcher *patcher = [[TyphoonPatcher alloc] init];
+        [patcher patchDefinition:[assembly authorizer] withObject:^{
+            GBRGoogleAuthorization *authorization = [[GBRGoogleAuthorization alloc] init];
             [authorization stub:@selector(token) andReturn:kToken];
             return authorization;
         }];
+        [factory attachPostProcessor:patcher];
 
-        TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:assembly];
-        [factory attachPostProcessor:postProcessor];
-
-        fetcher = [factory componentForType:[GBRMyUploadedBooksNetworkFetcher class]];
+        fetcher = [factory componentForKey:SELECTOR_NAME(myUploadedBooksNetworkFetcher)];
     });
 
     it(@"should load Uploaded Books", ^{
