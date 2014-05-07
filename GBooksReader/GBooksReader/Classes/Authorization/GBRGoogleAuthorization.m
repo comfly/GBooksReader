@@ -9,9 +9,8 @@
 
 #import "GBRGoogleAuthorization.h"
 #import "GBRAuthorizationViewController.h"
+#import <GooglePlus/GooglePlus.h>
 #import <GoogleOpenSource/GTMOAuth2Authentication.h>
-#import <GooglePlus/GPPURLHandler.h>
-#import <GooglePlus/GPPSignIn.h>
 
 
 @interface GBRGoogleAuthorization () <GPPSignInDelegate>
@@ -24,20 +23,26 @@
 @implementation GBRGoogleAuthorization
 
 - (instancetype)init {
-    return (self = [self initWithDelegate:nil]);
+    return (self = [self initWithDelegate:nil configureSignIn:NO]);
 }
 
 - (instancetype)initWithDelegate:(id<GBRAuthorizationDelegate>)delegate {
+    return [self initWithDelegate:delegate configureSignIn:YES];
+}
+
+- (instancetype)initWithDelegate:(id<GBRAuthorizationDelegate>)delegate configureSignIn:(BOOL)configureSignIn {
     self = [super init];
     if (self) {
-        _signIn = [self configureSign];
         _delegate = delegate;
+        if (configureSignIn) {
+            _signIn = [self configureSignIn];
+        }
     }
 
     return self;
 }
 
-- (GPPSignIn *)configureSign {
+- (GPPSignIn *)configureSignIn {
     GPPSignIn *result = [GPPSignIn sharedInstance];
 
     result.clientID = [self clientID];

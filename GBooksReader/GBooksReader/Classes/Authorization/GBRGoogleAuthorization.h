@@ -14,7 +14,8 @@
 
 @interface GBRGoogleAuthorization : NSObject<GBRAuthorization>
 
-- (instancetype)initWithDelegate:(id<GBRAuthorizationDelegate>)delegate DESIGNATED_INITIALIZER;
+- (instancetype)initWithDelegate:(id<GBRAuthorizationDelegate>)delegate;
+- (instancetype)initWithDelegate:(id<GBRAuthorizationDelegate>)delegate configureSignIn:(BOOL)configureSignIn DESIGNATED_INITIALIZER;
 
 @end
 

@@ -17,6 +17,7 @@
 #import "GBRReadingPosition.h"
 #import "GBRAssembly.h"
 #import "GBRGoogleAuthorization.h"
+#import "GBRTestAssembly.h"
 
 
 SPEC_BEGIN(GBRMyLibraryUploadedBooksNetworkFetcherSpec)
@@ -33,7 +34,7 @@ describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
 
     __block GBRMyUploadedBooksNetworkFetcher *fetcher;
     beforeAll(^{
-        GBRAssembly *assembly = [GBRAssembly assembly];
+        GBRAssembly *assembly = [GBRTestAssembly assembly];
         TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:assembly];
 
         TyphoonPatcher *patcher = [[TyphoonPatcher alloc] init];
