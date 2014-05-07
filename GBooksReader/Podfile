@@ -1,17 +1,29 @@
 platform :ios, '7.1'
 inhibit_all_warnings!
 
+# Networking
 pod 'AFNetworking'
+pod 'Maris'
+
+# Logging
 pod 'CocoaLumberjack'
+
+# Storage
+pod 'Mantle'
+
+# Services
 pod 'google-plus-ios-sdk'
+
+# Utilities
+pod 'Typhoon'
+pod 'PromiseKit/base'
 pod 'libextobjc'
 pod 'BlocksKit'
-pod 'Mantle'
-pod 'PromiseKit/base'
-pod 'Typhoon'
-pod 'Maris'
+
+# UI
 pod 'CompactConstraint'
 
+# Testing & Debugging
 target 'GBooksReaderTests', :exclusive => true do
   pod 'Kiwi'
   pod 'OHHTTPStubs'
