@@ -24,7 +24,7 @@
 		AF3F0851A6FEFFDA4FAC41B2 /* NSArray+GBRExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F06FBC9900325236312CD /* NSArray+GBRExtra.m */; };
 		AF3F0879A90BEA2B4AB815B9 /* GBRTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0E894BD4C72EBF433115 /* GBRTypes.m */; };
 		AF3F0977D99006B144475E35 /* GBRReadingPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0F6205CF6AAEDCB37EB8 /* GBRReadingPosition.m */; };
-		AF3F0A82A4FEB7B1EAAFB92A /* GBRTestAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0279C59181E0BA8972C3 /* GBRTestAssembly.m */; };
+		AF3F0A23D813475A54BB71F8 /* GBRTestAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0B72C5BCB1EE70334791 /* GBRTestAssembly.m */; };
 		AF3F0A8E9267CBF8286797B5 /* GBRAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F058B271988B95F2C58C2 /* GBRAssembly.m */; };
 		AF3F0AA569263AF0FBACD8A3 /* GBRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F08DE7BBCF896CE3A9A77 /* GBRStorage.m */; };
 		AF3F0BA13C1C86A69AB15409 /* GBRMyUploadedBooksStorageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F0FB49DE95BBADA71453F /* GBRMyUploadedBooksStorageSpec.m */; };
@@ -74,10 +74,8 @@
 		AF3F00D32115F03863079E74 /* GBRAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAssembly.h; sourceTree = "<group>"; };
 		AF3F0123E88219BDFF41C4E2 /* GBRBookFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRBookFetcher.m; sourceTree = "<group>"; };
 		AF3F01677A8DC390520B963F /* NSSet+GBRExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+GBRExtra.h"; sourceTree = "<group>"; };
-		AF3F0169C1D7983DE5C0A43E /* GBRTestAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRTestAssembly.h; sourceTree = SOURCE_ROOT; };
 		AF3F01D4B2F5A278B7A9D348 /* books-list.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "books-list.bin"; sourceTree = "<group>"; };
 		AF3F02253626D9CBC428F8AD /* GBRBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBaseEntity.h; sourceTree = "<group>"; };
-		AF3F0279C59181E0BA8972C3 /* GBRTestAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRTestAssembly.m; sourceTree = SOURCE_ROOT; };
 		AF3F029AE41723239DE5502C /* GBRTestUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRTestUtilities.h; sourceTree = "<group>"; };
 		AF3F02B50CDAA449BFD2BF1B /* GBRDateFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRDateFormatters.m; sourceTree = "<group>"; };
 		AF3F02B584EA553C658FBCAF /* GBRBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBook.h; sourceTree = "<group>"; };
@@ -113,6 +111,7 @@
 		AF3F0A69AE177243249CC593 /* NSCache+GBRKeySubscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCache+GBRKeySubscript.h"; sourceTree = "<group>"; };
 		AF3F0AA919F42F99C1C982E2 /* GBRConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRConfiguration.m; sourceTree = "<group>"; };
 		AF3F0ABE3F643700B7C63E76 /* GBRBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRBook.m; sourceTree = "<group>"; };
+		AF3F0B72C5BCB1EE70334791 /* GBRTestAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRTestAssembly.m; sourceTree = "<group>"; };
 		AF3F0BECFB9F70BCF8977AF3 /* GBRStorage+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GBRStorage+Protected.h"; sourceTree = "<group>"; };
 		AF3F0BF48364969809AAC89D /* GBRAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRAuthorizationViewController.h; sourceTree = "<group>"; };
 		AF3F0C11652C297BE05EF42E /* GBRDateFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRDateFormatters.h; sourceTree = "<group>"; };
@@ -122,6 +121,7 @@
 		AF3F0DB5A0ECA8FE7CABF7A0 /* GBRMyUploadedBooksNetworkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRMyUploadedBooksNetworkFetcher.h; sourceTree = "<group>"; };
 		AF3F0DF8900511B3F78E7047 /* uploaded-books-response.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = "uploaded-books-response.json"; sourceTree = "<group>"; };
 		AF3F0E02109E48F27B7FEF50 /* GBRBaseNetworkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRBaseNetworkFetcher.h; sourceTree = "<group>"; };
+		AF3F0E165BE670413AC532A7 /* GBRTestAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRTestAssembly.h; sourceTree = "<group>"; };
 		AF3F0E196B8D466E7B6E886E /* GBRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBRUtilities.h; sourceTree = "<group>"; };
 		AF3F0E7C9C5B731D6D792E7E /* GBRNetworkPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRNetworkPaths.m; sourceTree = "<group>"; };
 		AF3F0E894BD4C72EBF433115 /* GBRTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBRTypes.m; sourceTree = "<group>"; };
@@ -228,15 +228,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		AF3F05970FF8A07CC566990F /* Test Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				AF3F0169C1D7983DE5C0A43E /* GBRTestAssembly.h */,
-				AF3F0279C59181E0BA8972C3 /* GBRTestAssembly.m */,
-			);
-			path = "Test Extensions";
-			sourceTree = "<group>";
-		};
 		AF3F0716A0C161692FD121DA /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +255,15 @@
 				AF3F0D219B28376462A5E40E /* GBRValueTransformers.m */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		AF3F09A6C7CC01CFE175CD64 /* Test Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF3F0E165BE670413AC532A7 /* GBRTestAssembly.h */,
+				AF3F0B72C5BCB1EE70334791 /* GBRTestAssembly.m */,
+			);
+			path = "Test Extensions";
 			sourceTree = "<group>";
 		};
 		AF3F0A8718458C02CF4A1374 /* Fixtures */ = {
@@ -426,10 +426,10 @@
 				AF3F0A8718458C02CF4A1374 /* Fixtures */,
 				AF3F024B4E9FD5058B6AA3E6 /* Networking */,
 				AF3F0DEF219BC3F1DD1EBCEA /* Storage */,
-				AF3F05970FF8A07CC566990F /* Test Extensions */,
 				F1D980FB1908655D00D5233C /* Supporting Files */,
 				AF3F029AE41723239DE5502C /* GBRTestUtilities.h */,
 				AF3F07B44FA74F3B9691CD55 /* GBRTestUtilities.m */,
+				AF3F09A6C7CC01CFE175CD64 /* Test Extensions */,
 			);
 			path = GBooksReaderTests;
 			sourceTree = "<group>";
@@ -646,7 +646,7 @@
 				AF3F037C47B6EBEFC3A2550D /* GBRTestUtilities.m in Sources */,
 				AF3F06448974873647C19DE1 /* GBRMyLibraryUploadedBooksNetworkFetcherSpec.m in Sources */,
 				AF3F0BA13C1C86A69AB15409 /* GBRMyUploadedBooksStorageSpec.m in Sources */,
-				AF3F0A82A4FEB7B1EAAFB92A /* GBRTestAssembly.m in Sources */,
+				AF3F0A23D813475A54BB71F8 /* GBRTestAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
