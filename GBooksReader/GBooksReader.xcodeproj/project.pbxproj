@@ -426,10 +426,10 @@
 				AF3F0A8718458C02CF4A1374 /* Fixtures */,
 				AF3F024B4E9FD5058B6AA3E6 /* Networking */,
 				AF3F0DEF219BC3F1DD1EBCEA /* Storage */,
+				AF3F09A6C7CC01CFE175CD64 /* Test Extensions */,
 				F1D980FB1908655D00D5233C /* Supporting Files */,
 				AF3F029AE41723239DE5502C /* GBRTestUtilities.h */,
 				AF3F07B44FA74F3B9691CD55 /* GBRTestUtilities.m */,
-				AF3F09A6C7CC01CFE175CD64 /* Test Extensions */,
 			);
 			path = GBooksReaderTests;
 			sourceTree = "<group>";
