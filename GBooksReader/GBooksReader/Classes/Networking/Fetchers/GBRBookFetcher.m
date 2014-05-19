@@ -4,79 +4,163 @@
 //
 
 #import "GBRBookFetcher.h"
-#import "GBRBaseNetworkFetcher+Protected.h"
+#import "GBRBaseFileFetcher+Protected.h"
+#import "GBRURLSessionTaskCancellator.h"
 
 
 @interface GBRBookFetcher ()
 
-@property (nonatomic, readonly) NSURL *downloadDirectory;
+@property (nonatomic, getter=isExecuted) BOOL executed;
+
+@property (nonatomic, readonly, copy) NSString *bookID;
+@property (nonatomic, readonly) GBRBookType type;
+
+@property (nonatomic, readonly) AFURLSessionManager *manager;
 
 @end
 
 @implementation GBRBookFetcher
 
-- (instancetype)initWithBooksDownloadDirectory:(NSURL *)downloadDirectory {
-    NSParameterAssert(downloadDirectory);
+- (NSData *)resumeDataForBookWithID:(NSString *)bookID type:(GBRBookType)type {
+    NSURL *fileURL = [self resumeDataFileURLForBookID:bookID type:type];
 
-    self = [super init];
+    __autoreleasing NSError *error;
+    NSData *resumeData = [NSData dataWithContentsOfURL:fileURL options:0 error:&error];
+    if (error) {
+        DDLogError(@"Error reading resume data file %@: %@", fileURL, error);
+    }
+
+    return resumeData;
+}
+
+- (void)storeResumeData:(NSData *)data forBookWithID:(NSString *)bookID type:(GBRBookType)type {
+    NSParameterAssert(data);
+
+    NSURL *fileURL = [self resumeDataFileURLForBookID:bookID type:type];
+
+    __autoreleasing NSError *error;
+    if (![data writeToURL:fileURL options:NSDataWritingAtomic | NSDataWritingFileProtectionNone error:&error]) {
+        DDLogError(@"Error writing resume data in file %@: %@", fileURL, error);
+    }
+}
+
+- (void)destroyResumeDataForBookWithID:(NSString *)bookID type:(GBRBookType)type {
+    NSURL *fileURL = [self resumeDataFileURLForBookID:bookID type:type];
+    __autoreleasing NSError *error;
+    [[NSFileManager defaultManager] removeItemAtURL:fileURL error:&error];
+    if (error && !([[error domain] isEqualToString:NSURLErrorDomain] && [error code] == NSURLErrorFileDoesNotExist)) {
+        DDLogError(@"Unable to remove resume file at URL: %@", fileURL);
+    }
+}
+
++ (NSURL *)buildDestinationURLForBookWithID:(NSString *)ID type:(GBRBookType)type {
+    NSString *filePath = [ID stringByAppendingPathExtension:[self extensionForType:type]];
+    return [[self booksDownloadDirectory] URLByAppendingPathComponent:filePath isDirectory:NO];
+}
+
++ (NSString *)extensionForType:(GBRBookType)bookType {
+    return GBRFileExtensionForType(bookType);
+}
+
++ (NSURL *)booksDownloadDirectory {
+    return [[GBRConfiguration configuration].applicationSupportDirectoryURL URLByAppendingPathComponent:@"books" isDirectory:YES];
+}
+
+- (NSURL *)resumeDataFileURLForBookID:(NSString *)bookID type:(GBRBookType)type {
+    NSURL *directory = [[GBRConfiguration configuration].applicationSupportDirectoryURL URLByAppendingPathComponent:@"downloads" isDirectory:YES];
+    NSString *fileName = FORMAT(@"%@.%@.data", bookID, GBRFileExtensionForType(type));
+    return [directory URLByAppendingPathComponent:fileName isDirectory:NO];
+}
+
+- (instancetype)initWithBookID:(NSString *)bookID type:(GBRBookType)type URL:(NSURL *)URL token:(NSString *)token {
+    NSParameterAssert([bookID length] > 0);
+    NSParameterAssert(URL);
+    NSParameterAssert([token length] > 0);
+
+    self = [super initWithUniqueIdentifier:[[self class] buildUniqueIdentifierWithBookID:bookID type:type] token:token URL:URL];
     if (self) {
-        _downloadDirectory = downloadDirectory;
+        _bookID = [bookID copy];
+        _type = type;
+        _manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[[self class] sessionConfigurationWithIdentifier:self.uniqueIdentifier]];
     }
 
     return self;
 }
 
-- (Promise *)loadBookWithID:(NSString *)ID
-                      byURL:(NSURL *)URL
-                     ofType:(GBRBookType)type
-                   progress:(NSProgress * __autoreleasing *)progress
-       cancellationCallback:(void (^)(NSData *))cancellationCallback {
-    NSParameterAssert([ID length] > 0);
-    NSParameterAssert(URL);
-    NSParameterAssert(GBRIsBookTypeValid(type));
++ (void)completeBackgroundLoadingWithSessionIdentifier:(NSString *)sessionID backgroundDownloadCompletionHandler:(void (^)(void))backgroundDownloadCompletionHandler completionHandler:(void (^)(NSString *bookID, GBRBookType type, NSURL *fileURL))completionHandler {
+    NSParameterAssert([sessionID length] > 0);
+    NSParameterAssert(backgroundDownloadCompletionHandler);
+    NSParameterAssert(completionHandler);
 
-    __block NSURLSessionDownloadTask *task;
-    Promise *promise = [Promise new:^(PromiseResolver fulfiller, PromiseResolver rejecter) {
-        void (^completionHandler)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse *_, NSURL *filePath, NSError *error) {
-            if (error) {
-                rejecter(error);
-            } else {
-                fulfiller(filePath);
-            }
-        };
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[self sessionConfigurationWithIdentifier:sessionID]];
+    @weakify(self);
+    [manager setDidFinishEventsForBackgroundURLSessionBlock:^(NSURLSession *session) {
+        @strongify(self);
 
-        @weakify(self);
-        NSURL *(^destination)(NSURL *, NSURLResponse *) = ^(NSURL *proposedURL, NSURLResponse *_) {
-            @strongify(self);
-            return [self buildDestinationURLForBookWithID:ID proposedURL:proposedURL type:type];
-        };
+        NSString *bookID = [self bookIDFromSessionID:sessionID];
+        GBRBookType bookType = [self bookTypeFromSessionID:sessionID];
+        NSURL *fileURL = [self buildDestinationURLForBookWithID:bookID type:bookType];
 
-        task = [self.manager downloadTaskWithRequest:[self buildDownloadRequestWithURL:URL]
-                                            progress:progress
-                                         destination:destination
-                                   completionHandler:completionHandler];
+        completionHandler(bookID, bookType, fileURL);
+        [self destroyResumeDataForBookWithID:bookID type:bookType];
+        backgroundDownloadCompletionHandler();
     }];
-
-    return [self registerCancellationBlock:^{ [task cancelByProducingResumeData:cancellationCallback]; } withPromise:promise];
 }
 
-- (NSURL *)buildDestinationURLForBookWithID:(NSString *)ID proposedURL:(NSURL *)proposedURL type:(GBRBookType)type {
-    NSString *filePath = [proposedURL path] ?: [ID stringByAppendingPathExtension:[self extensionForType:type]];
-    return [self.downloadDirectory URLByAppendingPathComponent:filePath isDirectory:NO];
++ (GBRBookType)bookTypeFromSessionID:(NSString *)sessionID {
+    NSString *bookTypePart = [[sessionID componentsSeparatedByString:@"."] lastObject];
+    return GBRBookTypeFromString(bookTypePart);
 }
 
-- (NSURLRequest *)buildDownloadRequestWithURL:(NSURL *)url {
-    return [NSURLRequest requestWithURL:url];
++ (NSString *)bookIDFromSessionID:(NSString *)sessionID {
+    NSArray *parts = [sessionID componentsSeparatedByString:@"."];
+    return parts[[parts count] - 2];
 }
 
-- (NSString *)extensionForType:(GBRBookType)bookType {
-    return GBRFileExtensionForType(bookType);
++ (NSString *)buildUniqueIdentifierWithBookID:(NSString *)bookID type:(GBRBookType)type {
+    return FORMAT(@"com.comfly.GBooksReader.BookDownload.%@.%@", bookID, GBRFileExtensionForType(type));
 }
 
-- (void (^)(NSData *))cancellationBlockForBookWithID:(NSString *)ID {
-    return ^(NSData *data) {
++ (NSURLSessionConfiguration *)sessionConfigurationWithIdentifier:(NSString *)identifier {
+    return [NSURLSessionConfiguration backgroundSessionConfiguration:identifier];
+}
 
+- (NSURLSessionConfiguration *)sessionConfiguration {
+    return self.manager.session.configuration;
+}
+
+- (id<GBRCancellable>)loadBookWithProgress:(NSProgress * __autoreleasing *)progress completionBlock:(void (^)(NSURL *fileLocation, NSError *error))completionBlock {
+    NSParameterAssert(completionBlock);
+
+    NSAssert(!self.executed, @"The method can be called only once");
+    self.executed = YES;
+
+    NSString *bookID = self.bookID;
+    GBRBookType bookType = self.type;
+
+    @weakify(self);
+    NSURL *(^destinationBlock)(NSURL *, NSURLResponse *) = ^(NSURL *targetPath, NSURLResponse *_) {
+        @strongify(self);
+        return [[self class] buildDestinationURLForBookWithID:bookID type:bookType];
     };
+    void (^completionHandler)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse *_, NSURL *filePath, NSError *error) {
+        @strongify(self);
+        if (!error) {
+            [self destroyResumeDataForBookWithID:bookID type:bookType];
+        }
+
+        completionBlock(filePath, error);
+    };
+
+    NSData *resumeData = [self resumeDataForBookWithID:bookID type:bookType];
+    NSURLSessionDownloadTask *task = resumeData
+            ? [self.manager downloadTaskWithResumeData:resumeData progress:progress destination:destinationBlock completionHandler:completionHandler]
+            : [self.manager downloadTaskWithRequest:[self request] progress:progress destination:destinationBlock completionHandler:completionHandler];
+    [task resume];
+
+    return [[GBRURLSessionTaskCancellator alloc] initWithDownloadTask:task cancellationBlock:^(NSData *newResumeData) {
+        [self storeResumeData:newResumeData forBookWithID:bookID type:bookType];
+    }];
 }
 
 @end

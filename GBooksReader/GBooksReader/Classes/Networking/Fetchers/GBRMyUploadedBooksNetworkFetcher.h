@@ -4,10 +4,10 @@
 //
 
 @import Foundation;
-#import "GBRBaseNetworkFetcher.h"
+#import "GBRBaseDataFetcher.h"
 
 
-@interface GBRMyUploadedBooksNetworkFetcher : GBRBaseNetworkFetcher
+@interface GBRMyUploadedBooksNetworkFetcher : GBRBaseDataFetcher
 
 /**
 * Promise of NSArray of GBRBook

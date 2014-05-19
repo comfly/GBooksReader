@@ -30,3 +30,12 @@ NSString *GBRFileExtensionForType(GBRBookType type) {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:FORMAT(@"Unknown type of Book: %u", type) userInfo:nil];
     }
 }
+
+GBRBookType GBRBookTypeFromString(NSString *string) {
+    NSCParameterAssert([string length] > 0);
+
+    return (GBRBookType) [@{
+            @"pdf" : @(GBRBookTypePDF),
+            @"epub" : @(GBRBookTypeEPUB)
+    }[[string lowercaseString]] unsignedIntegerValue];
+}

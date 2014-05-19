@@ -18,6 +18,7 @@
 #import "GBRAssembly.h"
 #import "GBRGoogleAuthorization.h"
 #import "GBRTestAssembly.h"
+#import "GBRNetworkUtilities.h"
 
 
 SPEC_BEGIN(GBRMyLibraryUploadedBooksNetworkFetcherSpec)
@@ -53,7 +54,7 @@ describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
             NSURL *kRequestURL = [[NSURL URLWithString:kRequestPath relativeToURL:[GBRConfiguration configuration].baseURL] absoluteURL];
             [[[[request URL] absoluteURL] should] equal:kRequestURL];
             [[[request HTTPBody] should] beNil];
-            [[[request valueForHTTPHeaderField:@"Authorization"] should] equal:FORMAT(@"Bearer %@", kToken)];
+            [[[request valueForHTTPHeaderField:GBRNetworkAuthorizationHeaderKey] should] equal:GBRNetworkAuthorizationHeaderValue(kToken)];
 
             return YES;
         } withStubResponse:^(NSURLRequest *request) {

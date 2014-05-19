@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, GBRBookType) {
 
 extern BOOL GBRIsBookTypeValid(GBRBookType);
 extern NSString *GBRFileExtensionForType(GBRBookType);
+extern GBRBookType GBRBookTypeFromString(NSString *string);
 
 typedef NS_ENUM(NSUInteger, GBRProcessingState) {
     GBRProcessingStateFailed,       // "COMPLETED_FAILED"

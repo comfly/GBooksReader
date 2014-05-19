@@ -4,6 +4,7 @@
 //
 
 #import "GBRMyUploadedBooksNetworkFetcher.h"
+#import "GBRBaseDataFetcher+Protected.h"
 #import "GBRBaseNetworkFetcher+Protected.h"
 #import "GBRBook.h"
 #import "GBRNetworkPaths.h"

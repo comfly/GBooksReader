@@ -15,6 +15,8 @@
 #import "GBRGoogleAuthorization.h"
 #import "GBRMyUploadedBooksStorage.h"
 #import "AFJSONRequestSerializer+GBRExtra.h"
+#import "GBRBaseFileFetcher.h"
+#import "GBRBookFetcher.h"
 
 
 @implementation GBRAssembly
@@ -30,30 +32,37 @@
 
 - (id)myUploadedBooksNetworkFetcher {
     return [TyphoonDefinition withClass:[GBRMyUploadedBooksNetworkFetcher class] configuration:^(TyphoonDefinition *definition) {
-        definition.parent = [self baseNetworkFetcher];
+        definition.parent = [self baseDataFetcher];
+        [definition useInitializer:@selector(init)];
+        [definition injectProperty:@selector(manager) with:[self networkManager]];
     }];
 }
 
 - (id)myUploadedBooksStorage {
     return [TyphoonDefinition withClass:[GBRMyUploadedBooksStorage class] configuration:^(TyphoonDefinition *definition) {
         definition.parent = [self baseStorage];
+        [definition useInitializer:@selector(initWithUserName:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[[self authorizer] property:@selector(userName)]];
+        }];
+    }];
+}
+
+- (id)baseDataFetcher {
+    return [TyphoonDefinition withClass:[GBRBaseDataFetcher class] configuration:^(TyphoonDefinition *definition) {
+        definition.abstract = YES;
+        definition.parent = [self baseNetworkFetcher];
     }];
 }
 
 - (id)baseNetworkFetcher {
     return [TyphoonDefinition withClass:[GBRBaseNetworkFetcher class] configuration:^(TyphoonDefinition *definition) {
         definition.abstract = YES;
-        [definition useInitializer:@selector(init)];
-        [definition injectProperty:@selector(manager) with:[self networkManager]];
     }];
 }
 
 - (id)baseStorage {
     return [TyphoonDefinition withClass:[GBRStorage class] configuration:^(TyphoonDefinition *definition) {
         definition.abstract = YES;
-        [definition useInitializer:@selector(initWithUserName:) parameters:^(TyphoonMethod *initializer) {
-            [initializer injectParameterWith:[[self authorizer] property:@selector(userName)]];
-        }];
     }];
 }
 
@@ -62,7 +71,7 @@
         definition.scope = TyphoonScopeSingleton;
         [definition useInitializer:@selector(initWithBaseURL:sessionConfiguration:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameter:@"baseURL" with:[GBRConfiguration configuration].baseURL];
-            [initializer injectParameter:@"sessionConfiguration" with:[self sessionConfiguration]];
+            [initializer injectParameter:@"sessionConfiguration" with:[NSURLSessionConfiguration defaultSessionConfiguration]];
         }];
         [definition injectProperty:@selector(requestSerializer) with:[self requestSerializer]];
         [definition injectProperty:@selector(responseSerializer) with:[self responseSerializer]];

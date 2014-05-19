@@ -66,4 +66,9 @@ GBRAssembly *GBRObjectFactory = nil;
     DDLogInfo(@"Token: %@", [authorization token]);
 }
 
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
+
+}
+
+
 @end

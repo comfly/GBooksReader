@@ -4,13 +4,14 @@
 //
 
 #import "AFJSONRequestSerializer+GBRExtra.h"
+#import "GBRNetworkUtilities.h"
 
 
 @implementation AFJSONRequestSerializer (GBRExtra)
 
 + (instancetype)serializerWithWritingOptions:(NSJSONWritingOptions)writingOptions authorizationToken:(NSString *)token {
     AFJSONRequestSerializer *result = [self serializerWithWritingOptions:writingOptions];
-    [result setValue:FORMAT(@"Bearer %@", token) forHTTPHeaderField:@"Authorization"];
+    [result setValue:GBRNetworkAuthorizationHeaderValue(token) forHTTPHeaderField:GBRNetworkAuthorizationHeaderKey];
     return result;
 }
 

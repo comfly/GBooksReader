@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSURL *baseURL;
 @property (nonatomic, readonly) NSString *booksScope;
 @property (nonatomic, readonly) NSURL *cachesDirectoryURL;
+@property (nonatomic, readonly) NSURL *applicationSupportDirectoryURL;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)configuration;

@@ -11,6 +11,7 @@
 #include "GBRObjectFactory.h"
 #include "GBRLogging.h"
 #include "GBRTypes.h"
+#import "GBRBlockedIf.h"
 
 #import "NSArray+GBRExtra.h"
 #import "NSSet+GBRExtra.h"
