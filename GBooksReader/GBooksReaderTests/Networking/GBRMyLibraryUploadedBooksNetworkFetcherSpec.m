@@ -21,14 +21,10 @@ SPEC_BEGIN(GBRMyLibraryUploadedBooksNetworkFetcherSpec)
 
 describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
 
-    NSString *const kToken = @"$@MPL3_T0KeN";
-
+    let(kToken, ^{ return @"$@MPL3_T0KeN"; });
     let(utilities, ^{ return [GBRTestUtilities utilities]; });
-
     let(kRequestPath, ^{ return [GBRNetworkPaths pathToMyUploadedBooks]; });
-
     let(kResponseFixture, ^{ return @"uploaded-books-response"; });
-
     let(fetcher, ^{ return [[GBRMyUploadedBooksNetworkFetcher alloc] initWithToken:kToken]; });
 
     it(@"should load Uploaded Books", ^{

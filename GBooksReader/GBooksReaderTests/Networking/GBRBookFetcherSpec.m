@@ -8,22 +8,22 @@
 
 #import <Kiwi/Kiwi.h>
 #import "GBRBookFetcher.h"
-#import "GBRBookFetcher+TestExtension.h"
+#import "GBRBookFetcher+Tests.h"
 
 
 SPEC_BEGIN(GBRBookFetcherSpec)
 
 describe(@"GBRBookFetcher", ^{
     context(@"Basic downloading", ^{
-        static NSString *const kBookID = @"Sample_book_id";
+        let(kBookID, ^{ return @"Sample_book_id"; });
         static const GBRBookType kBookType = GBRBookTypePDF;
-        static NSString *const kBookURLAsString = @"http://apple.com";
-        static NSString *const kToken = @"SAMPLE_TOKEN";
+        let(kBookURLAsString, ^{ return @"http://apple.com"; });
+        let(kToken, ^{ return @"$@MPL3_T0KeN"; });
 
-        pending(@"should download book with Book ID, type, URL", ^{
+        it(@"should download book with Book ID, type, URL", ^{
+            [GBRBookFetcher stub:@selector(sessionConfigurationWithIdentifier:) andReturn:[NSURLSessionConfiguration defaultSessionConfiguration]];
             GBRBookFetcher *fetcher = [[GBRBookFetcher alloc] initWithBookID:kBookID type:kBookType URL:[NSURL URLWithString:kBookURLAsString] token:kToken];
 
-            [OHHTTPStubs setEnabled:YES forSessionConfiguration:[fetcher sessionConfiguration]];
             [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request) {
                 BOOL isTestURL = [[request URL] isEqual:[NSURL URLWithString:kBookURLAsString]];
                 [[theValue(isTestURL) should] beYes];

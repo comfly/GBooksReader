@@ -6,6 +6,7 @@
 #import "GBRBookFetcher.h"
 #import "GBRBaseFileFetcher+Protected.h"
 #import "GBRURLSessionTaskCancellator.h"
+#import "GBRBookFetcher+Tests.h"
 
 
 @interface GBRBookFetcher ()
@@ -125,10 +126,6 @@
     return [NSURLSessionConfiguration backgroundSessionConfiguration:identifier];
 }
 
-- (NSURLSessionConfiguration *)sessionConfiguration {
-    return self.manager.session.configuration;
-}
-
 - (id<GBRCancellable>)loadBookWithProgress:(NSProgress * __autoreleasing *)progress completionBlock:(void (^)(NSURL *fileLocation, NSError *error))completionBlock {
     NSParameterAssert(completionBlock);
 
@@ -141,7 +138,9 @@
     @weakify(self);
     NSURL *(^destinationBlock)(NSURL *, NSURLResponse *) = ^(NSURL *targetPath, NSURLResponse *_) {
         @strongify(self);
-        return [[self class] buildDestinationURLForBookWithID:bookID type:bookType];
+        NSURL *destinationURL = [[self class] buildDestinationURLForBookWithID:bookID type:bookType];
+        [self createFullPath:[destinationURL URLByDeletingLastPathComponent]];
+        return destinationURL;
     };
     void (^completionHandler)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse *_, NSURL *filePath, NSError *error) {
         @strongify(self);
@@ -161,6 +160,13 @@
     return [[GBRURLSessionTaskCancellator alloc] initWithDownloadTask:task cancellationBlock:^(NSData *newResumeData) {
         [self storeResumeData:newResumeData forBookWithID:bookID type:bookType];
     }];
+}
+
+- (void)createFullPath:(NSURL *)pathURL {
+    __autoreleasing NSError *error;
+    if (![[NSFileManager defaultManager] createDirectoryAtURL:pathURL withIntermediateDirectories:YES attributes:nil error:&error]) {
+        DDLogError(@"Unable to create directories for URL %@: %@", pathURL, error);
+    }
 }
 
 @end

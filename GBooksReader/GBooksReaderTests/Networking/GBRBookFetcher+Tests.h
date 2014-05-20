@@ -7,9 +7,9 @@
 
 #import "GBRBookFetcher.h"
 
-@interface GBRBookFetcher (TestExtension)
+@interface GBRBookFetcher (Tests)
 
 + (NSURL *)buildDestinationURLForBookWithID:(NSString *)ID type:(GBRBookType)type;
-- (NSURLSessionConfiguration *)sessionConfiguration;
++ (NSURLSessionConfiguration *)sessionConfigurationWithIdentifier:(NSString *)identifier;
 
 @end
