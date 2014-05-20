@@ -7,10 +7,7 @@
 //
 
 #import "GBRAppDelegate.h"
-#import "GBRAssembly.h"
 #import "GBRGoogleAuthorization.h"
-
-GBRAssembly *GBRObjectFactory = nil;
 
 @interface GBRAppDelegate () <GBRAuthorizationDelegate>
 
@@ -30,7 +27,7 @@ GBRAssembly *GBRObjectFactory = nil;
     if (IS_TEST_RUN) {
         self.window.rootViewController = [[UIViewController alloc] init];
     } else {
-        id<GBRAuthorization> authorization = [GBRObjectFactory authorizer];
+        id<GBRAuthorization> authorization = [[GBRGoogleAuthorization alloc] initWithDelegate:self];
         if ([authorization isAuthenticated] || [authorization trySilentAuthentication]) {
             self.window.rootViewController = [[UIViewController alloc] init];
         } else {
@@ -46,16 +43,11 @@ GBRAssembly *GBRObjectFactory = nil;
 - (void)setupApplication {
     ONCE(^{
         GBRSetupLogger();
-        GBRObjectFactory = [self setupDependencyInjector];
     });
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [[[GBRGoogleAuthorization alloc] init] handleAuthorizationURL:url sourceApplication:sourceApplication annotation:annotation];
-}
-
-- (GBRAssembly *)setupDependencyInjector {
-    return (GBRAssembly *) (id) [TyphoonBlockComponentFactory factoryWithAssembly:[GBRAssembly assembly]];
 }
 
 - (void)authorization:(id<GBRAuthorization>)authorization didFailAuthorizationWithError:(NSError *)error {

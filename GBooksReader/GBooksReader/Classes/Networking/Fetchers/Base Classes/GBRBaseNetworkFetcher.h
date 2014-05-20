@@ -8,7 +8,4 @@
 
 @interface GBRBaseNetworkFetcher : NSObject
 
-- (instancetype)init DESIGNATED_INITIALIZER;
-- (void)cancelTaskForPromise:(Promise *)promise;
-
 @end

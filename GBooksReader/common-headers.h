@@ -4,11 +4,9 @@
 #import <BlocksKit/BlocksKit.h>
 #import <Mantle/Mantle.h>
 #import <PromiseKit/PromiseKit.h>
-#import <Typhoon/Typhoon.h>
 
 #include "GBRUtilities.h"
 #import "GBRConfiguration.h"
-#include "GBRObjectFactory.h"
 #include "GBRLogging.h"
 #include "GBRTypes.h"
 #import "GBRBlockedIf.h"

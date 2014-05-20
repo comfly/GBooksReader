@@ -7,7 +7,6 @@
 //
 
 #import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
-#import <Typhoon/TyphoonPatcher.h>
 #import "GBRMyUploadedBooksNetworkFetcher.h"
 #import "GBRTestUtilities.h"
 #import "GBRNetworkPaths.h"
@@ -15,9 +14,6 @@
 #import "GBRDateFormatters.h"
 #import "GBRThumbnailURLs.h"
 #import "GBRReadingPosition.h"
-#import "GBRAssembly.h"
-#import "GBRGoogleAuthorization.h"
-#import "GBRTestAssembly.h"
 #import "GBRNetworkUtilities.h"
 
 
@@ -33,21 +29,7 @@ describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
 
     let(kResponseFixture, ^{ return @"uploaded-books-response"; });
 
-    __block GBRMyUploadedBooksNetworkFetcher *fetcher;
-    beforeAll(^{
-        GBRAssembly *assembly = [GBRTestAssembly assembly];
-        TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:assembly];
-
-        TyphoonPatcher *patcher = [[TyphoonPatcher alloc] init];
-        [patcher patchDefinition:[assembly authorizer] withObject:^{
-            GBRGoogleAuthorization *authorization = [[GBRGoogleAuthorization alloc] init];
-            [authorization stub:@selector(token) andReturn:kToken];
-            return authorization;
-        }];
-        [factory attachPostProcessor:patcher];
-
-        fetcher = [factory componentForKey:SELECTOR_NAME(myUploadedBooksNetworkFetcher)];
-    });
+    let(fetcher, ^{ return [[GBRMyUploadedBooksNetworkFetcher alloc] initWithToken:kToken]; });
 
     it(@"should load Uploaded Books", ^{
         [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {

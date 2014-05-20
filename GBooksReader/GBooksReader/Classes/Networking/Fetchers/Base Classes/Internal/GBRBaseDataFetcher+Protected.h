@@ -11,7 +11,10 @@
 
 @interface GBRBaseDataFetcher (Protected)
 
-@property (nonatomic) REMHTTPSessionManager *manager;
+@property (nonatomic, readonly) REMHTTPSessionManager *manager;
 - (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithRejecter:(PromiseResolver)rejecter;
+
+typedef void (^GBRNetworkFetcherCancellationBlock)(void);
+- (Promise *)registerCancellationBlock:(GBRNetworkFetcherCancellationBlock)cancellationBlock withPromise:(Promise *)promise;
 
 @end

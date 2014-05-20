@@ -9,5 +9,9 @@
 
 @interface GBRBaseDataFetcher : GBRBaseNetworkFetcher
 
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithToken:(NSString *)token;
+
+- (void)cancelTaskForPromise:(Promise *)promise;
 
 @end

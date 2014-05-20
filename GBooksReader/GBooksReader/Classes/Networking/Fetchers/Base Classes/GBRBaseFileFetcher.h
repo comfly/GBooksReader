@@ -10,6 +10,6 @@
 @interface GBRBaseFileFetcher : GBRBaseNetworkFetcher
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithUniqueIdentifier:(NSString *)identifier token:(NSString *)token URL:(NSURL *)URL DESIGNATED_INITIALIZER;
+- (instancetype)initWithUniqueIdentifier:(NSString *)identifier token:(NSString *)token URL:(NSURL *)URL;
 
 @end

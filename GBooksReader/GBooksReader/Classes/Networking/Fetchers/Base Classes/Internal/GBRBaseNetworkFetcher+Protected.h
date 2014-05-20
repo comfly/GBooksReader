@@ -11,9 +11,6 @@
 
 @interface GBRBaseNetworkFetcher ()
 
-typedef void (^GBRNetworkFetcherCancellationBlock)(void);
-- (Promise *)registerCancellationBlock:(GBRNetworkFetcherCancellationBlock)cancellationBlock withPromise:(Promise *)promise;
-
 - (BOOL)processStandardNetworkError:(NSError *)error;
 - (BOOL)mustLogNetworkError:(NSError *)error;
 

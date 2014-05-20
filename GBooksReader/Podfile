@@ -15,7 +15,6 @@ pod 'Mantle'
 pod 'google-plus-ios-sdk'
 
 # Utilities
-pod 'Typhoon'
 pod 'PromiseKit/base'
 pod 'libextobjc'
 pod 'BlocksKit'
