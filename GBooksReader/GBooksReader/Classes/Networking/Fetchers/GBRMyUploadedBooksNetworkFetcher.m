@@ -12,9 +12,9 @@
 
 @implementation GBRMyUploadedBooksNetworkFetcher
 
-- (Promise *)loadMyUploadedBooks {
+- (PMKPromise *)loadMyUploadedBooks {
     __block NSURLSessionTask *task;
-    Promise *promise = [Promise new:^(PromiseResolver fulfiller, PromiseResolver rejecter) {
+    PMKPromise *promise = [PMKPromise new:^(PMKPromiseFulfiller fulfiller, PMKPromiseRejecter rejecter) {
         Class itemClass = [GBRBook class];
 
         @weakify(self);

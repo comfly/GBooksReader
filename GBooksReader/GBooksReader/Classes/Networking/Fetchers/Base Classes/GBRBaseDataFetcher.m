@@ -63,8 +63,8 @@
     return [GBRConfiguration configuration].baseURL;
 }
 
-- (Promise *)registerCancellationBlock:(GBRNetworkFetcherCancellationBlock)cancellationBlock withPromise:(Promise *)promise {
-    __block Promise *extendedPromise = promise.then(^(id result) {
+- (PMKPromise *)registerCancellationBlock:(GBRNetworkFetcherCancellationBlock)cancellationBlock withPromise:(PMKPromise *)promise {
+    __block PMKPromise *extendedPromise = promise.then(^(id result) {
         [self completeTaskForPromise:extendedPromise];
         return result;
     }).catch(^(id error) {
@@ -76,17 +76,17 @@
     return extendedPromise;
 }
 
-- (void)completeTaskForPromise:(Promise *)promise {
+- (void)completeTaskForPromise:(PMKPromise *)promise {
     [self.tasksByPromises removeObjectForKey:promise];
 }
 
-- (void)cancelTaskForPromise:(Promise *)promise {
+- (void)cancelTaskForPromise:(PMKPromise *)promise {
     GBRNetworkFetcherCancellationBlock cancellationBlock = self.tasksByPromises[promise];
     SAFE_BLOCK_CALL(cancellationBlock);
     [self.tasksByPromises removeObjectForKey:promise];
 }
 
-- (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithRejecter:(PromiseResolver)rejecter {
+- (void (^)(NSURLSessionDataTask *, NSError *))defaultNetworkErrorProcessingBlockWithRejecter:(PMKPromiseRejecter)rejecter {
     @weakify(self);
     return ^(NSURLSessionDataTask *_, NSError *error) {
         @strongify(self);

@@ -12,6 +12,6 @@
 /**
 * Promise of NSArray of GBRBook
 */
-- (Promise *)loadMyUploadedBooks;
+- (PMKPromise *)loadMyUploadedBooks;
 
 @end

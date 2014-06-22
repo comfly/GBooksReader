@@ -12,6 +12,6 @@
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithToken:(NSString *)token;
 
-- (void)cancelTaskForPromise:(Promise *)promise;
+- (void)cancelTaskForPromise:(PMKPromise *)promise;
 
 @end

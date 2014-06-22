@@ -40,7 +40,7 @@ describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
             return [OHHTTPStubsResponse responseWithJSONObject:jsonObject statusCode:200 headers:nil];
         }];
 
-        Promise *promise = [fetcher loadMyUploadedBooks];
+        PMKPromise *promise = [fetcher loadMyUploadedBooks];
 
         __block BOOL done = NO;
 
@@ -125,7 +125,7 @@ describe(@"GBRMyUploadedBooksNetworkFetcher", ^{
 
         __block BOOL done = NO;
 
-        Promise *promise = [fetcher loadMyUploadedBooks];
+        PMKPromise *promise = [fetcher loadMyUploadedBooks];
         promise.catch(^(NSError *error) {
             [[theValue([error isUserCancelled]) should] beYes];
             done = YES;
